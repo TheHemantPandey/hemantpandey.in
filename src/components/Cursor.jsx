@@ -1,91 +1,100 @@
-//seen
-
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 
 const Cursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const location = useLocation();
-
-  // Reset hover state when route changes
-  useEffect(() => {
-    setIsHovering(false);
-  }, [location.pathname]);
-
-  const setupHoverListeners = useCallback(() => {
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
-
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea, .cursor-hover');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
-
-    return () => {
-      interactiveElements.forEach(el => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      });
-    };
-  }, []);
+  const [hoveredEl, setHoveredEl] = useState(null);
+  const [hoveredRect, setHoveredRect] = useState(null);
+  const [hoveredRadius, setHoveredRadius] = useState('9999px');
+  
+  const [isMobile] = useState(() => {
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      return window.matchMedia('(pointer: coarse)').matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
+    if (isMobile) return;
+
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
+    const handleMouseOver = (e) => {
+      if (e.target && typeof e.target.closest === 'function') {
+        const interactive = e.target.closest('a, button, input, textarea, .cursor-hover');
+        
+        if (interactive) {
+          if (hoveredEl !== interactive) {
+            const rect = interactive.getBoundingClientRect();
+            const computedStyle = window.getComputedStyle(interactive);
+            
+            setHoveredEl(interactive);
+            setHoveredRect({
+              x: rect.left + rect.width / 2,
+              y: rect.top + rect.height / 2,
+              width: rect.width + 8, // add slight padding around element
+              height: rect.height + 8
+            });
+            setHoveredRadius(computedStyle.borderRadius || '9999px');
+          }
+        } else {
+          setHoveredEl(null);
+          setHoveredRect(null);
+          setHoveredRadius('9999px');
+        }
+      }
+    };
+
     window.addEventListener('mousemove', updateMousePosition);
-    
-    // Setup hover listeners
-    const cleanup = setupHoverListeners();
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
-      cleanup();
+      document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [setupHoverListeners]);
+  }, [isMobile, hoveredEl]);
 
-  // Re-attach listeners when route changes (new elements appear)
-  useEffect(() => {
-    // Small delay to let new elements render
-    const timeout = setTimeout(() => {
-      setupHoverListeners();
-    }, 100);
+  if (isMobile) return null;
 
-    return () => clearTimeout(timeout);
-  }, [location.pathname, setupHoverListeners]);
+  const isHovering = !!hoveredRect;
 
   return (
     <>
+      {/* Inner Dot */}
       <motion.div
         className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
-          scale: isHovering ? 2.5 : 1,
+          scale: isHovering ? 0 : 1, // hide inner dot on snap latching
         }}
         transition={{
           type: "spring",
-          stiffness: 150,
-          damping: 15,
+          stiffness: 350,
+          damping: 20,
           mass: 0.1
         }}
       />
+      
+      {/* Outer Magnetic Ring / Frame */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        className="fixed top-0 left-0 border border-white pointer-events-none z-[9998] mix-blend-difference"
+        style={{
+          borderRadius: hoveredRadius
+        }}
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 1.5 : 1,
+          x: isHovering ? hoveredRect.x - hoveredRect.width / 2 : mousePosition.x - 16,
+          y: isHovering ? hoveredRect.y - hoveredRect.height / 2 : mousePosition.y - 16,
+          width: isHovering ? hoveredRect.width : 32,
+          height: isHovering ? hoveredRect.height : 32,
         }}
         transition={{
           type: "spring",
-          stiffness: 100,
-          damping: 25,
-          mass: 0.2
+          stiffness: 220,
+          damping: 22,
+          mass: 0.6
         }}
       />
     </>

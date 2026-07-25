@@ -142,9 +142,9 @@ const BotWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.96 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute bottom-[4.5rem] right-0 w-[21rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-cyan-300/25 bg-[#060b11]/95 shadow-[0_10px_55px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+            className="absolute bottom-[4.5rem] right-0 w-[21rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_10px_55px_var(--shadow)] backdrop-blur-xl"
           >
-            <div className="border-b border-cyan-200/15 bg-gradient-to-r from-cyan-300/10 via-transparent to-transparent px-4 py-3">
+            <div className="border-b border-[var(--glass-border)] bg-gradient-to-r from-cyan-300/10 via-transparent to-transparent px-4 py-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-sm font-semibold text-cyan-100">
                   <Bot size={16} />
@@ -164,7 +164,7 @@ const BotWidget = () => {
                   className={`max-w-[86%] rounded-xl border px-3 py-2 text-sm leading-relaxed ${
                     message.from === 'bot'
                       ? 'border-cyan-200/15 bg-cyan-200/10 font-mono text-cyan-50/90'
-                      : 'ml-auto border-white/20 bg-white text-black'
+                      : 'ml-auto border-[var(--border)] bg-[var(--accent-bg)] text-[var(--accent-text)] cursor-none'
                   }`}
                 >
                   {message.from === 'bot' && (
@@ -218,7 +218,7 @@ const BotWidget = () => {
                     key={hint}
                     type="button"
                     onClick={() => sendMessage(hint)}
-                    className="rounded-full border border-cyan-200/20 bg-cyan-100/5 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-cyan-100/75 transition hover:border-cyan-100/45 hover:text-cyan-50"
+                    className="rounded-full border border-cyan-200/20 bg-cyan-100/5 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-cyan-100/75 transition hover:border-cyan-100/45 hover:text-cyan-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 focus-visible:outline-offset-1 cursor-none"
                   >
                     {hint}
                   </button>
@@ -237,11 +237,11 @@ const BotWidget = () => {
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
                   placeholder="Type command or question..."
-                  className="w-full rounded-lg border border-cyan-200/20 bg-cyan-100/5 px-3 py-2 font-mono text-sm text-cyan-50 outline-none placeholder:text-cyan-100/35 focus:border-cyan-100/45"
+                  className="w-full rounded-lg border border-cyan-200/20 bg-cyan-100/5 px-3 py-2 font-mono text-sm text-cyan-50 outline-none placeholder:text-cyan-100/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 cursor-none"
                 />
                 <button
                   type="submit"
-                  className="rounded-lg border border-cyan-200/20 bg-cyan-100/10 p-2 text-cyan-50 transition hover:border-cyan-100/45 hover:bg-cyan-100/20"
+                  className="rounded-lg border border-cyan-200/20 bg-cyan-100/10 p-2 text-cyan-50 transition hover:border-cyan-100/45 hover:bg-cyan-100/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 cursor-none"
                   aria-label="Send message"
                   disabled={isTyping}
                 >
@@ -256,7 +256,7 @@ const BotWidget = () => {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="group absolute bottom-0 right-0 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/35 bg-cyan-100/10 text-cyan-50 shadow-[0_8px_30px_rgba(0,0,0,0.4)] backdrop-blur-md transition hover:scale-105 hover:border-cyan-100/55 hover:bg-cyan-100/20"
+        className="group absolute bottom-0 right-0 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/35 bg-cyan-100/10 text-cyan-50 shadow-[0_8px_30px_var(--shadow)] backdrop-blur-md transition hover:scale-105 hover:border-cyan-100/55 hover:bg-cyan-100/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 cursor-none"
         aria-label={isOpen ? 'Close chatbot' : 'Open chatbot'}
       >
         <span className="absolute inset-0 rounded-full border border-cyan-200/30 animate-ping" />

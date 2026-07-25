@@ -58,7 +58,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-28 relative overflow-hidden bg-black">
+    <section id="services" className="py-28 relative overflow-hidden bg-[var(--bg-primary)]">
 
       {/* Structural Layout Wrapper */}
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
@@ -69,17 +69,17 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20 flex items-end justify-between border-b border-white/10 pb-8"
+          className="mb-20 flex items-end justify-between border-b border-[var(--border)] pb-8"
         >
           <div>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-primary)] mb-4 tracking-tight">
               Services
             </h2>
-            <p className="text-gray-400 text-lg font-light max-w-md">
+            <p className="text-[var(--text-secondary)] text-lg font-light max-w-md">
               Custom specialized solutions tailored to turn vision into scalable products.
             </p>
           </div>
-          <span className="text-gray-500 font-mono hidden md:block">
+          <span className="text-[var(--text-muted)] font-mono hidden md:block">
             (04_CAPABILITIES)
           </span>
         </motion.div>
@@ -96,29 +96,29 @@ const Services = () => {
             <motion.div
               key={index}
               variants={item}
-              className={`group relative p-8 rounded-[2rem] border border-white/5 bg-gradient-to-b from-white/[0.04] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 ${service.style}`}
+              className={`group relative p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 ${service.style}`}
             >
 
               {/* Subtle Ambient Accent Top Flare line */}
-              <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="flex justify-between items-start mb-8">
                 {/* Clean Frame Mini Glass Sheet Icon Holder */}
-                <div className={`p-3 rounded-2xl bg-white/5 border border-white/5 text-gray-400 transition-all duration-500 flex items-center justify-center ${service.iconColor}`}>
+                <div className={`p-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-[var(--text-secondary)] transition-all duration-500 flex items-center justify-center ${service.iconColor}`}>
                   <service.icon size={26} strokeWidth={1.5} />
                 </div>
 
                 {/* Structural Grid Monospace Counts */}
-                <span className="text-white/10 font-mono text-sm tracking-widest group-hover:text-white/20 transition-colors duration-300">
+                <span className="text-[var(--text-muted)]/20 font-mono text-sm tracking-widest group-hover:text-[var(--text-muted)]/40 transition-colors duration-300">
                   // 0{index + 1}
                 </span>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
                 {service.title}
               </h3>
 
-              <p className="text-gray-400 leading-relaxed text-[0.95rem] font-light group-hover:text-gray-300 transition-colors duration-300">
+              <p className="text-[var(--text-secondary)] leading-relaxed text-[0.95rem] font-light group-hover:text-[var(--text-primary)] transition-colors duration-300">
                 {service.description}
               </p>
 

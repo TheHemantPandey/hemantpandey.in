@@ -191,7 +191,7 @@ export const LogoLoop = memo(({
     cx(
       'relative overflow-x-hidden group py-6',
       '[--logoloop-gap:32px]',
-      '[--logoloop-fadeColorAuto:#000000]',
+      '[--logoloop-fadeColorAuto:var(--bg-primary)]',
       className
     ), [className]);
 
@@ -211,7 +211,7 @@ export const LogoLoop = memo(({
       /* 🚀 ENHANCED PADDING AND INTERACTION STATES FOR LARGER CAPSULES */
       <div
         className={cx(
-          'inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md shadow-lg transition-all duration-300',
+          'inline-flex items-center gap-4 px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md shadow-lg transition-all duration-300',
           'hover:border-orange-500/50 hover:bg-orange-500/[0.03] hover:shadow-[0_0_25px_rgba(239,68,68,0.15)]',
           'motion-reduce:transition-none',
           scaleOnHover && 'group-hover/item:-translate-y-1.5'
@@ -221,12 +221,12 @@ export const LogoLoop = memo(({
           {item.node}
         </div>
         {/* 🚀 HIGHER TEXT SIZE TO text-lg */}
-        {displayName && <span className="text-lg font-semibold tracking-wide text-gray-200 select-none">{displayName}</span>}
+        {displayName && <span className="text-lg font-semibold tracking-wide text-[var(--text-primary)] select-none">{displayName}</span>}
       </div>
     ) : (
       <div
         className={cx(
-          'inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md shadow-lg transition-all duration-300',
+          'inline-flex items-center gap-4 px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md shadow-lg transition-all duration-300',
           'hover:border-orange-500/50 hover:bg-orange-500/[0.03] hover:shadow-[0_0_25px_rgba(239,68,68,0.15)]',
           'motion-reduce:transition-none',
           scaleOnHover && 'group-hover/item:-translate-y-1.5'
@@ -244,7 +244,7 @@ export const LogoLoop = memo(({
           loading="lazy"
           decoding="async"
           draggable={false} />
-          {displayName && <span className="text-lg font-semibold tracking-wide text-gray-200 select-none">{displayName}</span>}
+          {displayName && <span className="text-lg font-semibold tracking-wide text-[var(--text-primary)] select-none">{displayName}</span>}
       </div>
     );
 

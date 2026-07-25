@@ -49,8 +49,8 @@ export const personalInfo = {
 };
 
 export const skills = {
-  languages: ["Javascipt", "Python", "Java", "SQL"],
-  web: ["HTML", "Talwind CSS", "React.js", "Node.js", "Express.js", "Vite"],
+  languages: ["JavaScript", "Python", "Java", "SQL"],
+  web: ["HTML", "Tailwind CSS", "React.js", "Node.js", "Express.js", "Vite"],
   tools: ["MongoDB", "MySQL", "Git", "GitHub", "Canva", "Figma"],
   softSkills: ["Problem-Solving", "Team Collaboration", "Project Management", "Adaptability"],
 };
@@ -76,6 +76,7 @@ export const certificates = [
     date: "Apr’26",
     image: "/unavailable",
     link: "/unavailable",
+    featured: true,
   },
   {
     name: "12-Week Credit Course Certification",
@@ -104,30 +105,28 @@ export const certificates = [
     date: "Jan’25",
     image: "/unavailable",
     link: "/unavailable",
+    featured: true,
   },
 ];
 
-export const featuredCertificates = certificates.filter((certificate) => (
-  certificate.name === 'Web Development' ||
-  certificate.name === 'Data Structures and Algorithms'
-));
+export const featuredCertificates = certificates.filter((certificate) => certificate.featured);
 
 export const education = [
   {
-    institution: "J.C. Bose UNiversity Of Science And Technology",
+    institution: "J.C. Bose University Of Science And Technology",
     degree: "B. Tech in Computer Science and Engineering",
     period: "Aug’23 – 26 through Lateral Entry",
     details: "CGPA: 8.1",
   },
   {
-    institution: "Raja Jait Singh Goverment Polytechnic",
-    degree: "Diploma in Eletrical Engineering",
-    period: "Apr’21 – Mar’23 thorugh Lateral Entry",
+    institution: "Raja Jait Singh Government Polytechnic",
+    degree: "Diploma in Electrical Engineering",
+    period: "Apr’21 – Mar’23 through Lateral Entry",
     details: "CGPA: 7.6",
   },
   {
     institution: "Saraswati Vidya Mandir Inter College",
-    degree: "Higher Secondary Scholling",
+    degree: "Higher Secondary Schooling",
     period: "Apr’19 – Mar’21",
     details: "Percentage: 84%",
   },

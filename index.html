@@ -12,11 +12,24 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <title>Hemant Pandey | Portfolio</title>
+    <meta name="description" content="Portfolio of Hemant Pandey, a professional Full Stack Web & App Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
     
     <link rel="canonical" href="https://hemantpandey.in/" />
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme') || 'system';
+          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const resolved = stored === 'system' ? (systemDark ? 'dark' : 'light') : stored;
+          document.documentElement.className = resolved;
+          document.documentElement.style.colorScheme = resolved;
+        } catch (_) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

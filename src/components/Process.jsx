@@ -53,7 +53,7 @@ const Process = () => {
   };
 
   return (
-    <section id="process" className="py-28 relative bg-black overflow-hidden">
+    <section id="process" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
       
       {/* Structural Background Accents */}
       <div className="absolute top-1/2 left-0 right-0 h-40 bg-gradient-to-r from-orange-500/5 via-purple-500/5 to-cyan-500/5 blur-[120px] pointer-events-none" />
@@ -66,20 +66,20 @@ const Process = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-24 flex items-end justify-between border-b border-white/10 pb-8"
+          className="mb-24 flex items-end justify-between border-b border-[var(--border)] pb-8"
         >
           <div>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-primary)] mb-4 tracking-tight">
               Process Of{" "}
               <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
                 Development
               </span>
             </h2>
-            <p className="text-gray-400 text-lg font-light max-w-md">
+            <p className="text-[var(--text-secondary)] text-lg font-light max-w-md">
               The systematic workflow I use to reliably transform ambitious code ideas into production blueprints.
             </p>
           </div>
-          <span className="text-gray-500 font-mono text-sm hidden md:block">
+          <span className="text-[var(--text-muted)] font-mono text-sm hidden md:block">
             // (05_WORKFLOW)
           </span>
         </Motion.div>
@@ -104,32 +104,32 @@ const Process = () => {
                 className="relative group flex flex-col"
               >
                 {/* Horizontal / Vertical Connection Node Indicator Bullet */}
-                <div className="hidden lg:flex items-center justify-center absolute top-10 left-12 w-2 h-2 rounded-full bg-zinc-900 border border-white/20 z-20 group-hover:scale-125 transition-transform duration-300">
+                <div className="hidden lg:flex items-center justify-center absolute top-10 left-12 w-2 h-2 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] z-20 group-hover:scale-125 transition-transform duration-300">
                   <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
                 </div>
 
                 {/* Main Step Container Panel */}
-                <div className={`mt-4 p-8 rounded-[2rem] border bg-gradient-to-b from-white/[0.04] to-transparent backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-2xl ${step.color}`}>
+                <div className={`mt-4 p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-2xl ${step.color}`}>
                   
                   {/* Glowing Top Flare Wire */}
-                  <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Header Identifier Flag */}
                   <div className="flex justify-between items-center mb-6">
                     <span className={`text-4xl font-display font-black bg-gradient-to-br ${step.color} text-transparent bg-clip-text tracking-tight select-none`}>
                       {step.id}
                     </span>
-                    <span className="text-white/5 font-mono text-xs group-hover:text-white/10 transition-colors">
+                    <span className="text-[var(--text-muted)]/10 font-mono text-xs group-hover:text-[var(--text-muted)]/20 transition-colors">
                       🚀 PHASE_0{idx + 1}
                     </span>
                   </div>
 
                   {/* Step Meta Contents */}
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-gray-100 transition-colors">
+                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3 tracking-tight group-hover:text-[var(--text-primary)] transition-colors">
                     {step.title}
                   </h3>
                   
-                  <p className="text-gray-400 text-[0.92rem] leading-relaxed font-light group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-[var(--text-secondary)] text-[0.92rem] leading-relaxed font-light group-hover:text-[var(--text-secondary)] transition-colors duration-300">
                     {step.description}
                   </p>
                 </div>

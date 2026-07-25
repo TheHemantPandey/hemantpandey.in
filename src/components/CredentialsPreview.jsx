@@ -30,23 +30,23 @@ const CredentialsPreview = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 flex flex-col gap-8 border-b border-white/10 pb-8 lg:flex-row lg:items-end lg:justify-between"
+          className="mb-12 flex flex-col gap-8 border-b border-[var(--border)] pb-8 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="max-w-2xl">
             <span className="text-xs uppercase tracking-[0.24em] text-cyan-400 font-medium">
               At A Glance
             </span>
-            <h2 className="mt-2 text-4xl font-display font-bold text-white md:text-6xl">
+            <h2 className="mt-2 text-4xl font-display font-bold text-[var(--text-primary)] md:text-6xl">
               Profile Snapshot
             </h2>
-            <p className="mt-4 text-lg font-light leading-relaxed text-gray-400">
+            <p className="mt-4 text-lg font-light leading-relaxed text-[var(--text-secondary)]">
               Explore a quick summary of my current professional status, core technical competencies, and standout achievements.
             </p>
           </div>
 
           <Link
             to="/profile"
-            className="group inline-flex items-center gap-3 self-start rounded-full border border-white/15 px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-white hover:text-black hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="group inline-flex items-center gap-3 self-start rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] text-[var(--text-primary)] transition-all duration-300 hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] hover:border-[var(--text-primary)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-none"
           >
             View Full Profile
             <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
@@ -63,18 +63,19 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -5, borderColor: 'rgba(34, 211, 238, 0.3)' }}
-            className="group relative backdrop-blur-md bg-white/2er border-white/10 p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px]"
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(34, 211, 238, 0.4)' }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 transition-colors group-hover:bg-purple-500/20">
                 <Briefcase size={20} />
               </div>
-              <h3 className="text-gray-400 text-xs uppercase tracking-widest font-medium">Current Role</h3>
-              <p className="text-white text-xl font-semibold mt-2 group-hover:text-cyan-300 transition-colors">Web Dev Intern</p>
-              <p className="text-gray-500 text-sm mt-1">Young India Show Foundation</p>
+              <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Current Role</h3>
+              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-cyan-300 transition-colors">Web Dev Intern</p>
+              <p className="text-[var(--text-secondary)] text-sm mt-1">Young India Show Foundation</p>
             </div>
-            <span className="text-xs text-gray-600 mt-4 block">2026 — Present</span>
+            <span className="text-xs text-[var(--text-muted)] mt-4 block">2026 — Present</span>
           </Motion.div>
 
           {/* Card 2: Technical Focus */}
@@ -84,21 +85,22 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -5, borderColor: 'rgba(168, 85, 247, 0.3)' }}
-            className="group relative backdrop-blur-md bg-white/2 border border-white/10 p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px]"
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(168, 85, 247, 0.4)' }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 transition-colors group-hover:bg-purple-500/20">
                 <Code2 size={20} />
               </div>
-              <h3 className="text-gray-400 text-xs uppercase tracking-widest font-medium">Core Architecture</h3>
-              <p className="text-white text-xl font-semibold mt-2 group-hover:text-purple-300 transition-colors">MERN & Next.js</p>
-              <p className="text-gray-500 text-sm mt-1">Full-Stack / Vibe Coding workflow</p>
+              <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Core Architecture</h3>
+              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-purple-300 transition-colors">MERN & Next.js</p>
+              <p className="text-[var(--text-secondary)] text-sm mt-1">Full-Stack / Vibe Coding workflow</p>
             </div>
             <div className="flex gap-2 mt-4 flex-wrap">
-              <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-400">Javascipt</span>
-              <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-400">Tailwind</span>
-              <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-400">MongoDB</span>
+              <span className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[10px] text-[var(--text-secondary)]">JavaScript</span>
+              <span className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[10px] text-[var(--text-secondary)]">Tailwind</span>
+              <span className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[10px] text-[var(--text-secondary)]">MongoDB</span>
             </div>
           </Motion.div>
 
@@ -109,20 +111,21 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -5, borderColor: 'rgba(236, 72, 153, 0.3)' }}
-            className="group relative backdrop-blur-md bg-white/2 border border-white/10 p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px]"
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(236, 72, 153, 0.4)' }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-4 transition-colors group-hover:bg-pink-500/20">
                 <Terminal size={20} />
               </div>
-              <h3 className="text-gray-400 text-xs uppercase tracking-widest font-medium">Production Builds</h3>
-              <p className="text-white text-4xl font-extrabold mt-2 tracking-tight group-hover:text-pink-300 transition-colors">04+</p>
-              <p className="text-gray-500 text-sm mt-1">Deployed live platforms & tools</p>
+              <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Production Builds</h3>
+              <p className="text-[var(--text-primary)] text-4xl font-extrabold mt-2 tracking-tight group-hover:text-pink-300 transition-colors">04+</p>
+              <p className="text-[var(--text-secondary)] text-sm mt-1">Deployed live platforms & tools</p>
             </div>
             <div className="flex gap-2 mt-4 flex-wrap">
-              <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-400">Real World Deploy</span>
-              <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-400">SE0 & Domain Ready</span>
+              <span className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[10px] text-[var(--text-secondary)]">Real World Deploy</span>
+              <span className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[10px] text-[var(--text-secondary)]">SE0 & Domain Ready</span>
             </div>
           </Motion.div>
 
@@ -133,18 +136,19 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -5, borderColor: 'rgba(234, 179, 8, 0.3)' }}
-            className="group relative backdrop-blur-md bg-white/2 border border-white/10 p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px]"
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(234, 179, 8, 0.4)' }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 mb-4 transition-colors group-hover:bg-yellow-500/20">
                 <Award size={20} />
               </div>
-              <h3 className="text-gray-400 text-xs uppercase tracking-widest font-medium">Education Snapshot</h3>
-              <p className="text-white text-base font-semibold mt-2 leading-snug">BTech Computer Science</p>
-              <p className="text-gray-500 text-xs mt-1">JC Bose UST (YMCA Faridabad)</p>
+              <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Education Snapshot</h3>
+              <p className="text-[var(--text-primary)] text-base font-semibold mt-2 leading-snug">BTech Computer Science</p>
+              <p className="text-[var(--text-secondary)] text-xs mt-1">JC Bose UST (YMCA Faridabad)</p>
             </div>
-            <p className="text-[11px] text-gray-400 italic mt-4 border-t border-white/5 pt-2">
+            <p className="text-[11px] text-[var(--text-secondary)] italic mt-4 border-t border-[var(--border)] pt-2">
               "Building performant applications with seamless UX."
             </p>
           </Motion.div>

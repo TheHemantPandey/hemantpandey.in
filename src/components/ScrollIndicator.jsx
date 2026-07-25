@@ -22,9 +22,9 @@ const ScrollIndicator = () => {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed left-0 top-0 z-[110] h-[4px] w-full bg-white/10">
+    <div className="pointer-events-none fixed left-0 top-0 z-[110] h-[4px] w-full bg-[var(--surface-hover)]">
       <motion.div
-        className="h-full bg-gradient-to-r from-gray-600 to-gray-400 bg-[length:100%_200%] bg-left"
+        className="h-full bg-gradient-to-r from-[var(--text-secondary)] to-[var(--text-primary)]"
         animate={{ width: `${scrollProgress}%` }}
         transition={{ duration: 0.16, ease: 'easeOut' }}
       />

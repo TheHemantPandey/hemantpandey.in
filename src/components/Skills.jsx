@@ -93,14 +93,14 @@ const SkillCard = ({ cat, index }) => {
   const cardHoverStyle = hoverBorders[index % hoverBorders.length];
 
   return (
-    <div className={`group relative p-8 rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 ${cardHoverStyle}`}>
+    <div className={`group relative p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-xl ${cardHoverStyle}`}>
       
       {/* Decorative Top Flare Glow Effect */}
-      <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
-      <h3 className="text-xl font-bold text-white mb-6 tracking-tight flex items-center justify-between">
+      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 tracking-tight flex items-center justify-between">
         {cat.title}
-        <span className="text-white/10 font-mono text-xs group-hover:text-white/30 transition-colors duration-300">
+        <span className="text-[var(--text-muted)]/30 font-mono text-xs group-hover:text-[var(--text-muted)]/60 transition-colors duration-300">
           // 0{index + 1}
         </span>
       </h3>
@@ -128,18 +128,18 @@ const SkillCard = ({ cat, index }) => {
 /* ---------------- MAIN SKILLS COMPONENT ---------------- */
 export default function Skills() {
   return (
-    <section className="py-24 px-4 bg-black overflow-hidden">
+    <section className="py-24 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         {/* TITLE */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-bold text-[var(--text-primary)] tracking-tight">
             Technical{" "}
             <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
               Skills
             </span>
           </h2>
-          <p className="text-gray-400 mt-4 text-base font-light tracking-wide">
+          <p className="text-[var(--text-secondary)] mt-4 text-base font-light tracking-wide">
             Technologies I use to bring ideas to life 🚀
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function Skills() {
         </div>
 
         {/* MARQUEE MARKS */}
-        <p className="text-center text-gray-500 tracking-[0.3em] mb-12 text-xs uppercase font-medium">
+        <p className="text-center text-[var(--text-muted)] tracking-[0.3em] mb-12 text-xs uppercase font-medium">
           Technologies I Work With
         </p>
 

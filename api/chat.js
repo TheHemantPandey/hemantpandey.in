@@ -477,7 +477,7 @@ export default async function handler(req, res) {
       reply = formatReplyText(result.reply);
       provider = result.provider;
       usedFallback = provider === 'retrieval';
-    } catch (err) {
+    } catch {
       reply = buildFallbackReply(contextText);
       provider = 'retrieval';
       usedFallback = true;

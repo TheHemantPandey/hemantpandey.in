@@ -75,17 +75,17 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24 flex items-end justify-between border-b border-white/10 pb-8"
+          className="mb-24 flex items-end justify-between border-b border-[var(--border)] pb-8"
         >
           <div>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-primary)] mb-4">
               Selected Works
             </h2>
-            <p className="text-gray-400 text-lg max-w-md font-light">
+            <p className="text-[var(--text-secondary)] text-lg max-w-md font-light">
               A collection of projects that define my journey in digital product creation.
             </p>
           </div>
-          <span className="text-gray-500 font-mono hidden md:block">
+          <span className="text-[var(--text-muted)] font-mono hidden md:block">
             (0{projects.length})
           </span>
         </motion.div>
@@ -95,7 +95,7 @@ const Projects = () => {
           {/* Sticky Image Preview (Desktop) */}
           <div className="hidden lg:block w-1/2 relative">
             <div 
-              className="sticky top-32 h-[450px] w-full rounded-2xl overflow-hidden border border-white/10 bg-zinc-900/40 backdrop-blur-md cursor-none cursor-hover flex items-center justify-center p-6"
+              className="sticky top-32 h-[450px] w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md cursor-none cursor-hover flex items-center justify-center p-6 hover:border-[var(--border-hover)] hover:shadow-2xl hover:shadow-[var(--shadow)] hover:scale-[1.01] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
               onClick={() => handleProjectClick(projects[hoveredIndex].id)}
             >
               <AnimatePresence mode="wait">
@@ -112,15 +112,15 @@ const Projects = () => {
               </AnimatePresence>
 
               {/* Overlay Info */}
-              <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/95 via-black/70 to-transparent">
+              <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[var(--bg-primary)]/95 via-[var(--bg-primary)]/70 to-transparent">
                 <div className="flex items-end gap-6">
                   <div className="w-1/2">
-                    <p className="text-sm text-gray-400 mb-2 font-mono">{projects[hoveredIndex].category}</p>
-                    <p className="text-white text-sm md:text-base font-light line-clamp-2">{projects[hoveredIndex].description}</p>
+                    <p className="text-sm text-[var(--text-secondary)] mb-2 font-mono">{projects[hoveredIndex].category}</p>
+                    <p className="text-[var(--text-primary)] text-sm md:text-base font-light line-clamp-2">{projects[hoveredIndex].description}</p>
                   </div>
                   <div className="w-1/2 flex flex-wrap gap-2 justify-end">
                     {projects[hoveredIndex].techStack.map((t, i) => (
-                      <span key={i} className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white border border-white/10 whitespace-nowrap">
+                      <span key={i} className="px-3 py-1.5 rounded-full bg-[var(--surface-hover)] backdrop-blur-md text-xs text-[var(--text-primary)] border border-[var(--border)] whitespace-nowrap">
                         {t}
                       </span>
                     ))}
@@ -145,37 +145,38 @@ const Projects = () => {
                 variants={listItem}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onClick={() => handleProjectClick(project.id)}
-                className={`group py-12 border-b border-white/10 cursor-none cursor-hover transition-all duration-300 ${
+                className={`group py-12 border-b border-[var(--border)] cursor-none cursor-hover transition-all duration-300 ${
                   hoveredIndex === index ? 'opacity-100' : 'opacity-40 hover:opacity-100'
                 }`}
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <span className="text-sm font-mono text-gray-500 pt-2">
+                  <span className="text-sm font-mono text-[var(--text-muted)] pt-2">
                     {project.id}
                   </span>
                   <div className="flex-1">
-                    <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                    <h3 className="text-4xl md:text-5xl font-display font-bold text-[var(--text-primary)] mb-4 group-hover:translate-x-2 transition-transform duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-gray-400 text-lg font-light mb-4">
+                    <p className="text-[var(--text-secondary)] text-lg font-light mb-4">
                       {project.subtitle}
                     </p>
                     
 {/* Fixed Responsive Mobile Image Container */}
-<div className="lg:hidden mb-6 rounded-xl overflow-hidden w-full max-h-[280px] bg-zinc-900/50 border border-white/10 p-4 flex items-center justify-center backdrop-blur-sm">
+<div className="lg:hidden mb-6 rounded-xl overflow-hidden w-full max-h-[280px] bg-[var(--surface)] border border-[var(--border)] p-4 flex items-center justify-center backdrop-blur-sm">
   <img 
     src={project.image} 
     alt={project.title} 
+    loading="lazy"
     className="w-full h-auto max-h-[250px] object-contain drop-shadow-lg" 
   />
 </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-400 font-light">{project.category}</span>
-                      <span className="text-gray-500 font-mono text-sm">{project.period}</span>
+                      <span className="text-[var(--text-secondary)] font-light">{project.category}</span>
+                      <span className="text-[var(--text-muted)] font-mono text-sm">{project.period}</span>
                     </div>
                   </div>
                   <div className="pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowUpRight className="text-white" size={30} />
+                    <ArrowUpRight className="text-[var(--text-primary)]" size={30} />
                   </div>
                 </div>
               </motion.div>
@@ -186,7 +187,7 @@ const Projects = () => {
               target="_blank"
               rel="noreferrer"
               variants={listItem}
-              className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-mono text-sm uppercase tracking-[0.08em] text-white transition hover:border-white/50 hover:bg-white/10"
+              className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 font-mono text-sm uppercase tracking-[0.08em] text-[var(--text-primary)] transition hover:border-[var(--text-secondary)] hover:bg-[var(--surface-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
             >
               View All Projects On GitHub
               <ArrowUpRight size={16} />

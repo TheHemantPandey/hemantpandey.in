@@ -91,15 +91,15 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Mail, href: `mailto:${personalInfo.email}`, hoverClass: "hover:bg-white/10 hover:border-white/40 hover:text-white" },
-    { icon: FaGithub, href: personalInfo.github, hoverClass: "hover:bg-zinc-800/40 hover:border-zinc-500/40 hover:text-zinc-200" },
-    { icon: FaLinkedin, href: personalInfo.linkedin, hoverClass: "hover:bg-blue-600/10 hover:border-blue-500/40 hover:text-blue-400" },
-    { icon: FaTwitter, href: personalInfo.twitter, hoverClass: "hover:bg-sky-500/10 hover:border-sky-400/40 hover:text-sky-400" },
-    { icon: FaInstagram, href: personalInfo.instagram, hoverClass: "hover:bg-pink-500/10 hover:border-pink-400/40 hover:text-pink-400" }
+    { icon: Mail, href: `mailto:${personalInfo.email}` },
+    { icon: FaGithub, href: personalInfo.github },
+    { icon: FaLinkedin, href: personalInfo.linkedin },
+    { icon: FaTwitter, href: personalInfo.twitter },
+    { icon: FaInstagram, href: personalInfo.instagram }
   ];
 
   return (
-    <section id="contact" className="py-28 relative bg-black overflow-hidden">
+    <section id="contact" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
       
       {/* Decorative Ambient Background Radial Glows */}
       <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/10 via-pink-500/5 to-transparent blur-[120px] pointer-events-none" />
@@ -116,22 +116,22 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-xs font-mono text-gray-500 tracking-[0.2em] uppercase block mb-4">
+              <span className="text-xs font-mono text-[var(--text-muted)] tracking-[0.2em] uppercase block mb-4">
                 // CONNECT_POINT
               </span>
-              <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight leading-[1.05]">
+              <h2 className="text-5xl md:text-7xl font-display font-bold text-[var(--text-primary)] mb-8 tracking-tight leading-[1.05]">
                 Let's work <br />
                 <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
                   together.
                 </span>
               </h2>
-              <p className="text-lg text-gray-400 font-light max-w-sm mb-12 leading-relaxed">
+              <p className="text-lg text-[var(--text-secondary)] font-light max-w-sm mb-12 leading-relaxed">
                 Currently available for selected freelance projects and architectural design opportunities.
               </p>
 
               {/* SOCIAL BUTTON LINKS */}
               <div className="flex flex-col gap-6">
-                <p className="text-xs font-mono text-gray-600 uppercase tracking-widest">// SOCIAL_INDEX</p>
+                <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest">// SOCIAL_INDEX</p>
                 <Motion.div
                   variants={container}
                   initial="hidden"
@@ -140,7 +140,7 @@ const Contact = () => {
                   className="flex flex-wrap gap-4"
                 >
                   {socialLinks.map((social, index) => {
-                    const baseClass = `w-12 h-12 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md flex items-center justify-center text-gray-400 transition-all duration-500 ease-out hover:-translate-y-1 ${social.hoverClass}`;
+                    const baseClass = `w-12 h-12 rounded-2xl border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md flex items-center justify-center text-[var(--text-secondary)] transition-all duration-500 ease-out hover:-translate-y-1 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] hover:border-[var(--border-hover)] cursor-none`;
 
                     return isInternalLink(social.href) ? (
                       <Motion.div key={index} variants={item}>
@@ -172,19 +172,19 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="lg:col-span-7 p-8 md:p-10 rounded-[2.5rem] border border-white/5 bg-gradient-to-b from-white/[0.04] to-transparent backdrop-blur-2xl relative"
+            className="lg:col-span-7 p-8 md:p-10 rounded-[2.5rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl relative"
           >
             {/* Top Linear Highlight wire */}
-            <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent" />
 
             <form className="space-y-7" onSubmit={handleSubmit}>
               
               {/* FULL NAME INPUT CONTAINER */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-orange-400' : 'text-gray-500'}`}>
+                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
                   Full Name <span className="text-orange-500/40">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-white/[0.01] ${focusedField === 'name' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-white/5 group-hover:border-white/10'}`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'name' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-transparent`}>
                   <input
                     type="text"
                     name="name"
@@ -193,7 +193,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full bg-transparent px-5 py-4 text-white outline-none transition-colors text-base font-light placeholder-gray-600"
+                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
                     placeholder="John Doe"
                   />
                 </div>
@@ -201,10 +201,10 @@ const Contact = () => {
 
               {/* EMAIL CONTAINER */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-pink-400' : 'text-gray-500'}`}>
+                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-pink-400' : 'text-[var(--text-secondary)]'}`}>
                   Email Address <span className="text-pink-500/40">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-white/[0.01] ${focusedField === 'email' ? 'border-pink-500/40 bg-pink-500/[0.02]' : 'border-white/5 group-hover:border-white/10'}`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'email' ? 'border-pink-500/40 bg-pink-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-transparent`}>
                   <input
                     type="email"
                     name="email"
@@ -213,7 +213,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full bg-transparent px-5 py-4 text-white outline-none transition-colors text-base font-light placeholder-gray-600"
+                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
                     placeholder="hello@domain.com"
                   />
                 </div>
@@ -221,10 +221,10 @@ const Contact = () => {
 
               {/* PHONE INPUT BOX */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-purple-400' : 'text-gray-500'}`}>
-                  Phone Number <span className="text-gray-600 text-[10px] lowercase font-sans font-light">(optional)</span>
+                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-purple-400' : 'text-[var(--text-secondary)]'}`}>
+                  Phone Number <span className="text-[var(--text-muted)] text-[10px] lowercase font-sans font-light">(optional)</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-white/[0.01] ${focusedField === 'phone' ? 'border-purple-500/40 bg-purple-500/[0.02]' : 'border-white/5 group-hover:border-white/10'}`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'phone' ? 'border-purple-500/40 bg-purple-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-transparent`}>
                   <input
                     type="tel"
                     name="phone"
@@ -232,7 +232,7 @@ const Contact = () => {
                     onChange={handleChange}
                     onFocus={() => setFocusedField('phone')}
                     onBlur={() => setFocusedField(null)}
-                    className="w-full bg-transparent px-5 py-4 text-white outline-none transition-colors text-base font-light placeholder-gray-600"
+                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -240,10 +240,10 @@ const Contact = () => {
 
               {/* TEXTAREA CONTAINER */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-orange-400' : 'text-gray-500'}`}>
+                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
                   Project Brief <span className="text-orange-500/40">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-white/[0.01] ${focusedField === 'message' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-white/5 group-hover:border-white/10'}`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'message' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-transparent`}>
                   <textarea
                     rows="4"
                     name="message"
@@ -252,7 +252,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full bg-transparent px-5 py-4 text-white outline-none transition-colors text-base font-light placeholder-gray-600 resize-none leading-relaxed"
+                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] resize-none leading-relaxed cursor-none"
                     placeholder="Tell me about your build vision..."
                   ></textarea>
                 </div>
@@ -263,18 +263,18 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={status === 'sending'}
-                className="w-full relative group/btn overflow-hidden rounded-2xl bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 p-[1px] transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+                className="w-full relative group/btn overflow-hidden rounded-2xl bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 p-[1px] transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
               >
-                <div className="w-full h-full bg-zinc-950 rounded-[15px] px-6 py-4 transition-colors duration-300 group-hover/btn:bg-transparent flex items-center justify-center gap-2">
+                <div className="w-full h-full bg-[var(--bg-primary)] rounded-[15px] px-6 py-4 transition-colors duration-300 group-hover/btn:bg-transparent flex items-center justify-center gap-2">
                   {status === 'sending' ? (
                     <>
-                      <Loader2 className="animate-spin text-white" size={18} />
-                      <span className="text-white text-sm tracking-wider uppercase font-mono text-xs">Transmitting Brief...</span>
+                      <Loader2 className="animate-spin text-[var(--text-primary)]" size={18} />
+                      <span className="text-[var(--text-primary)] text-sm tracking-wider uppercase font-mono text-xs">Transmitting Brief...</span>
                     </>
                   ) : (
                     <>
-                      <span className="text-white group-hover/btn:text-white transition-colors text-xs font-mono tracking-widest uppercase">Dispatch Message</span>
-                      <ArrowUpRight className="text-gray-400 group-hover/btn:text-white group-hover/btn:rotate-45 transition-all duration-300" size={16} />
+                      <span className="text-[var(--text-primary)] group-hover/btn:text-white transition-colors text-xs font-mono tracking-widest uppercase">Dispatch Message</span>
+                      <ArrowUpRight className="text-[var(--text-secondary)] group-hover/btn:text-white group-hover/btn:rotate-45 transition-all duration-300" size={16} />
                     </>
                   )}
                 </div>
@@ -289,12 +289,12 @@ const Contact = () => {
             toastOptions={{
               duration: 5000,
               style: {
-                background: 'linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)',
-                color: '#fff',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: 'var(--glass-bg)',
+                color: 'var(--text-primary)',
+                border: '1px solid var(--glass-border)',
                 borderRadius: '20px',
                 padding: '16px 24px',
-                boxShadow: '0 30px 60px rgba(0, 0, 0, 0.8)',
+                boxShadow: '0 30px 60px var(--shadow)',
                 backdropFilter: 'blur(20px)',
                 fontSize: '14px',
                 fontFamily: 'monospace'

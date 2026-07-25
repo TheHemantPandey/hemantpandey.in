@@ -10,6 +10,23 @@
 
   const education = [
     {
+      degree: "Internship In Full Stack Development",
+      institution: "Young India Show",
+      location: "Laxmi Nagar, Delhi",
+      period: "Jan 2026 - July 2026",
+      grade: "Paid Internship And Full Time",
+      icon: IconBrandReact,
+      glow: "from-cyan-500 to-blue-500",
+      hoverText: "group-hover:text-cyan-300",
+      dotColor: "bg-cyan-400",
+      achievements: [
+        "Focused on Full Stack Web Development",
+        "Build Hospital and Diagnosis Platform",
+        "Also work on Investment Platform",
+        "Follow the Automation Workflow",
+      ],
+    },
+    {
       degree: "Bachelor of Technology (B.Tech)",
       institution: "J.C. Bose University of Science and Technology",
       location: "Faridabad, Haryana",
@@ -61,7 +78,7 @@
       ],
     },
     {
-      degree: "High Secooling",
+      degree: "High Schooling",
       institution: "Saraswati Vidya Mandir Inter College",
       location: "Mathura, Uttar Pradesh",
       period: "2019 - 2021",
@@ -83,7 +100,7 @@
     return (
       <section
         id="education"
-        className="relative py-32 px-4 overflow-hidden bg-black"
+        className="relative py-32 px-4 overflow-hidden bg-[var(--bg-primary)]"
       >
         {/* Background Ambience */}
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 blur-[150px] rounded-full pointer-events-none" />
@@ -99,18 +116,18 @@
             viewport={{ once: true }}
             className="text-center mb-28"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-6 tracking-tight">
               My{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500">
-                Education Journey
+                Complete Journey
               </span>
             </h2>
 
-            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-              My academic journey from foundational school education to engineering disciplines and modern full-stack development.
+            <p className="text-[var(--text-secondary)] text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+              My academic journey from foundational school education to engineering disciplines to working professional and modern full-stack development.
             </p>
 
-            <div className="w-24 h-0.5g-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mx-auto rounded-full mt-8 opacity-60" />
+            <div className="w-24 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mx-auto rounded-full mt-8 opacity-60" />
           </motion.div>
 
           {/* Timeline Pipeline */}
@@ -133,9 +150,9 @@
                   {/* Active Card Body Container */}
                   <div className="flex-1 w-full">
                     <motion.div
-                      whileHover={{ y: -8, scale: 1.01 }}
-                      transition={{ type: "spring", stiffness: 250, damping: 22 }}
-                      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/2 backdrop-blur-xl p-6 md:p-8 transition-colors duration-500 hover:border-white/20"
+                      whileHover={{ y: -6, scale: 1.01 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                      className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] backdrop-blur-xl p-6 md:p-8 transition-colors duration-500 hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
                     >
                       {/* Radial Ambient Glow behind content triggered on active focus */}
                       <div
@@ -144,50 +161,50 @@
 
                       <div className="relative z-10 flex flex-col sm:flex-row items-start gap-6">
                         {/* Icon Shield Block */}
-                        <div className={`p-3.5 rounded-xl bg-linear-to-br ${edu.glow} bg-opacity-10 border border-white/10 shadow-lg shrink-0`}>
-                          <edu.icon size={26} className="text-white" />
+                        <div className={`p-3.5 rounded-xl bg-linear-to-br ${edu.glow} bg-opacity-10 border border-[var(--border)] shadow-lg shrink-0`}>
+                          <edu.icon size={26} className="text-[var(--text-primary)]" />
                         </div>
 
                         {/* Summary Breakdown Fields */}
                         <div className="flex-1 w-full">
                           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2 mb-3">
-                            <h3 className={`text-xl md:text-2xl font-bold text-white transition-colors duration-300 ${edu.hoverText}`}>
+                            <h3 className={`text-xl md:text-2xl font-bold text-[var(--text-primary)] transition-colors duration-300 ${edu.hoverText}`}>
                               {edu.degree}
                             </h3>
 
                             <div className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase bg-linear-to-r ${edu.glow} bg-clip-text text-transparent mt-1 lg:mt-0.5`}>
-                              <IconCalendar size={14} className="text-gray-400 inline-block align-middle" />
-                              <span className="text-gray-300 ml-1">{edu.period}</span>
+                              <IconCalendar size={14} className="text-[var(--text-secondary)] inline-block align-middle" />
+                              <span className="text-[var(--text-secondary)] ml-1">{edu.period}</span>
                             </div>
                           </div>
 
                           {/* Subtext Location Context */}
-                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-400 mb-6 font-light">
-                            <span className="text-gray-200 font-medium">{edu.institution}</span>
-                            <span className="text-gray-600 hidden sm:inline">•</span>
-                            <span className="text-gray-400 text-xs">{edu.location}</span>
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[var(--text-secondary)] mb-6 font-light">
+                            <span className="text-[var(--text-primary)] font-medium">{edu.institution}</span>
+                            <span className="text-[var(--text-muted)] hidden sm:inline">•</span>
+                            <span className="text-[var(--text-secondary)] text-xs">{edu.location}</span>
                           </div>
 
                           {/* Performance Metrics Grade Badge */}
                           <div className="mb-8">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/3er border-white/10">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--surface-hover)] border border-[var(--border)]">
                               <IconTrophy size={14} className="text-yellow-400" />
-                              <span className="text-xs font-semibold tracking-wide text-white">
+                              <span className="text-xs font-semibold tracking-wide text-[var(--text-primary)]">
                                 {edu.grade}
                               </span>
                             </div>
                           </div>
 
                           {/* List Points Render Group */}
-                          <div className="border-t border-white/5 pt-6">
-                            <h4 className="text-xs uppercase tracking-[0.2em] text-gray-500 font-bold mb-4">
+                          <div className="border-t border-[var(--border)] pt-6">
+                            <h4 className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold mb-4">
                               Key Focus & Achievements
                             </h4>
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                               {edu.achievements.map((achievement, i) => (
                                 <li
                                   key={i}
-                                  className="flex items-start gap-3 text-sm text-gray-400 font-light leading-snug"
+                                  className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-light leading-snug"
                                 >
                                   <span className={`w-1.5 h-1.5 rounded-full ${edu.dotColor} mt-2 shrink-0 shadow-sm`} />
                                   <span>{achievement}</span>
@@ -202,7 +219,7 @@
 
                   {/* Central Keyframe Node Matrix Anchor */}
                   <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20">
-                    <div className={`w-5 h-5 rounded-full bg-black border-[3px] border-white/20 relative flex items-center justify-center group-hover:border-white transition-colors duration-300 shadow-xl`}>
+                    <div className={`w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[3px] border-[var(--border)] relative flex items-center justify-center group-hover:border-[var(--text-primary)] transition-colors duration-300 shadow-xl`}>
                       <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${edu.glow}`} />
                     </div>
                   </div>

@@ -2,22 +2,13 @@
 
 
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import profileImg from '../assets/dp.png';
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', updateMousePosition);
-    return () => window.removeEventListener('mousemove', updateMousePosition);
-  }, []);
 
   const textReveal = {
     hidden: { y: "100%" },
@@ -61,14 +52,14 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="order-2 md:order-none flex justify-between items-start mb-8 md:mb-24 w-full border-b border-white/10 pb-4 pt-4 md:pt-2"
+          className="order-2 md:order-none flex justify-between items-start mb-8 md:mb-24 w-full border-b border-[var(--border)] pb-4 pt-4 md:pt-2"
         >
           <div className="hidden md:flex items-center gap-4">
-            <div className="h-[1px] w-12 bg-white/20"></div>
-            <span className="text-sm font-medium text-gray-400 tracking-widest uppercase">Hemant Pandey</span>
+            <div className="h-[1px] w-12 bg-[var(--border)]"></div>
+            <span className="text-sm font-medium text-[var(--text-secondary)] tracking-widest uppercase">Hemant Pandey</span>
           </div>
 
-          <div className="flex mx-auto md:mx-0 flex-row gap-4 md:gap-12 text-sm font-medium text-gray-400 z-15">
+          <div className="flex mx-auto md:mx-0 flex-row gap-4 md:gap-12 text-sm font-medium text-[var(--text-secondary)] z-15">
             <div className="flex items-center gap-2 ">
               <Globe size={16} />
               <span>Based in India</span>
@@ -89,7 +80,7 @@ const Hero = () => {
           animate="visible"
           className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0"
         >
-          <h1 className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-white mb-8 relative">
+          <h1 className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] mb-8 relative">
             <div className="overflow-hidden relative z-15">
               <Motion.span variants={textReveal} className="block">
                 BUILDING
@@ -99,7 +90,7 @@ const Hero = () => {
             <div className="relative">
               {/* Layer 1: Behind Image (Normal) */}
               <div className="overflow-hidden relative z-10 md:z-0">
-                <Motion.span variants={textReveal} className="block text-gray-500 md:text-gray-500">
+                <Motion.span variants={textReveal} className="block text-[var(--text-muted)] md:text-[var(--text-muted)]">
                   DIGITAL VALUE.
                 </Motion.span>
               </div>
@@ -107,13 +98,13 @@ const Hero = () => {
           </h1>
         </Motion.div>
 
-        <div className="order-3 md:order-none flex flex-col md:flex-row justify-between items-end gap-12 border-t-0 md:border-t border-white/10 pt-4 md:pt-12">
+        <div className="order-3 md:order-none flex flex-col md:flex-row justify-between items-end gap-12 border-t-0 md:border-t border-[var(--border)] pt-4 md:pt-12">
           <div className="flex flex-col gap-8">
             <Motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl md:text-2xl text-gray-400 max-w-xl leading-relaxed font-light"
+              className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-xl leading-relaxed font-light"
             >
               I build performant full-stack web applications with deep optimization. Specializing in clean MERN structures, smooth interaction, and secure architectures.
             </Motion.p>
@@ -126,7 +117,7 @@ const Hero = () => {
               <div className="flex flex-wrap items-center gap-4 mt-4">
                 <a
                   href="#projects"
-                  className="group flex items-center gap-4 px-6 py-3 bg-white text-black rounded-full font-medium text-lg hover:bg-gray-200 transition-all w-fit"
+                  className="group flex items-center gap-4 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full font-medium text-lg hover:opacity-90 transition-all w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                 >
                   View Selected Work
                   <ArrowDownRight className="group-hover:rotate-45 transition-transform duration-300" />
@@ -134,7 +125,7 @@ const Hero = () => {
 
                 <Link
                   to="/profile"
-                  className="group flex items-center gap-3 px-6 py-3 border border-white/20 text-white rounded-full font-medium text-lg hover:bg-white hover:text-black transition-all w-fit"
+                  className="group flex items-center gap-3 px-6 py-3 border border-[var(--border)] text-[var(--text-primary)] rounded-full font-medium text-lg hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] transition-all w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                 >
                   My Profile
                   <ArrowUpRight className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
