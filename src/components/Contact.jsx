@@ -102,8 +102,8 @@ const Contact = () => {
     <section id="contact" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
       
       {/* Decorative Ambient Background Radial Glows */}
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/10 via-pink-500/5 to-transparent blur-[120px] pointer-events-none" />
-      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-purple-500/5 to-transparent blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/5 via-pink-500/3 to-transparent blur-[120px] pointer-events-none animate-glow" />
+      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-purple-500/3 to-transparent blur-[100px] pointer-events-none animate-glow" style={{ animationDelay: '-10s' }} />
 
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
@@ -317,6 +317,9 @@ const Contact = () => {
           />
         </div>
       </div>
+
+      {/* Subtle Bottom Section Separator */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
     </section>
   );
 };

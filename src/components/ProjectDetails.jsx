@@ -13,19 +13,19 @@ import { projects } from '../projectsData';
 const isInternalLink = (url) => url && url.startsWith('/');
 
 // Reusable link component that handles both internal and external links
-const ProjectLink = ({ url, children, className }) => {
+const ProjectLink = ({ url, children, className, ...props }) => {
     if (!url) return null;
     
     if (isInternalLink(url)) {
         return (
-            <Link to={url} className={className}>
+            <Link to={url} className={className} {...props}>
                 {children}
             </Link>
         );
     }
     
     return (
-        <a href={url} target="_blank" rel="noopener noreferrer" className={className}>
+        <a href={url} target="_blank" rel="noopener noreferrer" className={className} {...props}>
             {children}
         </a>
     );
@@ -149,12 +149,14 @@ const ProjectDetails = () => {
                                 
                                 <ProjectLink 
                                     url={project.liveUrl} 
+                                    data-cursor="LIVE"
                                     className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full hover:opacity-90 transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                                 >
                                     View Live <ExternalLink size={18} />
                                 </ProjectLink>
                                 <ProjectLink 
                                     url={project.githubUrl} 
+                                    data-cursor="CODE"
                                     className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border)] rounded-full hover:bg-[var(--surface-hover)] transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                                 >
                                     Source Code <FaGithub size={18} />

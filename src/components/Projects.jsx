@@ -68,7 +68,9 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="pt-36 relative">
+    <section id="projects" className="pt-36 pb-36 relative overflow-hidden bg-[var(--bg-primary)]">
+      {/* Background Ambience */}
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-orange-500/5 blur-[150px] rounded-full pointer-events-none animate-glow" />
 
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
         <motion.div
@@ -97,6 +99,7 @@ const Projects = () => {
             <div 
               className="sticky top-32 h-[450px] w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md cursor-none cursor-hover flex items-center justify-center p-6 hover:border-[var(--border-hover)] hover:shadow-2xl hover:shadow-[var(--shadow)] hover:scale-[1.01] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
               onClick={() => handleProjectClick(projects[hoveredIndex].id)}
+              data-cursor="VIEW"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -145,6 +148,7 @@ const Projects = () => {
                 variants={listItem}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onClick={() => handleProjectClick(project.id)}
+                data-cursor="VIEW"
                 className={`group py-12 border-b border-[var(--border)] cursor-none cursor-hover transition-all duration-300 ${
                   hoveredIndex === index ? 'opacity-100' : 'opacity-40 hover:opacity-100'
                 }`}
@@ -196,6 +200,9 @@ const Projects = () => {
 
         </div>
       </div>
+
+      {/* Subtle Bottom Section Separator */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
     </section>
   );
 };

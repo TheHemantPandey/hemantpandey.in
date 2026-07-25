@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { skillCategories } from "../personalData";
 import LogoLoop from "./LogoLoop"; 
 
@@ -93,7 +94,13 @@ const SkillCard = ({ cat, index }) => {
   const cardHoverStyle = hoverBorders[index % hoverBorders.length];
 
   return (
-    <div className={`group relative p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-xl ${cardHoverStyle}`}>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.75, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+      className={`group relative p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-xl ${cardHoverStyle}`}
+    >
       
       {/* Decorative Top Flare Glow Effect */}
       <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -121,15 +128,18 @@ const SkillCard = ({ cat, index }) => {
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 /* ---------------- MAIN SKILLS COMPONENT ---------------- */
 export default function Skills() {
   return (
-    <section className="py-24 px-4 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-24 px-4 overflow-hidden bg-[var(--bg-primary)]">
+      {/* Background Ambience */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 blur-[140px] rounded-full pointer-events-none animate-glow" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
 
         {/* TITLE */}
         <div className="text-center mb-20">
@@ -179,6 +189,9 @@ export default function Skills() {
         </div>
 
       </div>
+
+      {/* Subtle Bottom Section Separator */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
     </section>
   );
 }

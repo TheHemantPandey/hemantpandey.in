@@ -9,35 +9,17 @@ import profileImg from '../assets/dp.png';
 
 const Hero = () => {
 
-
-  const textReveal = {
-    hidden: { y: "100%" },
-    visible: {
-      y: "0%",
-      transition: {
-        duration: 1,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-0 md:pt-20">
+    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-0 md:pt-20 bg-[var(--bg-primary)]">
+      {/* Drifting Ambient Background Glow Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[140px] animate-glow pointer-events-none" style={{ animationDuration: '40s' }} />
+        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] animate-glow pointer-events-none" style={{ animationDuration: '30s', animationDelay: '-10s' }} />
+      </div>
 
       {/* Profile Image Background Layer */}
       <div className="absolute right-0 top-0 h-[65vh] md:h-full w-full md:w-1/2 z-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent z-10"></div>
         <img
           src={profileImg}
           alt=""
@@ -52,7 +34,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="order-2 md:order-none flex justify-between items-start mb-8 md:mb-24 w-full border-b border-[var(--border)] pb-4 pt-4 md:pt-2"
+          className="order-2 md:order-none flex justify-between items-start mb-8 md:mb-24 w-full border-b border-[var(--border)] pb-4 pt-4 md:pt-2 z-15"
         >
           <div className="hidden md:flex items-center gap-4">
             <div className="h-[1px] w-12 bg-[var(--border)]"></div>
@@ -74,31 +56,24 @@ const Hero = () => {
           </div>
         </Motion.div>
 
+        {/* Entire Heading Animated as One Premium Element */}
         <Motion.div
-          variants={container}
-          initial="hidden"
-          animate="visible"
-          className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0"
+          initial={{ opacity: 0, y: 35, scale: 0.98, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0 z-15"
         >
           <h1 className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] mb-8 relative">
-            <div className="overflow-hidden relative z-15">
-              <Motion.span variants={textReveal} className="block">
-                BUILDING
-              </Motion.span>
-            </div>
-            {/* Dual Layer "DIGITAL VALUE" */}
-            <div className="relative">
-              {/* Layer 1: Behind Image (Normal) */}
-              <div className="overflow-hidden relative z-10 md:z-0">
-                <Motion.span variants={textReveal} className="block text-[var(--text-muted)] md:text-[var(--text-muted)]">
-                  DIGITAL VALUE.
-                </Motion.span>
-              </div>
-            </div>
+            <span className="block">
+              BUILDING
+            </span>
+            <span className="block text-[var(--text-muted)]">
+              DIGITAL VALUE.
+            </span>
           </h1>
         </Motion.div>
 
-        <div className="order-3 md:order-none flex flex-col md:flex-row justify-between items-end gap-12 border-t-0 md:border-t border-[var(--border)] pt-4 md:pt-12">
+        <div className="order-3 md:order-none flex flex-col md:flex-row justify-between items-end gap-12 border-t-0 md:border-t border-[var(--border)] pt-4 md:pt-12 z-15">
           <div className="flex flex-col gap-8">
             <Motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -136,6 +111,9 @@ const Hero = () => {
         </div>
 
       </div>
+      
+      {/* Subtle Bottom Section Separator */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
     </section>
   );
 

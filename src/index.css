@@ -84,6 +84,22 @@ body, nav, main, footer, section, button, input, textarea, a, span, p, h1, h2, h
   }
 }
 
+@keyframes ambient-glow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.025;
+  }
+  50% {
+    transform: translate(5%, 7%) scale(1.05);
+    opacity: 0.055;
+  }
+}
+
+.animate-glow {
+  animation: ambient-glow 35s ease-in-out infinite;
+}
+
+
 
 
 @layer base {

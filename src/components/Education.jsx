@@ -103,9 +103,9 @@
         className="relative py-32 px-4 overflow-hidden bg-[var(--bg-primary)]"
       >
         {/* Background Ambience */}
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-cyan-500/5 blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/5 blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02),transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-500/5 blur-[150px] rounded-full pointer-events-none animate-glow" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-500/5 blur-[150px] rounded-full pointer-events-none animate-glow" style={{ animationDelay: '-15s' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.015),transparent_70%)] pointer-events-none" />
 
         <div className="container mx-auto max-w-6xl relative z-10">
           {/* Heading */}
@@ -132,8 +132,14 @@
 
           {/* Timeline Pipeline */}
           <div className="relative">
-            {/* Vertical Vector Center Line */}
-            <div className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-px h-full bg-linear-to-brom-cyan-500/50 via-blue-500/50 to-purple-500/10" />
+            {/* Vertical Vector Center Line scrolling entry */}
+            <motion.div
+              initial={{ height: 0 }}
+              whileInView={{ height: '100%' }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-px bg-gradient-to-b from-cyan-500/50 via-blue-500/50 to-purple-500/10 origin-top"
+            />
 
             <div className="space-y-12 lg:space-y-20">
               {education.map((edu, index) => (
@@ -218,7 +224,8 @@
                   </div>
 
                   {/* Central Keyframe Node Matrix Anchor */}
-                  <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20">
+                  <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 items-center justify-center">
+                    <span className="absolute w-5 h-5 rounded-full bg-purple-500/30 animate-ping pointer-events-none" />
                     <div className={`w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[3px] border-[var(--border)] relative flex items-center justify-center group-hover:border-[var(--text-primary)] transition-colors duration-300 shadow-xl`}>
                       <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${edu.glow}`} />
                     </div>
@@ -231,6 +238,9 @@
             </div>
           </div>
         </div>
+        
+        {/* Subtle Bottom Section Separator */}
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
       </section>
     );
   }
