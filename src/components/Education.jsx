@@ -11,11 +11,28 @@ import { motion, useReducedMotion } from "framer-motion";
 
   const education = [
     {
+      degree: "Full-Stack Developer",
+      institution: "Young India Show",
+      location: "Laxmi Nagar, Delhi",
+      period: "July 2026 - Present",
+      grade: "Full time employment",
+      icon: IconBrandReact,
+      glow: "from-cyan-500 to-blue-500",
+      hoverText: "group-hover:text-cyan-300",
+      dotColor: "bg-cyan-400",
+      achievements: [
+        "Focused on Full Stack Web Development",
+        "Developed 10+ real world projects",
+        "Supporting App Development team",
+        "Guiding 5+ Interns as an leader",
+      ],
+    },
+    {
       degree: "Internship In Full Stack Development",
       institution: "Young India Show",
       location: "Laxmi Nagar, Delhi",
       period: "Jan 2026 - July 2026",
-      grade: "Paid Internship And Full Time",
+      grade: "Full Time Paid Internship",
       icon: IconBrandReact,
       glow: "from-cyan-500 to-blue-500",
       hoverText: "group-hover:text-cyan-300",

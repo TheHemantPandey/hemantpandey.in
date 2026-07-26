@@ -76,7 +76,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Hemant Pandey. All rights reserved.
           </p>
           <p className="text-[var(--text-secondary)] text-sm">
-            Designed & Built with passion and Hard Work.
+            Designed & Built with passion and Hard Work Of <b>Hemant Pandey</b>.
           </p>
         </div>
       </div>
