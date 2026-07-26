@@ -1,4 +1,5 @@
-  import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
   import {
     IconCalendar,
     IconTrophy,
@@ -97,6 +98,57 @@
   ];
 
   export default function Education() {
+    const shouldReduceMotion = useReducedMotion();
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+
+    const cardVariants = {
+      initial: {
+        y: 0,
+        scale: 1,
+        backgroundColor: "rgba(255, 255, 255, 0.03)",
+        borderColor: "rgba(255, 255, 255, 0.08)",
+        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+      },
+      hover: {
+        y: shouldReduceMotion ? 0 : -6,
+        scale: shouldReduceMotion ? 1 : 1.01,
+        backgroundColor: "rgba(255, 255, 255, 0.03)",
+        borderColor: "rgba(59, 130, 246, 0.35)",
+        boxShadow: "0 0 30px rgba(59, 130, 246, 0.10), 0 0 60px rgba(59, 130, 246, 0.06)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+      }
+    };
+
+    const iconVariants = {
+      initial: {
+        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+        borderColor: "rgba(255, 255, 255, 0.08)",
+      },
+      hover: {
+        boxShadow: "0 0 15px rgba(59, 130, 246, 0.25)",
+        borderColor: "rgba(59, 130, 246, 0.4)",
+      }
+    };
+
+    const dotVariants = {
+      initial: {
+        borderColor: "rgba(255, 255, 255, 0.08)",
+        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+      },
+      hover: {
+        borderColor: "rgba(59, 130, 246, 0.5)",
+        boxShadow: "0 0 12px rgba(59, 130, 246, 0.35)",
+      }
+    };
+
+    const cardTransition = {
+      duration: 0.4,
+      ease: [0.16, 1, 0.3, 1]
+    };
+
     return (
       <section
         id="education"
@@ -142,99 +194,111 @@
             />
 
             <div className="space-y-12 lg:space-y-20">
-              {education.map((edu, index) => (
-                <motion.div
-                  key={edu.degree}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${
-                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Active Card Body Container */}
-                  <div className="flex-1 w-full">
-                    <motion.div
-                      whileHover={{ y: -6, scale: 1.01 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                      className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] backdrop-blur-xl p-6 md:p-8 transition-colors duration-500 hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
-                    >
-                      {/* Radial Ambient Glow behind content triggered on active focus */}
-                      <div
-                        className={`absolute -inset-48 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-linear-to-br ${edu.glow} blur-[100px] pointer-events-none z-0`}
-                      />
+              {education.map((edu, index) => {
+                const isHovered = hoveredIndex === index;
+                return (
+                  <motion.div
+                    key={edu.degree}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className={`relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16 ${
+                      index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                    }`}
+                  >
+                    {/* Active Card Body Container */}
+                    <div className="flex-1 w-full">
+                      <motion.div
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        variants={cardVariants}
+                        initial="initial"
+                        animate={isHovered ? "hover" : "initial"}
+                        transition={cardTransition}
+                        className="relative overflow-hidden rounded-2xl border p-6 md:p-8"
+                      >
+                        <div className="relative z-10 flex flex-col sm:flex-row items-start gap-6">
+                          {/* Icon Shield Block */}
+                          <motion.div
+                            variants={iconVariants}
+                            transition={cardTransition}
+                            animate={isHovered ? "hover" : "initial"}
+                            className={`p-3.5 rounded-xl bg-linear-to-br ${edu.glow} bg-opacity-10 border shadow-lg shrink-0`}
+                          >
+                            <edu.icon size={26} className="text-[var(--text-primary)]" />
+                          </motion.div>
 
-                      <div className="relative z-10 flex flex-col sm:flex-row items-start gap-6">
-                        {/* Icon Shield Block */}
-                        <div className={`p-3.5 rounded-xl bg-linear-to-br ${edu.glow} bg-opacity-10 border border-[var(--border)] shadow-lg shrink-0`}>
-                          <edu.icon size={26} className="text-[var(--text-primary)]" />
-                        </div>
+                          {/* Summary Breakdown Fields */}
+                          <div className="flex-1 w-full">
+                            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2 mb-3">
+                              <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)]">
+                                {edu.degree}
+                              </h3>
 
-                        {/* Summary Breakdown Fields */}
-                        <div className="flex-1 w-full">
-                          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2 mb-3">
-                            <h3 className={`text-xl md:text-2xl font-bold text-[var(--text-primary)] transition-colors duration-300 ${edu.hoverText}`}>
-                              {edu.degree}
-                            </h3>
+                              <div className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase bg-linear-to-r ${edu.glow} bg-clip-text text-transparent mt-1 lg:mt-0.5`}>
+                                <IconCalendar size={14} className="text-[var(--text-secondary)] inline-block align-middle" />
+                                <span className="text-[var(--text-secondary)] ml-1">{edu.period}</span>
+                              </div>
+                            </div>
 
-                            <div className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase bg-linear-to-r ${edu.glow} bg-clip-text text-transparent mt-1 lg:mt-0.5`}>
-                              <IconCalendar size={14} className="text-[var(--text-secondary)] inline-block align-middle" />
-                              <span className="text-[var(--text-secondary)] ml-1">{edu.period}</span>
+                            {/* Subtext Location Context */}
+                            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[var(--text-secondary)] mb-6 font-light">
+                              <span className="text-[var(--text-primary)] font-medium">{edu.institution}</span>
+                              <span className="text-[var(--text-muted)] hidden sm:inline">•</span>
+                              <span className="text-[var(--text-secondary)] text-xs">{edu.location}</span>
+                            </div>
+
+                            {/* Performance Metrics Grade Badge */}
+                            <div className="mb-8">
+                              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--surface-hover)] border border-[var(--border)]">
+                                <IconTrophy size={14} className="text-yellow-400" />
+                                <span className="text-xs font-semibold tracking-wide text-[var(--text-primary)]">
+                                  {edu.grade}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* List Points Render Group */}
+                            <div className="border-t border-[var(--border)] pt-6">
+                              <h4 className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold mb-4">
+                                Key Focus & Achievements
+                              </h4>
+                              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                                {edu.achievements.map((achievement, i) => (
+                                  <li
+                                    key={i}
+                                    className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-light leading-snug"
+                                  >
+                                    <span className={`w-1.5 h-1.5 rounded-full ${edu.dotColor} mt-2 shrink-0 shadow-sm`} />
+                                    <span>{achievement}</span>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
                           </div>
-
-                          {/* Subtext Location Context */}
-                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[var(--text-secondary)] mb-6 font-light">
-                            <span className="text-[var(--text-primary)] font-medium">{edu.institution}</span>
-                            <span className="text-[var(--text-muted)] hidden sm:inline">•</span>
-                            <span className="text-[var(--text-secondary)] text-xs">{edu.location}</span>
-                          </div>
-
-                          {/* Performance Metrics Grade Badge */}
-                          <div className="mb-8">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--surface-hover)] border border-[var(--border)]">
-                              <IconTrophy size={14} className="text-yellow-400" />
-                              <span className="text-xs font-semibold tracking-wide text-[var(--text-primary)]">
-                                {edu.grade}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* List Points Render Group */}
-                          <div className="border-t border-[var(--border)] pt-6">
-                            <h4 className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] font-bold mb-4">
-                              Key Focus & Achievements
-                            </h4>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                              {edu.achievements.map((achievement, i) => (
-                                <li
-                                  key={i}
-                                  className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-light leading-snug"
-                                >
-                                  <span className={`w-1.5 h-1.5 rounded-full ${edu.dotColor} mt-2 shrink-0 shadow-sm`} />
-                                  <span>{achievement}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
                         </div>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Central Keyframe Node Matrix Anchor */}
-                  <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 items-center justify-center">
-                    <span className="absolute w-5 h-5 rounded-full bg-purple-500/30 animate-ping pointer-events-none" />
-                    <div className={`w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[3px] border-[var(--border)] relative flex items-center justify-center group-hover:border-[var(--text-primary)] transition-colors duration-300 shadow-xl`}>
-                      <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${edu.glow}`} />
+                      </motion.div>
                     </div>
-                  </div>
 
-                  {/* Grid Symmetry Placeholder Offset block */}
-                  <div className="hidden lg:block flex-1" />
-                </motion.div>
-              ))}
+                    {/* Central Keyframe Node Matrix Anchor */}
+                    <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 z-20 items-center justify-center">
+                      <span className="absolute w-5 h-5 rounded-full bg-purple-500/30 animate-ping pointer-events-none" />
+                      <motion.div
+                        variants={dotVariants}
+                        transition={cardTransition}
+                        animate={isHovered ? "hover" : "initial"}
+                        className="w-5 h-5 rounded-full bg-[var(--bg-primary)] border-[3px] relative flex items-center justify-center shadow-xl"
+                      >
+                        <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${edu.glow}`} />
+                      </motion.div>
+                    </div>
+
+                    {/* Grid Symmetry Placeholder Offset block */}
+                    <div className="hidden lg:block flex-1" />
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>

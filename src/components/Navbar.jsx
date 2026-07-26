@@ -32,7 +32,7 @@ const Navbar = () => {
     { name: 'Work', href: 'projects' },
     { name: 'About', href: 'credentials' },
     { name: 'Contact', href: 'contact' },
-    { name: 'Resume', href: '/Hemant_Pandey_SDE.pdf', isExternal: true },
+    { name: 'Resume', href: '/resume.pdf', isExternal: true },
   ];
 
   const scrollToSection = (e, sectionId) => {

@@ -81,7 +81,7 @@ const Profile = () => {
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">Quick actions</p>
                 <div className="mt-5 flex flex-col gap-3">
                   <a
-                    href="/Hemant_Pandey_SDE.pdf"
+                    href="/resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center justify-between rounded-full border border-[var(--border)] px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] text-[var(--text-primary)] transition-all duration-300 hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
