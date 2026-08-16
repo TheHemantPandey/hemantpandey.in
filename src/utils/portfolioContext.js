@@ -109,7 +109,6 @@ const projectSections = projects.map((project) => ({
     `Details: ${project.detailDescription}`,
     `Tech stack: ${stringList(project.techStack)}`,
     `Live URL: ${project.liveUrl}`,
-    `GitHub URL: ${project.githubUrl}`,
     `Key points: ${project.points.join(' ')}`
   ].join('\n'),
   keywords: [

@@ -120,7 +120,7 @@ const CredentialsPreview = () => {
                 <Terminal size={20} />
               </div>
               <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Production Builds</h3>
-              <p className="text-[var(--text-primary)] text-4xl font-extrabold mt-2 tracking-tight group-hover:text-pink-300 transition-colors">04+</p>
+              <p className="text-[var(--text-primary)] text-4xl font-extrabold mt-2 tracking-tight group-hover:text-pink-300 transition-colors">12+</p>
               <p className="text-[var(--text-secondary)] text-sm mt-1">Deployed live platforms & tools</p>
             </div>
             <div className="flex gap-2 mt-4 flex-wrap">

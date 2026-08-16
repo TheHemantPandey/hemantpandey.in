@@ -145,7 +145,7 @@ const ProjectDetails = () => {
                                 {project.description}
                             </p>
 
-                            <div className="flex gap-4">
+                             <div className="flex gap-4">
                                 
                                 <ProjectLink 
                                     url={project.liveUrl} 
@@ -154,13 +154,6 @@ const ProjectDetails = () => {
                                 >
                                     View Live <ExternalLink size={18} />
                                 </ProjectLink>
-                                <ProjectLink 
-                                    url={project.githubUrl} 
-                                    data-cursor="CODE"
-                                    className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border)] rounded-full hover:bg-[var(--surface-hover)] transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
-                                >
-                                    Source Code <FaGithub size={18} />
-                                </ProjectLink>
                             </div>
                         </div>
 
@@ -168,13 +161,13 @@ const ProjectDetails = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="relative aspect-video w-full max-w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--surface)]"
+                            className="relative aspect-video w-full max-w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[#08080a] p-2 flex items-center justify-center"
                         >
                             <img
                                 src={project.image}
                                 alt={project.title}
                                 loading="lazy"
-                                className="block w-full h-full max-w-full object-cover"
+                                className="block w-full h-full max-w-full object-contain rounded-xl"
                             />
                         </motion.div>
                     </div>

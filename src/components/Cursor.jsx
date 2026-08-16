@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Cursor = () => {
@@ -7,7 +7,9 @@ const Cursor = () => {
   const [hoveredRect, setHoveredRect] = useState(null);
   const [hoveredRadius, setHoveredRadius] = useState('9999px');
   const [badgeText, setBadgeText] = useState('');
-  
+
+  const mouseRef = useRef({ x: 0, y: 0 });
+
   const [isMobile] = useState(() => {
     if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
       return window.matchMedia('(pointer: coarse)').matches;
@@ -18,52 +20,76 @@ const Cursor = () => {
   useEffect(() => {
     if (isMobile) return;
 
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const clearHover = () => {
+      setHoveredEl(null);
+      setHoveredRect(null);
+      setHoveredRadius('9999px');
+      setBadgeText('');
     };
 
-    const handleMouseOver = (e) => {
-      if (e.target && typeof e.target.closest === 'function') {
-        const interactive = e.target.closest('a, button, input, textarea, .cursor-hover');
-        
-        if (interactive) {
-          if (hoveredEl !== interactive) {
-            const rect = interactive.getBoundingClientRect();
-            const computedStyle = window.getComputedStyle(interactive);
-            const cursorAttr = interactive.getAttribute('data-cursor');
-            
-            setHoveredEl(interactive);
-            setHoveredRect({
-              x: rect.left + rect.width / 2,
-              y: rect.top + rect.height / 2,
-              width: rect.width + 8, // add slight padding around element
-              height: rect.height + 8
-            });
-            setHoveredRadius(computedStyle.borderRadius || '9999px');
-            
-            if (cursorAttr && ['VIEW', 'LIVE', 'CODE'].includes(cursorAttr.toUpperCase())) {
-              setBadgeText(cursorAttr.toUpperCase());
-            } else {
-              setBadgeText('');
-            }
-          }
-        } else {
-          setHoveredEl(null);
-          setHoveredRect(null);
-          setHoveredRadius('9999px');
-          setBadgeText('');
-        }
+    const checkElementHover = (clientX, clientY) => {
+      const el = document.elementFromPoint(clientX, clientY);
+      if (!el || typeof el.closest !== 'function') {
+        clearHover();
+        return;
+      }
+
+      const interactive = el.closest('a, button, input, textarea, .cursor-hover');
+      if (!interactive) {
+        clearHover();
+        return;
+      }
+
+      const rect = interactive.getBoundingClientRect();
+      // Ignore large containers/rows so they don't form giant screen rectangles
+      if (rect.width > 360 || rect.height > 140) {
+        clearHover();
+        return;
+      }
+
+      const computedStyle = window.getComputedStyle(interactive);
+      const cursorAttr = interactive.getAttribute('data-cursor');
+
+      setHoveredEl(interactive);
+      setHoveredRect({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+        width: rect.width + 8,
+        height: rect.height + 8
+      });
+      setHoveredRadius(computedStyle.borderRadius || '9999px');
+
+      if (cursorAttr && ['VIEW', 'LIVE', 'CODE'].includes(cursorAttr.toUpperCase())) {
+        setBadgeText(cursorAttr.toUpperCase());
+      } else {
+        setBadgeText('');
       }
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
-    document.addEventListener('mouseover', handleMouseOver);
+    const updateMousePosition = (e) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      checkElementHover(e.clientX, e.clientY);
+    };
+
+    const handleScroll = () => {
+      checkElementHover(mouseRef.current.x, mouseRef.current.y);
+    };
+
+    const handleMouseLeave = () => {
+      clearHover();
+    };
+
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
-      document.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isMobile, hoveredEl]);
+  }, [isMobile]);
 
   if (isMobile) return null;
 
@@ -77,7 +103,7 @@ const Cursor = () => {
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
-          scale: isHovering ? 0 : 1, // hide inner dot on snap latching
+          scale: isHovering ? 0 : 1, // hide inner dot when magnetic frame is active
         }}
         transition={{
           type: "spring",

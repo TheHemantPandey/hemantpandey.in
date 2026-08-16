@@ -98,32 +98,35 @@ const Projects = () => {
           {/* Sticky Image Preview (Desktop) */}
           <div className="hidden lg:block w-1/2 relative">
             <div 
-              className="sticky top-32 h-[400px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 cursor-none cursor-hover"
+              className="sticky top-32 w-full rounded-2xl overflow-hidden border border-white/10 bg-[#08080a] cursor-none flex flex-col"
               onClick={() => handleProjectClick(projects[hoveredIndex].id)}
             >
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={hoveredIndex}
-                  src={projects[hoveredIndex].image}
-                  alt={projects[hoveredIndex].title}
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </AnimatePresence>
+              {/* Flush Image Container (Top, Left, Right flush) */}
+              <div className="relative w-full aspect-video bg-black/60 overflow-hidden flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={hoveredIndex}
+                    src={projects[hoveredIndex].image}
+                    alt={projects[hoveredIndex].title}
+                    initial={{ opacity: 0, scale: 1.03 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-full h-full object-contain"
+                  />
+                </AnimatePresence>
+              </div>
 
-              {/* Overlay Info */}
-              <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black/90 to-transparent">
+              {/* Bottom Info Box */}
+              <div className="w-full p-6 bg-[var(--surface)] border-t border-white/10">
                 <div className="flex items-end gap-6">
                   <div className="w-1/2">
-                    <p className="text-sm text-gray-400 mb-2 font-mono">{projects[hoveredIndex].category}</p>
-                    <p className="text-white text-lg font-light">{projects[hoveredIndex].description}</p>
+                    <p className="text-xs text-gray-400 mb-1 font-mono uppercase tracking-wider">{projects[hoveredIndex].category}</p>
+                    <p className="text-white text-sm font-light line-clamp-2">{projects[hoveredIndex].description}</p>
                   </div>
-                  <div className="w-1/2 flex flex-wrap gap-2 justify-end">
-                    {projects[hoveredIndex].techStack.map((t, i) => (
-                      <span key={i} className="px-3 py-2 rounded-full bg-white/10 backdrop-blur-md text-xs text-white border border-white/10 whitespace-nowrap">
+                  <div className="w-1/2 flex flex-wrap gap-1.5 justify-end">
+                    {projects[hoveredIndex].techStack.slice(0, 4).map((t, i) => (
+                      <span key={i} className="px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-[11px] text-white border border-white/10 whitespace-nowrap">
                         {t}
                       </span>
                     ))}
@@ -148,7 +151,7 @@ const Projects = () => {
                 variants={listItem}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onClick={() => handleProjectClick(project.id)}
-                className={`group py-12 border-b border-white/10 cursor-none cursor-hover transition-all duration-300 ${hoveredIndex === index ? 'opacity-100' : 'opacity-40 hover:opacity-100'
+                className={`group py-12 border-b border-white/10 cursor-none transition-all duration-300 ${hoveredIndex === index ? 'opacity-100' : 'opacity-40 hover:opacity-100'
                   }`}
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -162,8 +165,8 @@ const Projects = () => {
                     <p className="text-gray-400 text-lg font-light mb-4">
                       {project.subtitle}
                     </p>
-                    <div className="lg:hidden mb-6 rounded-xl overflow-hidden h-64 w-full">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                    <div className="lg:hidden mb-6 rounded-xl overflow-hidden aspect-video w-full bg-black/60 border border-white/10 flex items-center justify-center">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-contain" />
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 font-light">{project.category}</span>
