@@ -112,7 +112,7 @@ const Projects = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-fill"
                   />
                 </AnimatePresence>
               </div>
@@ -166,7 +166,7 @@ const Projects = () => {
                       {project.subtitle}
                     </p>
                     <div className="lg:hidden mb-6 rounded-xl overflow-hidden aspect-video w-full border border-white/10 flex items-center justify-center">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
+                      <img src={project.image} alt={project.title} className="w-full h-full object-fill" />
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 font-light">{project.category}</span>
