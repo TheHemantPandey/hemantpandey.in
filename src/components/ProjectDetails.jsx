@@ -167,7 +167,7 @@ const ProjectDetails = () => {
                                 src={project.image}
                                 alt={project.title}
                                 loading="lazy"
-                                className="block w-full h-full max-w-full object-cover object-top"
+                                className="block w-full h-full max-w-full object-fill"
                             />
                         </motion.div>
                     </div>
