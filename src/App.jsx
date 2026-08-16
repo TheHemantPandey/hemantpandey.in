@@ -36,22 +36,22 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Hemant Pandey | Full Stack Web & App Developer</title>
-        <meta name="description" content="Portfolio of Hemant Pandey, a professional Full Stack Web & App Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
+        <title>Hemant Pandey | Full Stack Developer</title>
+        <meta name="description" content="Portfolio of Hemant Pandey, a professional Full Stack Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
         <link rel="canonical" href="https://hemantpandey.in/" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hemantpandey.in/" />
-        <meta property="og:title" content="Hemant Pandey | Full Stack Web & App Developer" />
-        <meta property="og:description" content="Portfolio of Hemant Pandey, a professional Full Stack Web & App Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
+        <meta property="og:title" content="Hemant Pandey | Full Stack Developer" />
+        <meta property="og:description" content="Portfolio of Hemant Pandey, a professional Full Stack Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
         <meta property="og:image" content="/project/image1.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://hemantpandey.in/" />
-        <meta name="twitter:title" content="Hemant Pandey | Full Stack Web & App Developer" />
-        <meta name="twitter:description" content="Portfolio of Hemant Pandey, a professional Full Stack Web & App Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
+        <meta name="twitter:title" content="Hemant Pandey | Full Stack Developer" />
+        <meta name="twitter:description" content="Portfolio of Hemant Pandey, a professional Full Stack Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
         <meta name="twitter:image" content="/project/image1.png" />
 
         {/* Structured Data JSON-LD */}
@@ -65,7 +65,7 @@ function Home() {
                   "@id": "https://hemantpandey.in/#website",
                   "url": "https://hemantpandey.in/",
                   "name": "Hemant Pandey Portfolio",
-                  "description": "Portfolio of Hemant Pandey, a professional Full Stack Web & App Developer"
+                  "description": "Portfolio of Hemant Pandey, a professional Full Stack Developer"
                 },
                 {
                   "@type": "Person",
@@ -76,7 +76,7 @@ function Home() {
                     "https://github.com/TheHemantPandey",
                     "https://www.linkedin.com/in/hemant-pandey-ase/"
                   ],
-                  "jobTitle": "Full Stack Web Developer",
+                  "jobTitle": "Full Stack Developer",
                   "alumniOf": "J.C. Bose University of Science and Technology"
                 }
               ]

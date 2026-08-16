@@ -194,7 +194,7 @@ const Contact = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
-                    placeholder="John Doe"
+                    placeholder="Hemant Pandey"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ const Contact = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
-                    placeholder="hello@domain.com"
+                    placeholder="hello@gmail.com"
                   />
                 </div>
               </div>

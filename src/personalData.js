@@ -6,7 +6,7 @@ import { FaInstagram } from 'react-icons/fa';
 
 export const personalInfo = {
   name: "Hemant Pandey",
-  role: "Full Stack Web and App Developer",
+  role: "Full Stack Developer",
   email: "hement.pandey2121@gmail.com",
   phone: "+91-6397565128",
   linkedin: "https://www.linkedin.com/in/hemant-pandey-ase/",
@@ -72,7 +72,7 @@ export const certificates = [
   },
   {
     name: "Full-Stack MERN Development Specialization",
-    issuer: "Young India Show NGO Foundation",
+    issuer: "Young India Show NGO",
     date: "Apr’26",
     image: "/unavailable",
     link: "/unavailable",

@@ -72,7 +72,7 @@ const CredentialsPreview = () => {
                 <Briefcase size={20} />
               </div>
               <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Current Role</h3>
-              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-cyan-300 transition-colors">Web Dev Intern</p>
+              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-cyan-300 transition-colors">Full Stack Developer</p>
               <p className="text-[var(--text-secondary)] text-sm mt-1">Young India Show Foundation</p>
             </div>
             <span className="text-xs text-[var(--text-muted)] mt-4 block">2026 — Present</span>
