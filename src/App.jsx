@@ -139,7 +139,7 @@ function App() {
 
   return (
     <Router>
-      <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] selection:bg-[var(--text-primary)]/10 cursor-none">
+      <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] selection:bg-[var(--text-primary)]/10 cursor-none relative max-w-[100rem] mx-auto border-x border-[var(--border)] shadow-[0_0_50px_rgba(0,0,0,0.03)]">
         <AnimatePresence
           mode="wait"
           onExitComplete={() => {

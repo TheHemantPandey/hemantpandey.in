@@ -33,7 +33,7 @@ const SocialLink = ({ href, icon, children }) => {
 
 const Footer = () => {
   return (
-    <footer className="py-20 border-t border-[var(--border)] bg-[var(--bg-primary)] relative overflow-hidden">
+    <footer className="py-20 border-t border-[var(--border)] bg-[var(--bg-secondary)] relative overflow-hidden">
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
 

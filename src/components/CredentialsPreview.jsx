@@ -65,7 +65,7 @@ const CredentialsPreview = () => {
             variants={cardVariants}
             whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(34, 211, 238, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 transition-colors group-hover:bg-purple-500/20">
@@ -87,7 +87,7 @@ const CredentialsPreview = () => {
             variants={cardVariants}
             whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(168, 85, 247, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 transition-colors group-hover:bg-purple-500/20">
@@ -113,7 +113,7 @@ const CredentialsPreview = () => {
             variants={cardVariants}
             whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(236, 72, 153, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-4 transition-colors group-hover:bg-pink-500/20">
@@ -138,7 +138,7 @@ const CredentialsPreview = () => {
             variants={cardVariants}
             whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(234, 179, 8, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl hover:shadow-[var(--shadow)]"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 mb-4 transition-colors group-hover:bg-yellow-500/20">

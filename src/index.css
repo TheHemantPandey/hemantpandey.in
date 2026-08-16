@@ -32,19 +32,19 @@
 }
 
 .light {
-  --bg-primary: #FAFAFA;
-  --bg-secondary: #F4F4F5;
-  --text-primary: #09090B;
-  --text-secondary: #52525B;
-  --text-muted: #A1A1AA;
-  --accent-bg: #09090B;
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #F1F5F9;
+  --text-primary: #2C2C2C;
+  --text-secondary: #4A5568;
+  --text-muted: #718096;
+  --accent-bg: #2C2C2C;
   --accent-text: #ffffff;
-  --surface: rgba(0, 0, 0, 0.02);
-  --surface-hover: rgba(0, 0, 0, 0.05);
-  --border: rgba(0, 0, 0, 0.06);
-  --border-hover: rgba(0, 0, 0, 0.12);
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  --surface: #ffffff;
+  --surface-hover: #F8FAFC;
+  --border: #DCDCDC;
+  --border-hover: #CBD5E1;
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: #DCDCDC;
   --shadow: rgba(0, 0, 0, 0.05);
   color-scheme: light;
 }
@@ -160,8 +160,23 @@ body, nav, main, footer, section, button, input, textarea, a, span, p, h1, h2, h
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
+  .light .glass-card {
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+    border: 1px solid #DCDCDC;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
   .text-gradient {
     background: linear-gradient(to bottom right, #ffffff 30%, #9ca3af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .light .text-gradient {
+    background: linear-gradient(to bottom right, #2C2C2C 30%, #4A5568 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

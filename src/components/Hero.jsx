@@ -23,7 +23,7 @@ const Hero = () => {
         <img
           src={profileImg}
           alt=""
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover opacity-40 dark:opacity-60 transition-opacity duration-500"
         />
       </div>
 
@@ -61,13 +61,13 @@ const Hero = () => {
           initial={{ opacity: 0, y: 35, scale: 0.98, filter: 'blur(8px)' }}
           animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0 z-15"
+          className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0 z-15 p-6 md:p-10 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
         >
-          <h1 className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] mb-8 relative">
+          <h1 className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] mb-6 relative">
             <span className="block">
               BUILDING
             </span>
-            <span className="block text-[var(--text-muted)]">
+            <span className="block text-[var(--text-secondary)]">
               DIGITAL VALUE.
             </span>
           </h1>

@@ -122,18 +122,18 @@ import { motion, useReducedMotion } from "framer-motion";
       initial: {
         y: 0,
         scale: 1,
-        backgroundColor: "rgba(255, 255, 255, 0.03)",
-        borderColor: "rgba(255, 255, 255, 0.08)",
-        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+        backgroundColor: "var(--surface)",
+        borderColor: "var(--border)",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       },
       hover: {
         y: shouldReduceMotion ? 0 : -6,
         scale: shouldReduceMotion ? 1 : 1.01,
-        backgroundColor: "rgba(255, 255, 255, 0.03)",
-        borderColor: "rgba(59, 130, 246, 0.35)",
-        boxShadow: "0 0 30px rgba(59, 130, 246, 0.10), 0 0 60px rgba(59, 130, 246, 0.06)",
+        backgroundColor: "var(--surface)",
+        borderColor: "var(--border-hover)",
+        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.08)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       }
@@ -207,7 +207,7 @@ import { motion, useReducedMotion } from "framer-motion";
               whileInView={{ height: '100%' }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-px bg-gradient-to-b from-cyan-500/50 via-blue-500/50 to-purple-500/10 origin-top"
+              className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-px bg-slate-300 dark:bg-gradient-to-b dark:from-cyan-500/50 dark:via-blue-500/50 dark:to-purple-500/10 origin-top"
             />
 
             <div className="space-y-12 lg:space-y-20">
@@ -241,9 +241,9 @@ import { motion, useReducedMotion } from "framer-motion";
                             variants={iconVariants}
                             transition={cardTransition}
                             animate={isHovered ? "hover" : "initial"}
-                            className={`p-3.5 rounded-xl bg-linear-to-br ${edu.glow} bg-opacity-10 border shadow-lg shrink-0`}
+                            className={`p-3.5 rounded-xl bg-sky-50 dark:bg-linear-to-br ${edu.glow} dark:bg-opacity-10 border border-[var(--border)] shadow-sm shrink-0`}
                           >
-                            <edu.icon size={26} className="text-[var(--text-primary)]" />
+                            <edu.icon size={26} className="text-[#0284C7] dark:text-[var(--text-primary)]" />
                           </motion.div>
 
                           {/* Summary Breakdown Fields */}
@@ -253,9 +253,9 @@ import { motion, useReducedMotion } from "framer-motion";
                                 {edu.degree}
                               </h3>
 
-                              <div className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase bg-linear-to-r ${edu.glow} bg-clip-text text-transparent mt-1 lg:mt-0.5`}>
-                                <IconCalendar size={14} className="text-[var(--text-secondary)] inline-block align-middle" />
-                                <span className="text-[var(--text-secondary)] ml-1">{edu.period}</span>
+                              <div className="flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-[#0284C7] dark:text-cyan-400 mt-1 lg:mt-0.5">
+                                <IconCalendar size={14} className="text-[#0284C7] dark:text-[var(--text-secondary)] inline-block align-middle" />
+                                <span className="ml-1">{edu.period}</span>
                               </div>
                             </div>
 

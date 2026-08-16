@@ -109,7 +109,7 @@ const Process = () => {
                 </div>
 
                 {/* Main Step Container Panel */}
-                <div className={`mt-4 p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-2xl ${step.color}`}>
+                <div className={`mt-4 p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--border-hover)] ${step.color}`}>
                   
                   {/* Glowing Top Flare Wire */}
                   <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -119,7 +119,7 @@ const Process = () => {
                     <span className={`text-4xl font-display font-black bg-gradient-to-br ${step.color} text-transparent bg-clip-text tracking-tight select-none`}>
                       {step.id}
                     </span>
-                    <span className="text-[var(--text-muted)]/10 font-mono text-xs group-hover:text-[var(--text-muted)]/20 transition-colors">
+                    <span className="text-[var(--text-muted)] font-mono text-xs opacity-60">
                       🚀 PHASE_0{idx + 1}
                     </span>
                   </div>

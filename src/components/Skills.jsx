@@ -33,30 +33,30 @@ const getSkillColor = (skillName) => {
   const name = skillName.toLowerCase().trim();
 
   // MERN / Frontend Stacks
-  if (name.includes("react")) return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
-  if (name.includes("next")) return "bg-zinc-100/10 text-zinc-100 border-zinc-100/20";
-  if (name.includes("js") || name.includes("javascript")) return "bg-yellow-500/10 text-yellow-400 border-yellow-500/20";
-  if (name.includes("ts") || name.includes("typescript")) return "bg-blue-500/10 text-blue-400 border-blue-500/20";
-  if (name.includes("tailwind")) return "bg-sky-400/10 text-sky-300 border-sky-400/20";
-  if (name.includes("html")) return "bg-orange-500/10 text-orange-400 border-orange-500/20";
-  if (name.includes("css")) return "bg-blue-600/10 text-blue-400 border-blue-600/20";
+  if (name.includes("react")) return "bg-slate-100 dark:bg-cyan-500/10 text-[#0F172A] dark:text-cyan-400 border-slate-200 dark:border-cyan-500/20";
+  if (name.includes("next")) return "bg-slate-100 dark:bg-zinc-100/10 text-[#0F172A] dark:text-zinc-100 border-slate-200 dark:border-zinc-100/20";
+  if (name.includes("js") || name.includes("javascript")) return "bg-amber-50 dark:bg-yellow-500/10 text-amber-900 dark:text-yellow-400 border-amber-200 dark:border-yellow-500/20";
+  if (name.includes("ts") || name.includes("typescript")) return "bg-blue-50 dark:bg-blue-500/10 text-blue-900 dark:text-blue-400 border-blue-200 dark:border-blue-500/20";
+  if (name.includes("tailwind")) return "bg-sky-50 dark:bg-sky-400/10 text-sky-900 dark:text-sky-300 border-sky-200 dark:border-sky-400/20";
+  if (name.includes("html")) return "bg-orange-50 dark:bg-orange-500/10 text-orange-900 dark:text-orange-400 border-orange-200 dark:border-orange-500/20";
+  if (name.includes("css")) return "bg-blue-50 dark:bg-blue-600/10 text-blue-900 dark:text-blue-400 border-blue-200 dark:border-blue-600/20";
 
   // Backend / Database
-  if (name.includes("node")) return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
-  if (name.includes("express")) return "bg-neutral-400/10 text-neutral-300 border-neutral-400/20";
-  if (name.includes("mongo")) return "bg-green-500/10 text-green-400 border-green-500/20";
-  if (name.includes("firebase")) return "bg-amber-500/10 text-amber-400 border-amber-500/20";
-  if (name.includes("python")) return "bg-blue-400/10 text-sky-400 border-blue-400/20";
-  if (name.includes("sql") || name.includes("postgres")) return "bg-indigo-500/10 text-indigo-400 border-indigo-500/20";
+  if (name.includes("node")) return "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-900 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20";
+  if (name.includes("express")) return "bg-slate-100 dark:bg-neutral-400/10 text-slate-800 dark:text-neutral-300 border-slate-200 dark:border-neutral-400/20";
+  if (name.includes("mongo")) return "bg-green-50 dark:bg-green-500/10 text-green-900 dark:text-green-400 border-green-200 dark:border-green-500/20";
+  if (name.includes("firebase")) return "bg-amber-50 dark:bg-amber-500/10 text-amber-900 dark:text-amber-400 border-amber-200 dark:border-amber-500/20";
+  if (name.includes("python")) return "bg-sky-50 dark:bg-blue-400/10 text-sky-900 dark:text-sky-400 border-sky-200 dark:border-blue-400/20";
+  if (name.includes("sql") || name.includes("postgres")) return "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-900 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/20";
 
   // Tools / DevOps
-  if (name.includes("git")) return "bg-red-500/10 text-red-400 border-red-500/20";
-  if (name.includes("github")) return "bg-zinc-400/10 text-zinc-300 border-zinc-400/20";
-  if (name.includes("postman")) return "bg-orange-500/10 text-orange-400 border-orange-500/20";
-  if (name.includes("vercel") || name.includes("hosting")) return "bg-stone-100/10 text-stone-200 border-stone-100/20";
+  if (name.includes("git")) return "bg-red-50 dark:bg-red-500/10 text-red-900 dark:text-red-400 border-red-200 dark:border-red-500/20";
+  if (name.includes("github")) return "bg-slate-100 dark:bg-zinc-400/10 text-slate-900 dark:text-zinc-300 border-slate-200 dark:border-zinc-400/20";
+  if (name.includes("postman")) return "bg-orange-50 dark:bg-orange-500/10 text-orange-900 dark:text-orange-400 border-orange-200 dark:border-orange-500/20";
+  if (name.includes("vercel") || name.includes("hosting")) return "bg-slate-100 dark:bg-stone-100/10 text-slate-900 dark:text-stone-200 border-slate-200 dark:border-stone-100/20";
 
-  // Default Fallback Color if it doesn't match above categories explicitly
-  return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+  // Default Fallback Color
+  return "bg-slate-100 dark:bg-purple-500/10 text-[#0F172A] dark:text-purple-400 border-slate-200 dark:border-purple-500/20";
 };
 
 /* ---------------- RENDERS MINI LOGO GRAPHICS DYNAMICALLY ---------------- */
@@ -99,7 +99,7 @@ const SkillCard = ({ cat, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.75, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-xl ${cardHoverStyle}`}
+      className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--border-hover)] ${cardHoverStyle}`}
     >
       
       {/* Decorative Top Flare Glow Effect */}

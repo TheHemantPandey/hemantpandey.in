@@ -96,7 +96,7 @@ const Services = () => {
             <motion.div
               key={index}
               variants={item}
-              className={`group relative p-8 rounded-[2rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 ${service.style}`}
+              className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.08)] hover:border-[var(--border-hover)] ${service.style}`}
             >
 
               {/* Subtle Ambient Accent Top Flare line */}
