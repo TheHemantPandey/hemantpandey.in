@@ -101,8 +101,8 @@ const Projects = () => {
               className="sticky top-32 w-full rounded-2xl overflow-hidden border border-white/10 bg-[#08080a] cursor-none flex flex-col"
               onClick={() => handleProjectClick(projects[hoveredIndex].id)}
             >
-              {/* Flush Image Container (Top, Left, Right flush) */}
-              <div className="relative w-full aspect-video bg-black/60 overflow-hidden flex items-center justify-center">
+              {/* Flush Image Container (Fills top, left, right and rounded corners) */}
+              <div className="relative w-full aspect-video overflow-hidden flex items-center justify-center">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={hoveredIndex}
@@ -112,7 +112,7 @@ const Projects = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover object-top"
                   />
                 </AnimatePresence>
               </div>
@@ -165,8 +165,8 @@ const Projects = () => {
                     <p className="text-gray-400 text-lg font-light mb-4">
                       {project.subtitle}
                     </p>
-                    <div className="lg:hidden mb-6 rounded-xl overflow-hidden aspect-video w-full bg-black/60 border border-white/10 flex items-center justify-center">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-contain" />
+                    <div className="lg:hidden mb-6 rounded-xl overflow-hidden aspect-video w-full border border-white/10 flex items-center justify-center">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top" />
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 font-light">{project.category}</span>

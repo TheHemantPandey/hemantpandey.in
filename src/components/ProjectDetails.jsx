@@ -161,13 +161,13 @@ const ProjectDetails = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="relative aspect-video w-full max-w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[#08080a] p-2 flex items-center justify-center"
+                            className="relative aspect-video w-full max-w-full rounded-2xl overflow-hidden border border-[var(--border)]"
                         >
                             <img
                                 src={project.image}
                                 alt={project.title}
                                 loading="lazy"
-                                className="block w-full h-full max-w-full object-contain rounded-xl"
+                                className="block w-full h-full max-w-full object-cover object-top"
                             />
                         </motion.div>
                     </div>
