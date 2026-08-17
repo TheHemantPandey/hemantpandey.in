@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { Mail, Loader2, ArrowUpRight } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { personalInfo } from '../personalData';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
@@ -91,11 +91,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Mail, href: `mailto:${personalInfo.email}` },
-    { icon: FaGithub, href: personalInfo.github },
-    { icon: FaLinkedin, href: personalInfo.linkedin },
-    { icon: FaTwitter, href: personalInfo.twitter },
-    { icon: FaInstagram, href: personalInfo.instagram }
+    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Send email to Hemant Pandey' },
+    { icon: FaGithub, href: personalInfo.github, label: 'Hemant Pandey on GitHub' },
+    { icon: FaLinkedin, href: personalInfo.linkedin, label: 'Hemant Pandey on LinkedIn' },
+    { icon: FaInstagram, href: personalInfo.instagram, label: 'Hemant Pandey on Instagram' }
   ];
 
   return (
@@ -144,7 +143,7 @@ const Contact = () => {
 
                     return isInternalLink(social.href) ? (
                       <Motion.div key={index} variants={item}>
-                        <Link to={social.href} className={baseClass}>
+                        <Link to={social.href} className={baseClass} aria-label={social.label || 'Social link'}>
                           <social.icon size={18} />
                         </Link>
                       </Motion.div>
@@ -155,6 +154,7 @@ const Contact = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         variants={item}
+                        aria-label={social.label || 'Social link'}
                         className={baseClass}
                       >
                         <social.icon size={18} />
@@ -181,11 +181,12 @@ const Contact = () => {
               
               {/* FULL NAME INPUT CONTAINER */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
+                <label htmlFor="contact-name" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
                   Full Name <span className="text-orange-500/40">*</span>
                 </label>
                 <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'name' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-transparent`}>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -194,18 +195,19 @@ const Contact = () => {
                     onBlur={() => setFocusedField(null)}
                     required
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
-                    placeholder="Hemant Pandey"
+                    placeholder="Your name"
                   />
                 </div>
               </div>
 
               {/* EMAIL CONTAINER */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-pink-400' : 'text-[var(--text-secondary)]'}`}>
+                <label htmlFor="contact-email" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-pink-400' : 'text-[var(--text-secondary)]'}`}>
                   Email Address <span className="text-pink-500/40">*</span>
                 </label>
                 <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'email' ? 'border-pink-500/40 bg-pink-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-transparent`}>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -221,11 +223,12 @@ const Contact = () => {
 
               {/* PHONE INPUT BOX */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-purple-400' : 'text-[var(--text-secondary)]'}`}>
+                <label htmlFor="contact-phone" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-purple-400' : 'text-[var(--text-secondary)]'}`}>
                   Phone Number <span className="text-[var(--text-muted)] text-[10px] lowercase font-sans font-light">(optional)</span>
                 </label>
                 <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'phone' ? 'border-purple-500/40 bg-purple-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-transparent`}>
                   <input
+                    id="contact-phone"
                     type="tel"
                     name="phone"
                     value={formData.phone}
@@ -240,11 +243,12 @@ const Contact = () => {
 
               {/* TEXTAREA CONTAINER */}
               <div className="space-y-2 group">
-                <label className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
+                <label htmlFor="contact-message" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
                   Project Brief <span className="text-orange-500/40">*</span>
                 </label>
                 <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'message' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-transparent`}>
                   <textarea
+                    id="contact-message"
                     rows="4"
                     name="message"
                     value={formData.message}

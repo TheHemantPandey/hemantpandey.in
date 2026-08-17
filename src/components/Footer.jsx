@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { personalInfo } from '../personalData';
 import { Link } from 'react-router-dom';
 
@@ -62,8 +62,6 @@ const Footer = () => {
               <SocialLink href={personalInfo.linkedin} icon={FaLinkedin}>LinkedIn</SocialLink>
 
               <SocialLink href={personalInfo.github} icon={FaGithub}>GitHub</SocialLink>
-
-              <SocialLink href={personalInfo.twitter} icon={FaTwitter}>Twitter</SocialLink>
 
               <SocialLink href={personalInfo.instagram} icon={FaInstagram}>Instagram</SocialLink>
             </div>

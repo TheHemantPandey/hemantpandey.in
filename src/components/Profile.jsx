@@ -40,10 +40,10 @@ const cardVariants = {
 };
 
 const heroLines = [
+  "Hemant Pandey —",
   "Education,",
   "certifications,",
-  "and the foundation",
-  "behind my work."
+  "and the craft."
 ];
 
 const Profile = () => {
@@ -219,14 +219,61 @@ const Profile = () => {
       `}</style>
 
       <Helmet>
-        <title>Professional Profile | Hemant Pandey</title>
-        <meta name="description" content="Learn more about Hemant Pandey's background, core achievements, professional education metrics, and certifications." />
+        <title>Hemant Pandey | Profile, Education &amp; Certifications</title>
+        <meta name="description" content="Learn about Hemant Pandey — Full Stack Developer. Explore his academic background, certifications, technical highlights, and professional profile." />
         <link rel="canonical" href="https://hemantpandey.in/profile" />
-        <meta property="og:title" content="Professional Profile | Hemant Pandey" />
-        <meta property="og:description" content="Learn more about Hemant Pandey's background, core achievements, professional education metrics, and certifications." />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://hemantpandey.in/profile" />
-        <meta name="twitter:title" content="Professional Profile | Hemant Pandey" />
-        <meta name="twitter:description" content="Learn more about Hemant Pandey's background, core achievements, professional education metrics, and certifications." />
+        <meta property="og:site_name" content="Hemant Pandey" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:title" content="Hemant Pandey | Profile, Education &amp; Certifications" />
+        <meta property="og:description" content="Learn about Hemant Pandey — Full Stack Developer. Explore his academic background, certifications, technical highlights, and professional profile." />
+        <meta property="og:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
+        <meta property="og:image:alt" content="Hemant Pandey — Full Stack Developer" />
+
+        {/* Twitter / X */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hemant Pandey | Profile, Education &amp; Certifications" />
+        <meta name="twitter:description" content="Learn about Hemant Pandey — Full Stack Developer. Explore his academic background, certifications, and professional highlights." />
+        <meta name="twitter:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
+        <meta name="twitter:image:alt" content="Hemant Pandey — Full Stack Developer" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              "@id": "https://hemantpandey.in/profile#profilepage",
+              "url": "https://hemantpandey.in/profile",
+              "name": "Hemant Pandey — Profile, Education & Certifications",
+              "description": "Professional profile page of Hemant Pandey, Full Stack Developer. Includes education, certifications, and technical highlights.",
+              "mainEntity": {
+                "@id": "https://hemantpandey.in/#person"
+              },
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://hemantpandey.in/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Profile",
+                    "item": "https://hemantpandey.in/profile"
+                  }
+                ]
+              }
+            }
+          `}
+        </script>
       </Helmet>
 
       {/* Floating background soft glow orbs */}

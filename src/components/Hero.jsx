@@ -63,14 +63,24 @@ const Hero = () => {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0 z-15 p-6 md:p-10 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
         >
-          <h1 className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] mb-6 relative">
+          {/* Semantic H1 — visibly establishes brand identity */}
+          <h1 className="flex flex-col gap-1 mb-4 relative">
+            <span className="text-sm md:text-base font-medium text-[var(--text-secondary)] tracking-widest uppercase">
+              Hemant Pandey
+            </span>
+            <span className="text-base md:text-lg font-light text-[var(--text-muted)] tracking-wider">
+              Full Stack Developer
+            </span>
+          </h1>
+          {/* Visual tagline — styled to match original design */}
+          <p className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] relative" aria-hidden="false">
             <span className="block">
               BUILDING
             </span>
             <span className="block text-[var(--text-secondary)]">
               DIGITAL VALUE.
             </span>
-          </h1>
+          </p>
         </Motion.div>
 
         <div className="order-3 md:order-none flex flex-col md:flex-row justify-between items-end gap-12 border-t-0 md:border-t border-[var(--border)] pt-4 md:pt-12 z-15">

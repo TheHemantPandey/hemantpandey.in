@@ -21,6 +21,7 @@ const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
 const Profile = lazy(() => import('./components/Profile'));
 const ServiceUnavailable = lazy(() => import('./components/ServiceUnavailable'));
 const BotWidget = lazy(() => import('./components/BotWidget'));
+const NotFound = lazy(() => import('./components/NotFound'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -36,23 +37,30 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Hemant Pandey | Full Stack Developer</title>
-        <meta name="description" content="Portfolio of Hemant Pandey, a professional Full Stack Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
+        <title>Hemant Pandey | Full Stack Developer &amp; Software Developer</title>
+        <meta name="description" content="Hemant Pandey is a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products using React, Next.js, Node.js, and the MERN stack. Based in India." />
         <link rel="canonical" href="https://hemantpandey.in/" />
-        
-        {/* Open Graph / Facebook */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hemantpandey.in/" />
-        <meta property="og:title" content="Hemant Pandey | Full Stack Developer" />
-        <meta property="og:description" content="Portfolio of Hemant Pandey, a professional Full Stack Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
-        <meta property="og:image" content="/project/image1.png" />
+        <meta property="og:site_name" content="Hemant Pandey" />
+        <meta property="og:locale" content="en_IN" />
+        <meta property="og:title" content="Hemant Pandey | Full Stack Developer &amp; Software Developer" />
+        <meta property="og:description" content="Hemant Pandey is a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products using React, Next.js, Node.js, and the MERN stack. Based in India." />
+        <meta property="og:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Hemant Pandey — Full Stack Developer portfolio" />
 
-        {/* Twitter */}
+        {/* Twitter / X */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://hemantpandey.in/" />
-        <meta name="twitter:title" content="Hemant Pandey | Full Stack Developer" />
-        <meta name="twitter:description" content="Portfolio of Hemant Pandey, a professional Full Stack Developer specializing in modern MERN stacks, Next.js, and optimized realtime systems." />
-        <meta name="twitter:image" content="/project/image1.png" />
+        <meta name="twitter:title" content="Hemant Pandey | Full Stack Developer &amp; Software Developer" />
+        <meta name="twitter:description" content="Hemant Pandey is a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products using React, Next.js, Node.js, and the MERN stack." />
+        <meta name="twitter:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
+        <meta name="twitter:image:alt" content="Hemant Pandey — Full Stack Developer portfolio" />
 
         {/* Structured Data JSON-LD */}
         <script type="application/ld+json">
@@ -64,20 +72,48 @@ function Home() {
                   "@type": "WebSite",
                   "@id": "https://hemantpandey.in/#website",
                   "url": "https://hemantpandey.in/",
-                  "name": "Hemant Pandey Portfolio",
-                  "description": "Portfolio of Hemant Pandey, a professional Full Stack Developer"
+                  "name": "Hemant Pandey",
+                  "description": "Official portfolio and professional website of Hemant Pandey, Full Stack Developer.",
+                  "publisher": {
+                    "@id": "https://hemantpandey.in/#person"
+                  },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://hemantpandey.in/?s={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  }
                 },
                 {
                   "@type": "Person",
                   "@id": "https://hemantpandey.in/#person",
                   "name": "Hemant Pandey",
                   "url": "https://hemantpandey.in/",
+                  "image": "https://hemantpandey.in/project/portfolio-hemantpandey.png",
+                  "jobTitle": "Full Stack Developer",
+                  "description": "Hemant Pandey is a Full Stack Developer specializing in React, Next.js, Node.js, and the MERN stack. He builds modern web applications, mobile apps, and production-ready digital products.",
+                  "knowsAbout": [
+                    "Full Stack Development",
+                    "React.js",
+                    "Next.js",
+                    "Node.js",
+                    "JavaScript",
+                    "MongoDB",
+                    "Web Development",
+                    "Software Development",
+                    "Mobile Application Development",
+                    "MERN Stack"
+                  ],
+                  "alumniOf": {
+                    "@type": "EducationalOrganization",
+                    "name": "J.C. Bose University of Science and Technology"
+                  },
                   "sameAs": [
                     "https://github.com/TheHemantPandey",
                     "https://www.linkedin.com/in/hemant-pandey-ase/"
-                  ],
-                  "jobTitle": "Full Stack Developer",
-                  "alumniOf": "J.C. Bose University of Science and Technology"
+                  ]
                 }
               ]
             }
@@ -165,6 +201,7 @@ function App() {
                 <Route path="/project/:id" element={<ProjectDetails />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/unavailable" element={<ServiceUnavailable />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </>

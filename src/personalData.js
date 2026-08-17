@@ -1,7 +1,6 @@
 import { Mail, Phone } from "lucide-react";
 import { FaGithub } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 
 export const personalInfo = {
@@ -11,7 +10,6 @@ export const personalInfo = {
   phone: "+91-6397565128",
   linkedin: "https://www.linkedin.com/in/hemant-pandey-ase/",
   github: "https://github.com/TheHemantPandey",
-  twitter: "https://hemantpandey.in",
   instagram: "https://www.instagram.com/hemantt_pandey",
   about: "I am a passionate Computer Science student with a strong foundation in web development and programming. I enjoy building scalable applications and solving complex problems. My expertise lies in the MERN stack and other Technologies, and I am always eager to learn new technologies.",
   socials: [
@@ -29,11 +27,6 @@ export const personalInfo = {
       name: "Email",
       url: "mailto:hement.pandey2121@gmail.com",
       icon: Mail,
-    },
-    {
-      name: "Twitter",
-      url: "https://hemantpandey.in",
-      icon: FaTwitter,
     },
     {
       name: "Instagram",

@@ -1,51 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
   <url>
     <loc>https://hemantpandey.in/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Profile / About page -->
   <url>
     <loc>https://hemantpandey.in/profile</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Project 01: Mission100 Hospital (April 2026 – Present) -->
+  <url>
+    <loc>https://hemantpandey.in/project/01</loc>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://hemantpandey.in/project/01</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
+  <!-- Project 02: Delhi Angel Network (2026 – Present) -->
   <url>
     <loc>https://hemantpandey.in/project/02</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Project 03: Vayu Galaxy (2026 – Present) -->
   <url>
     <loc>https://hemantpandey.in/project/03</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Project 04: Young India Show (April 2026 – Present) -->
   <url>
     <loc>https://hemantpandey.in/project/04</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Project 05: Punpun (2026 – Present) -->
   <url>
     <loc>https://hemantpandey.in/project/05</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- Project 06: Mission100 Hospital App (2026 – Present) -->
   <url>
     <loc>https://hemantpandey.in/project/06</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Project 07: Get Me A Chai (December 2025 – January 2026) -->
+  <url>
+    <loc>https://hemantpandey.in/project/07</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project 08: Hemant Pandey Portfolio (2026 – Present) -->
+  <url>
+    <loc>https://hemantpandey.in/project/08</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project 09: Mail.HemantPandey.in (2026 – Present) -->
+  <url>
+    <loc>https://hemantpandey.in/project/09</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project 10: PassOP (November 2025 – December 2025) -->
+  <url>
+    <loc>https://hemantpandey.in/project/10</loc>
+    <lastmod>2025-12-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Project 11: MusicPlayNest (November 2025 – January 2026) -->
+  <url>
+    <loc>https://hemantpandey.in/project/11</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Project 12: Todo By Hemant (January 2026) -->
+  <url>
+    <loc>https://hemantpandey.in/project/12</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

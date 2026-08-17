@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /unavailable
 
 Sitemap: https://hemantpandey.in/sitemap.xml

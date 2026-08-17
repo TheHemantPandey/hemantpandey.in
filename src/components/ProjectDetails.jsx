@@ -12,6 +12,9 @@ import { projects } from '../projectsData';
 // Helper function to check if a link is internal (starts with /)
 const isInternalLink = (url) => url && url.startsWith('/');
 
+// Helper to strip emoji characters from strings for clean meta tags
+const stripEmoji = (str) => str.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}]/gu, '').trim();
+
 // Reusable link component that handles both internal and external links
 const ProjectLink = ({ url, children, className, ...props }) => {
     if (!url) return null;
@@ -59,63 +62,78 @@ const ProjectDetails = () => {
     return (
         <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] selection:bg-[var(--text-primary)]/10 cursor-none">
             <Helmet>
-                <title>{`${project.title} | Project Details`}</title>
-                <meta name="description" content={`Read details about ${project.title}, ${project.subtitle}. Tech Stack: ${project.techStack.join(', ')}.`} />
+                {/* Clean title — strip emoji for SERP readability */}
+                <title>{`${stripEmoji(project.title)} | Project by Hemant Pandey`}</title>
+                <meta name="description" content={project.detailDescription ? project.detailDescription.slice(0, 155) + (project.detailDescription.length > 155 ? '...' : '') : `${stripEmoji(project.title)}: ${project.subtitle}. Built by Hemant Pandey using ${project.techStack.slice(0, 3).join(', ')}.`} />
                 <link rel="canonical" href={`https://hemantpandey.in/project/${project.id}`} />
-                <meta property="og:title" content={`${project.title} | Project Details`} />
-                <meta property="og:description" content={`Read details about ${project.title}, ${project.subtitle}. Tech Stack: ${project.techStack.join(', ')}.`} />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph */}
+                <meta property="og:type" content="website" />
                 <meta property="og:url" content={`https://hemantpandey.in/project/${project.id}`} />
-                <meta property="og:image" content={project.image} />
-                <meta name="twitter:title" content={`${project.title} | Project Details`} />
-                <meta name="twitter:description" content={`Read details about ${project.title}, ${project.subtitle}. Tech Stack: ${project.techStack.join(', ')}.`} />
-                <meta name="twitter:image" content={project.image} />
+                <meta property="og:site_name" content="Hemant Pandey" />
+                <meta property="og:locale" content="en_IN" />
+                <meta property="og:title" content={`${stripEmoji(project.title)} | Project by Hemant Pandey`} />
+                <meta property="og:description" content={project.description} />
+                <meta property="og:image" content={`https://hemantpandey.in${project.image}`} />
+                <meta property="og:image:alt" content={`${stripEmoji(project.title)} — project by Hemant Pandey`} />
+
+                {/* Twitter / X */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${stripEmoji(project.title)} | Project by Hemant Pandey`} />
+                <meta name="twitter:description" content={project.description} />
+                <meta name="twitter:image" content={`https://hemantpandey.in${project.image}`} />
+                <meta name="twitter:image:alt" content={`${stripEmoji(project.title)} — project by Hemant Pandey`} />
 
                 {/* Structured Data JSON-LD */}
                 <script type="application/ld+json">
-                  {`
-                    {
-                      "@context": "https://schema.org",
-                      "@graph": [
-                        {
-                          "@type": "BreadcrumbList",
-                          "@id": "https://hemantpandey.in/project/${project.id}#breadcrumb",
-                          "itemListElement": [
-                            {
-                              "@type": "ListItem",
-                              "position": 1,
-                              "name": "Home",
-                              "item": "https://hemantpandey.in/"
-                            },
-                            {
-                              "@type": "ListItem",
-                              "position": 2,
-                              "name": "Projects",
-                              "item": "https://hemantpandey.in/#projects"
-                            },
-                            {
-                              "@type": "ListItem",
-                              "position": 3,
-                              "name": "${project.title}",
-                              "item": "https://hemantpandey.in/project/${project.id}"
-                            }
-                          ]
-                        },
-                        {
-                          "@type": "SoftwareApplication",
-                          "@id": "https://hemantpandey.in/project/${project.id}#software",
-                          "name": "${project.title}",
-                          "applicationCategory": "DeveloperApplication",
-                          "operatingSystem": "All",
-                          "browserRequirements": "Requires HTML5 compatible browser",
-                          "offers": {
-                            "@type": "Offer",
-                            "price": "0.00",
-                            "priceCurrency": "USD"
+                  {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@graph": [
+                      {
+                        "@type": "BreadcrumbList",
+                        "@id": `https://hemantpandey.in/project/${project.id}#breadcrumb`,
+                        "itemListElement": [
+                          {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://hemantpandey.in/"
+                          },
+                          {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Projects",
+                            "item": "https://hemantpandey.in/#projects"
+                          },
+                          {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": stripEmoji(project.title),
+                            "item": `https://hemantpandey.in/project/${project.id}`
                           }
-                        }
-                      ]
-                    }
-                  `}
+                        ]
+                      },
+                      {
+                        "@type": "CreativeWork",
+                        "@id": `https://hemantpandey.in/project/${project.id}#project`,
+                        "name": stripEmoji(project.title),
+                        "description": project.detailDescription || project.description,
+                        "url": project.liveUrl || `https://hemantpandey.in/project/${project.id}`,
+                        "image": `https://hemantpandey.in${project.image}`,
+                        "author": {
+                          "@type": "Person",
+                          "@id": "https://hemantpandey.in/#person",
+                          "name": "Hemant Pandey"
+                        },
+                        "creator": {
+                          "@type": "Person",
+                          "@id": "https://hemantpandey.in/#person"
+                        },
+                        "keywords": project.techStack.join(', ')
+                      }
+                    ]
+                  })}
                 </script>
             </Helmet>
 
@@ -172,10 +190,10 @@ const ProjectDetails = () => {
                         </motion.div>
                     </div>
 
-                    {/* detailDiscription */}
+                    {/* About section */}
                     {project.detailDescription && (
                         <div className="mb-16">
-                            <h3 className="text-2xl font-display font-bold mb-6">About This Project</h3>
+                            <h2 className="text-2xl font-display font-bold mb-6">About This Project</h2>
                             <p className="text-lg text-[var(--text-secondary)] font-light leading-relaxed">
                                 {project.detailDescription}
                             </p>
@@ -184,7 +202,7 @@ const ProjectDetails = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--border)] pt-16">
                         <div className="md:col-span-2">
-                            <h3 className="text-2xl font-display font-bold mb-8">Key Features</h3>
+                            <h2 className="text-2xl font-display font-bold mb-8">Key Features</h2>
                             <ul className="space-y-6">
                                 {project.points.map((point, index) => (
                                     <li key={index} className="flex gap-4 text-[var(--text-secondary)] font-light leading-relaxed">
@@ -196,7 +214,7 @@ const ProjectDetails = () => {
                         </div>
 
                         <div>
-                            <h3 className="text-2xl font-display font-bold mb-8">Technologies</h3>
+                            <h2 className="text-2xl font-display font-bold mb-8">Technologies</h2>
                             <div className="flex flex-wrap gap-2">
                                 {project.techStack.map((tech, index) => (
                                     <span

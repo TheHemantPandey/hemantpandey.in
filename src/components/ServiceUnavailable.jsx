@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Construction, ArrowLeft, Clock, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const ServiceUnavailable = () => {
   const textReveal = {
@@ -47,6 +48,11 @@ const ServiceUnavailable = () => {
 
   return (
     <section className="h-screen flex flex-col justify-center items-center relative overflow-hidden px-6 bg-[var(--bg-primary)]">
+      <Helmet>
+        <title>Coming Soon | Hemant Pandey</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl pointer-events-none"></div>
