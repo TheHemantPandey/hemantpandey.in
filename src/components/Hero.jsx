@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent z-10"></div>
         <img
           src={profileImg}
-          alt=""
+          alt="Hemant Pandey — Full Stack Developer"
           className="w-full h-full object-cover opacity-40 dark:opacity-60 transition-opacity duration-500"
         />
       </div>
@@ -45,7 +45,7 @@ const Hero = () => {
           <div className="flex mx-auto md:mx-0 flex-row gap-4 md:gap-12 text-sm font-medium text-[var(--text-secondary)] z-15">
             <div className="flex items-center gap-2 ">
               <Globe size={16} />
-              <span>Based in India</span>
+              <span>Based in Delhi NCR / Faridabad, India</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="relative flex h-2 w-2">
@@ -92,7 +92,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-xl leading-relaxed font-light"
             >
-              I build performant full-stack web applications with deep optimization. Specializing in clean MERN structures, smooth interaction, and secure architectures.
+              I am Hemant Pandey, a Full Stack Developer building modern web applications, scalable digital products, and production-ready architectures with React, Next.js, Node.js, and the MERN stack.
             </Motion.p>
 
             <Motion.div

@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { projects } from '../projectsData';
-import { trackProjectLiveDemoClick } from '../utils/analytics';
+import { trackProjectLiveDemoClick, trackProjectClick } from '../utils/analytics';
 
 // Helper function to check if a link is internal (starts with /)
 const isInternalLink = (url) => url && url.startsWith('/');
@@ -36,6 +36,9 @@ const ProjectDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const project = projects.find((p) => p.id === id);
+    const currentIndex = projects.findIndex((p) => p.id === id);
+    const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : projects[projects.length - 1];
+    const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : projects[0];
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -57,12 +60,16 @@ const ProjectDetails = () => {
         );
     }
 
+    const pageDescription = project.detailDescription 
+      ? (project.detailDescription.length > 155 ? project.detailDescription.slice(0, 152).trim() + '...' : project.detailDescription)
+      : project.description;
+
     return (
         <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] selection:bg-[var(--text-primary)]/10 cursor-none">
             <Helmet>
                 {/* Clean title — strip emoji for SERP readability */}
-                <title>{`${stripEmoji(project.title)} | Project by Hemant Pandey`}</title>
-                <meta name="description" content={project.detailDescription ? project.detailDescription.slice(0, 155) + (project.detailDescription.length > 155 ? '...' : '') : `${stripEmoji(project.title)}: ${project.subtitle}. Built by Hemant Pandey using ${project.techStack.slice(0, 3).join(', ')}.`} />
+                <title>{`${stripEmoji(project.title)} — Project Details | Hemant Pandey`}</title>
+                <meta name="description" content={pageDescription} />
                 <link rel="canonical" href={`https://hemantpandey.in/project/${project.id}`} />
                 <meta name="robots" content="index, follow" />
 
@@ -71,17 +78,17 @@ const ProjectDetails = () => {
                 <meta property="og:url" content={`https://hemantpandey.in/project/${project.id}`} />
                 <meta property="og:site_name" content="Hemant Pandey" />
                 <meta property="og:locale" content="en_IN" />
-                <meta property="og:title" content={`${stripEmoji(project.title)} | Project by Hemant Pandey`} />
+                <meta property="og:title" content={`${stripEmoji(project.title)} — Project Details | Hemant Pandey`} />
                 <meta property="og:description" content={project.description} />
                 <meta property="og:image" content={`https://hemantpandey.in${project.image}`} />
-                <meta property="og:image:alt" content={`${stripEmoji(project.title)} — project by Hemant Pandey`} />
+                <meta property="og:image:alt" content={`${stripEmoji(project.title)} — project preview by Hemant Pandey`} />
 
                 {/* Twitter / X */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${stripEmoji(project.title)} | Project by Hemant Pandey`} />
+                <meta name="twitter:title" content={`${stripEmoji(project.title)} — Project Details | Hemant Pandey`} />
                 <meta name="twitter:description" content={project.description} />
                 <meta name="twitter:image" content={`https://hemantpandey.in${project.image}`} />
-                <meta name="twitter:image:alt" content={`${stripEmoji(project.title)} — project by Hemant Pandey`} />
+                <meta name="twitter:image:alt" content={`${stripEmoji(project.title)} — project preview by Hemant Pandey`} />
 
                 {/* Structured Data JSON-LD */}
                 <script type="application/ld+json">
@@ -138,23 +145,25 @@ const ProjectDetails = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 md:pb-24 pt-6 md:pt-18">
                 <Link
                     to="/"
-                    className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-12 transition-colors group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
+                    className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-12 cursor-none group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
                 >
-                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    Back to Projects
+                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Selected Works
                 </Link>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-24">
+                <div className="space-y-16">
+                    {/* Header: Title & Meta */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end border-b border-[var(--border)] pb-16">
                         <div>
-                            <span className="text-sm font-mono text-[var(--text-secondary)] mb-4 block">
-                                {project.category} • {project.period}
-                            </span>
-                            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 leading-tight">
+                            <div className="flex flex-wrap items-center gap-3 text-sm font-mono text-[var(--text-muted)] mb-4">
+                                <span>{project.id}</span>
+                                <span>•</span>
+                                <span>{project.category}</span>
+                                <span>•</span>
+                                <Link to="/profile" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors underline decoration-dotted underline-offset-4">
+                                    By Hemant Pandey
+                                </Link>
+                            </div>
+                            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
                                 {project.title}
                             </h1>
                             <p className="text-xl text-[var(--text-secondary)] font-light leading-relaxed mb-8">
@@ -182,7 +191,7 @@ const ProjectDetails = () => {
                         >
                             <img
                                 src={project.image}
-                                alt={project.title}
+                                alt={`${stripEmoji(project.title)} project preview`}
                                 loading="lazy"
                                 className="block w-full h-full max-w-full object-fill"
                             />
@@ -226,7 +235,53 @@ const ProjectDetails = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+
+                    {/* Project Navigation Footer & Interlinking */}
+                    <div className="border-t border-[var(--border)] pt-12 mt-16 flex flex-col sm:flex-row items-center justify-between gap-6">
+                        {prevProject && (
+                            <Link
+                                to={`/project/${prevProject.id}`}
+                                onClick={() => trackProjectClick(prevProject.id, prevProject.title, prevProject.category)}
+                                className="group inline-flex items-center gap-3 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-none"
+                            >
+                                <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                                <div className="text-left">
+                                    <span className="block text-[10px] uppercase font-mono tracking-widest text-[var(--text-muted)]">Previous Project</span>
+                                    <span className="font-display font-semibold text-xs sm:text-sm">{stripEmoji(prevProject.title)}</span>
+                                </div>
+                            </Link>
+                        )}
+
+                        <div className="flex items-center gap-3">
+                            <Link
+                                to="/profile"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] hover:bg-[var(--surface-hover)] transition-all cursor-none"
+                            >
+                                About Developer
+                            </Link>
+                            <Link
+                                to="/#projects"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] hover:bg-[var(--surface-hover)] transition-all cursor-none"
+                            >
+                                All Works
+                            </Link>
+                        </div>
+
+                        {nextProject && (
+                            <Link
+                                to={`/project/${nextProject.id}`}
+                                onClick={() => trackProjectClick(nextProject.id, nextProject.title, nextProject.category)}
+                                className="group inline-flex items-center gap-3 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-none text-right"
+                            >
+                                <div>
+                                    <span className="block text-[10px] uppercase font-mono tracking-widest text-[var(--text-muted)]">Next Project</span>
+                                    <span className="font-display font-semibold text-xs sm:text-sm">{stripEmoji(nextProject.title)}</span>
+                                </div>
+                                <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            </Link>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );

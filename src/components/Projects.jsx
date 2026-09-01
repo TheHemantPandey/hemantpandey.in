@@ -109,7 +109,7 @@ const Projects = () => {
                   <motion.img
                     key={hoveredIndex}
                     src={projects[hoveredIndex].image}
-                    alt={projects[hoveredIndex].title}
+                    alt={`${projects[hoveredIndex].title} preview`}
                     initial={{ opacity: 0, scale: 1.03 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
@@ -171,7 +171,7 @@ const Projects = () => {
                       {project.subtitle}
                     </p>
                     <div className="lg:hidden mb-6 rounded-xl overflow-hidden aspect-video w-full border border-[var(--border)] flex items-center justify-center">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-fill" />
+                      <img src={project.image} alt={`${project.title} preview`} className="w-full h-full object-fill" />
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-[var(--text-secondary)] text-sm font-light">{project.category}</span>

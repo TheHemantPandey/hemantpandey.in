@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, Award, GraduationCap, Mail, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Award, FolderGit2, GraduationCap, Mail, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from './Footer';
 import { certificates, education, highlights, personalInfo } from '../personalData';
-import { trackResumeClick, trackSocialClick } from '../utils/analytics';
+import { projects } from '../projectsData';
+import { trackResumeClick, trackSocialClick, trackProjectClick } from '../utils/analytics';
 
 const pageTransition = {
   hidden: { opacity: 0, filter: 'blur(6px)' },
@@ -220,8 +221,8 @@ const Profile = () => {
       `}</style>
 
       <Helmet>
-        <title>Hemant Pandey | Profile, Education &amp; Certifications</title>
-        <meta name="description" content="Learn about Hemant Pandey — Full Stack Developer. Explore his academic background, certifications, technical highlights, and professional profile." />
+        <title>Hemant Pandey — Profile, Education &amp; Certifications</title>
+        <meta name="description" content="Explore Hemant Pandey's background, education at J.C. Bose UST, technical certifications, and full-stack software development highlights." />
         <link rel="canonical" href="https://hemantpandey.in/profile" />
         <meta name="robots" content="index, follow" />
 
@@ -230,15 +231,15 @@ const Profile = () => {
         <meta property="og:url" content="https://hemantpandey.in/profile" />
         <meta property="og:site_name" content="Hemant Pandey" />
         <meta property="og:locale" content="en_IN" />
-        <meta property="og:title" content="Hemant Pandey | Profile, Education &amp; Certifications" />
-        <meta property="og:description" content="Learn about Hemant Pandey — Full Stack Developer. Explore his academic background, certifications, technical highlights, and professional profile." />
+        <meta property="og:title" content="Hemant Pandey — Profile, Education &amp; Certifications" />
+        <meta property="og:description" content="Explore Hemant Pandey's background, education at J.C. Bose UST, technical certifications, and full-stack software development highlights." />
         <meta property="og:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
         <meta property="og:image:alt" content="Hemant Pandey — Full Stack Developer" />
 
         {/* Twitter / X */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hemant Pandey | Profile, Education &amp; Certifications" />
-        <meta name="twitter:description" content="Learn about Hemant Pandey — Full Stack Developer. Explore his academic background, certifications, and professional highlights." />
+        <meta name="twitter:title" content="Hemant Pandey — Profile, Education &amp; Certifications" />
+        <meta name="twitter:description" content="Explore Hemant Pandey's background, education at J.C. Bose UST, technical certifications, and full-stack software development highlights." />
         <meta name="twitter:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
         <meta name="twitter:image:alt" content="Hemant Pandey — Full Stack Developer" />
 
@@ -340,6 +341,12 @@ const Profile = () => {
                 </div>
                 <p className="mt-3 text-2xl font-display font-bold text-[var(--text-primary)]">Full-stack web products</p>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">Building performant web experiences with a strong focus on usability, speed, and realtime interactions.</p>
+                <Link
+                  to="/#projects"
+                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#00C2FF] hover:underline cursor-none"
+                >
+                  Explore Projects <ArrowUpRight size={14} className="profile-accent-icon" />
+                </Link>
               </div>
 
               <div className="rounded-3xl p-6 profile-card-enhanced">
@@ -507,6 +514,80 @@ const Profile = () => {
                     </Motion.p>
                     <h2 className="mt-5 text-2xl font-display font-bold text-[var(--text-primary)]">{highlight.title}</h2>
                     <p className="mt-4 text-base font-light leading-relaxed text-[var(--text-secondary)]">{highlight.description}</p>
+                  </Motion.div>
+                ))}
+              </div>
+            </Motion.section>
+
+            <Motion.section
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="flex flex-col gap-10"
+            >
+              <Motion.div 
+                initial={{ opacity: 0, x: -15 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex items-end justify-between flex-wrap gap-4"
+              >
+                <div className="inline-flex flex-col gap-2 align-start w-fit">
+                  <div className="flex items-center gap-3 text-sm uppercase tracking-[0.22em] text-[var(--text-muted)]">
+                    <FolderGit2 size={18} className="profile-accent-icon" />
+                    Featured Projects
+                  </div>
+                  <Motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="h-[2px] bg-[#00C2FF]"
+                  />
+                </div>
+
+                <Link
+                  to="/#projects"
+                  className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-none"
+                >
+                  View All 12 Projects
+                  <ArrowUpRight size={14} className="profile-accent-icon transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </Motion.div>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                {projects.slice(0, 3).map((project) => (
+                  <Motion.div 
+                    variants={cardVariants}
+                    key={project.id} 
+                    className="rounded-3xl p-8 profile-card-enhanced flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] font-mono">{project.id}</span>
+                        <span className="text-[11px] text-[var(--text-secondary)] font-mono">{project.period}</span>
+                      </div>
+                      <h2 className="mt-4 text-2xl font-display font-bold text-[var(--text-primary)]">{project.title}</h2>
+                      <p className="mt-2 text-xs font-mono uppercase tracking-wider text-[#00C2FF]">{project.category}</p>
+                      <p className="mt-4 text-sm font-light leading-relaxed text-[var(--text-secondary)] line-clamp-3">{project.description}</p>
+                      <div className="flex flex-wrap gap-1.5 mt-4">
+                        {project.techStack.slice(0, 3).map((tech, i) => (
+                          <span key={i} className="px-2.5 py-1 rounded-full bg-[var(--surface-hover)] text-[11px] text-[var(--text-primary)] border border-[var(--border)] font-medium">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link
+                      to={`/project/${project.id}`}
+                      onClick={() => trackProjectClick(project.id, project.title, project.category)}
+                      className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] profile-button-enhanced cursor-none"
+                    >
+                      Case Study & Details
+                      <ArrowUpRight size={14} className="profile-accent-icon profile-button-arrow" />
+                    </Link>
                   </Motion.div>
                 ))}
               </div>

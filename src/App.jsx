@@ -45,8 +45,8 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Hemant Pandey | Full Stack Developer &amp; Software Developer</title>
-        <meta name="description" content="Hemant Pandey is a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products using React, Next.js, Node.js, and the MERN stack. Based in India." />
+        <title>Hemant Pandey — Full Stack Developer</title>
+        <meta name="description" content="Official portfolio of Hemant Pandey, a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products with React, Next.js, and Node.js." />
         <link rel="canonical" href="https://hemantpandey.in/" />
         <meta name="robots" content="index, follow" />
 
@@ -55,8 +55,8 @@ function Home() {
         <meta property="og:url" content="https://hemantpandey.in/" />
         <meta property="og:site_name" content="Hemant Pandey" />
         <meta property="og:locale" content="en_IN" />
-        <meta property="og:title" content="Hemant Pandey | Full Stack Developer &amp; Software Developer" />
-        <meta property="og:description" content="Hemant Pandey is a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products using React, Next.js, Node.js, and the MERN stack. Based in India." />
+        <meta property="og:title" content="Hemant Pandey — Full Stack Developer" />
+        <meta property="og:description" content="Official portfolio of Hemant Pandey, a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products with React, Next.js, and Node.js." />
         <meta property="og:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -65,8 +65,8 @@ function Home() {
         {/* Twitter / X */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://hemantpandey.in/" />
-        <meta name="twitter:title" content="Hemant Pandey | Full Stack Developer &amp; Software Developer" />
-        <meta name="twitter:description" content="Hemant Pandey is a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products using React, Next.js, Node.js, and the MERN stack." />
+        <meta name="twitter:title" content="Hemant Pandey — Full Stack Developer" />
+        <meta name="twitter:description" content="Official portfolio of Hemant Pandey, a Full Stack Developer building modern web applications, mobile apps, and production-ready digital products with React, Next.js, and Node.js." />
         <meta name="twitter:image" content="https://hemantpandey.in/project/portfolio-hemantpandey.png" />
         <meta name="twitter:image:alt" content="Hemant Pandey — Full Stack Developer portfolio" />
 
@@ -84,14 +84,6 @@ function Home() {
                   "description": "Official portfolio and professional website of Hemant Pandey, Full Stack Developer.",
                   "publisher": {
                     "@id": "https://hemantpandey.in/#person"
-                  },
-                  "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": {
-                      "@type": "EntryPoint",
-                      "urlTemplate": "https://hemantpandey.in/?s={search_term_string}"
-                    },
-                    "query-input": "required name=search_term_string"
                   }
                 },
                 {
@@ -116,7 +108,7 @@ function Home() {
                   ],
                   "alumniOf": {
                     "@type": "EducationalOrganization",
-                    "name": "J.C. Bose University of Science and Technology"
+                    "name": "J.C. Bose University of Science and Technology, YMCA"
                   },
                   "sameAs": [
                     "https://github.com/TheHemantPandey",

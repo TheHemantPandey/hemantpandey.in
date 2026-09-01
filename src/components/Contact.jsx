@@ -128,7 +128,7 @@ const Contact = () => {
                 </span>
               </h2>
               <p className="text-lg text-[var(--text-secondary)] font-light max-w-sm mb-12 leading-relaxed">
-                Currently available for selected freelance projects and architectural design opportunities.
+                Currently open for full-stack engineering roles, software developer opportunities, and high-impact web projects.
               </p>
 
               {/* SOCIAL BUTTON LINKS */}

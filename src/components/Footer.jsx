@@ -51,9 +51,9 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-6xl md:text-9xl font-display font-bold text-[var(--text-primary)] tracking-tighter mb-8">
+            <p className="text-6xl md:text-9xl font-display font-bold text-[var(--text-primary)] tracking-tighter mb-8">
               Hemant.
-            </h2>
+            </p>
             <p className="text-[var(--text-secondary)] text-xl max-w-md font-light">
               Crafting digital experiences that leave a lasting impression.
             </p>
