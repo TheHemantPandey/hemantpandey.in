@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from './Footer';
 import { certificates, education, highlights, personalInfo } from '../personalData';
+import { trackResumeClick, trackSocialClick } from '../utils/analytics';
 
 const pageTransition = {
   hidden: { opacity: 0, filter: 'blur(6px)' },
@@ -348,6 +349,7 @@ const Profile = () => {
                     href="/resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackResumeClick('profile_quick_actions')}
                     className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                   >
                     Open Resume
@@ -355,6 +357,7 @@ const Profile = () => {
                   </a>
                   <a
                     href={`mailto:${personalInfo.email}`}
+                    onClick={() => trackSocialClick('email', 'profile_quick_actions')}
                     className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                   >
                     Email Me

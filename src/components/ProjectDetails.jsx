@@ -1,6 +1,3 @@
-//seen
-
-
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -8,12 +5,13 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { projects } from '../projectsData';
+import { trackProjectLiveDemoClick } from '../utils/analytics';
 
 // Helper function to check if a link is internal (starts with /)
 const isInternalLink = (url) => url && url.startsWith('/');
 
 // Helper to strip emoji characters from strings for clean meta tags
-const stripEmoji = (str) => str.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}]/gu, '').trim();
+const stripEmoji = (str) => str.replace(/\p{Extended_Pictographic}/gu, '').trim();
 
 // Reusable link component that handles both internal and external links
 const ProjectLink = ({ url, children, className, ...props }) => {
@@ -168,6 +166,7 @@ const ProjectDetails = () => {
                                 <ProjectLink 
                                     url={project.liveUrl} 
                                     data-cursor="LIVE"
+                                    onClick={() => trackProjectLiveDemoClick(project.id, project.title)}
                                     className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full hover:opacity-90 transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                                 >
                                     View Live <ExternalLink size={18} />

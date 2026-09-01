@@ -16,6 +16,8 @@ import Cursor from './components/Cursor';
 import ScrollIndicator from './components/ScrollIndicator';
 import LoadingScreen from './components/LoadingScreen';
 
+import { initAnalytics, trackPageView } from './utils/analytics';
+
 // Lazy loaded components not needed for the initial above-the-fold render
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
 const Profile = lazy(() => import('./components/Profile'));
@@ -23,12 +25,18 @@ const ServiceUnavailable = lazy(() => import('./components/ServiceUnavailable'))
 const BotWidget = lazy(() => import('./components/BotWidget'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
+const RouteAnalyticsTracker = () => {
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+    // Allow react-helmet-async time to update document.title on route change
+    const timer = setTimeout(() => {
+      trackPageView(pathname + search, document.title);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [pathname, search]);
 
   return null;
 };
@@ -143,6 +151,10 @@ function App() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
     const LOADER_DURATION_MS = 2500;
     let animationFrameId;
     let startTime;
@@ -193,7 +205,7 @@ function App() {
             <Suspense fallback={null}>
               <BotWidget />
             </Suspense>
-            <ScrollToTop />
+            <RouteAnalyticsTracker />
             
             <Suspense fallback={<div className="min-h-screen bg-[var(--bg-primary)]" />}>
               <Routes>

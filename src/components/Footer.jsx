@@ -1,30 +1,39 @@
-//seen
-
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { personalInfo } from '../personalData';
 import { Link } from 'react-router-dom';
+import { trackSocialClick } from '../utils/analytics';
 
 // Helper to check if link is internal route
 const isInternalLink = (url) => url && url.startsWith('/');
 
 // Reusable component for social links
-const SocialLink = ({ href, icon, children }) => {
+const SocialLink = ({ href, icon, platform, children }) => {
   const IconComponent = icon;
   const className = "text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors flex items-center gap-2 group cursor-none";
   
   if (isInternalLink(href)) {
     return (
-      <Link to={href} className={className}>
+      <Link 
+        to={href} 
+        className={className}
+        onClick={() => platform && trackSocialClick(platform, 'footer')}
+      >
         <IconComponent size={16} /> {children} <ArrowUpRight size={16} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
       </Link>
     );
   }
   
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+    <a 
+      href={href} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className={className}
+      onClick={() => platform && trackSocialClick(platform, 'footer')}
+    >
       <IconComponent size={16} /> {children} <ArrowUpRight size={16} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
     </a>
   );
@@ -59,11 +68,11 @@ const Footer = () => {
           >
             <div className="flex flex-col gap-4">
               <span className="text-sm text-[var(--text-muted)] uppercase tracking-widest">Socials</span>
-              <SocialLink href={personalInfo.linkedin} icon={FaLinkedin}>LinkedIn</SocialLink>
+              <SocialLink href={personalInfo.linkedin} icon={FaLinkedin} platform="linkedin">LinkedIn</SocialLink>
 
-              <SocialLink href={personalInfo.github} icon={FaGithub}>GitHub</SocialLink>
+              <SocialLink href={personalInfo.github} icon={FaGithub} platform="github">GitHub</SocialLink>
 
-              <SocialLink href={personalInfo.instagram} icon={FaInstagram}>Instagram</SocialLink>
+              <SocialLink href={personalInfo.instagram} icon={FaInstagram} platform="instagram">Instagram</SocialLink>
             </div>
           </Motion.div>
 

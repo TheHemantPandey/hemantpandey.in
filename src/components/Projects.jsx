@@ -1,12 +1,10 @@
-//seen
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { projects } from '../projectsData';
 import { personalInfo } from '../personalData';
+import { trackProjectClick, trackSocialClick } from '../utils/analytics';
 
 const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(0);
@@ -67,6 +65,10 @@ const Projects = () => {
   };
 
   const handleProjectClick = (id) => {
+    const project = projects.find((p) => p.id === id);
+    if (project) {
+      trackProjectClick(project.id, project.title, project.category);
+    }
     navigate(`/project/${id}`);
   };
 
@@ -188,6 +190,7 @@ const Projects = () => {
               target="_blank"
               rel="noreferrer"
               variants={listItem}
+              onClick={() => trackSocialClick('github', 'projects_section')}
               className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 font-mono text-sm uppercase tracking-[0.08em] text-[var(--text-primary)] transition hover:border-[var(--border-hover)] hover:bg-[var(--surface-hover)] cursor-none"
             >
               View All Projects On GitHub

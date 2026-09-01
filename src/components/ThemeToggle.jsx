@@ -2,6 +2,7 @@ import React from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Monitor } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
+import { trackThemeChange } from '../utils/analytics';
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -11,6 +12,11 @@ const ThemeToggle = () => {
     { mode: 'system', icon: Monitor, label: 'System Theme' },
     { mode: 'dark', icon: Moon, label: 'Dark Theme' }
   ];
+
+  const handleThemeSelect = (mode) => {
+    setTheme(mode);
+    trackThemeChange(mode);
+  };
 
   const handleKeyDown = (e) => {
     const currentIndex = options.findIndex((opt) => opt.mode === theme);
@@ -25,7 +31,7 @@ const ThemeToggle = () => {
     }
 
     if (nextIndex !== currentIndex) {
-      setTheme(options[nextIndex].mode);
+      handleThemeSelect(options[nextIndex].mode);
       // Wait for React update and focus the new button
       setTimeout(() => {
         const buttons = e.currentTarget.querySelectorAll('button');
@@ -49,7 +55,7 @@ const ThemeToggle = () => {
           <button
             key={opt.mode}
             type="button"
-            onClick={() => setTheme(opt.mode)}
+            onClick={() => handleThemeSelect(opt.mode)}
             tabIndex={isActive ? 0 : -1}
             className={`relative flex items-center justify-center h-8 w-8 rounded-full cursor-none transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-1 ${
               isActive 

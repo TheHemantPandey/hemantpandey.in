@@ -6,6 +6,7 @@ import { motion as Motion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import profileImg from '../assets/dp.png';
+import { trackEvent } from '../utils/analytics';
 
 const Hero = () => {
 
@@ -102,6 +103,7 @@ const Hero = () => {
               <div className="flex flex-wrap items-center gap-4 mt-4">
                 <a
                   href="#projects"
+                  onClick={() => trackEvent('cta_click', { cta_name: 'view_selected_work', location: 'hero' })}
                   className="group flex items-center gap-4 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full font-medium text-lg hover:opacity-90 transition-all w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                 >
                   View Selected Work
@@ -110,6 +112,7 @@ const Hero = () => {
 
                 <Link
                   to="/profile"
+                  onClick={() => trackEvent('cta_click', { cta_name: 'my_profile', location: 'hero' })}
                   className="group flex items-center gap-3 px-6 py-3 border border-[var(--border)] text-[var(--text-primary)] rounded-full font-medium text-lg hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] transition-all w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                 >
                   My Profile

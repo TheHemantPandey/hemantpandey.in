@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Cursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [hoveredEl, setHoveredEl] = useState(null);
+  const [_hoveredEl, setHoveredEl] = useState(null);
   const [hoveredRect, setHoveredRect] = useState(null);
   const [hoveredRadius, setHoveredRadius] = useState('9999px');
   const [badgeText, setBadgeText] = useState('');

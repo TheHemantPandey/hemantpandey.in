@@ -4,6 +4,7 @@ import { Menu, X, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo } from '../personalData';
 import ThemeToggle from './ThemeToggle';
+import { trackResumeClick, trackSocialClick } from '../utils/analytics';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -79,6 +80,7 @@ const Navbar = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackResumeClick('navbar_desktop')}
                     className="inline-flex items-center rounded-full bg-[var(--accent-bg)] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[var(--accent-text)] transition-all duration-300 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                   >
                     {item.name}
@@ -130,7 +132,10 @@ const Navbar = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      trackResumeClick('navbar_mobile');
+                      setIsOpen(false);
+                    }}
                     className="rounded-full bg-[var(--accent-bg)] px-8 py-3 text-lg font-display font-bold uppercase tracking-wider text-[var(--accent-text)] transition-all duration-300 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                   >
                     {item.name}
@@ -150,9 +155,9 @@ const Navbar = () => {
                 )
               ))}
               <div className="pt-12 flex gap-8">
-                <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"><FaGithub size={24} /></a>
-                <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"><FaLinkedin size={24} /></a>
-                <a href={`mailto:${personalInfo.email}`} className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"><Mail size={24} /></a>
+                <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('github', 'navbar_mobile')} className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"><FaGithub size={24} /></a>
+                <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('linkedin', 'navbar_mobile')} className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"><FaLinkedin size={24} /></a>
+                <a href={`mailto:${personalInfo.email}`} onClick={() => trackSocialClick('email', 'navbar_mobile')} className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"><Mail size={24} /></a>
               </div>
             </div>
           </Motion.div>

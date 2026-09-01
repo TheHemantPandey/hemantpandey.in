@@ -2,6 +2,7 @@ import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowUpRight, Award, Briefcase, Code2, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackEvent } from '../utils/analytics';
 
 const CredentialsPreview = () => {
   // Animation variant for the grid cards
@@ -46,6 +47,7 @@ const CredentialsPreview = () => {
 
           <Link
             to="/profile"
+            onClick={() => trackEvent('cta_click', { cta_name: 'view_full_profile', location: 'credentials_snapshot' })}
             className="group inline-flex items-center gap-3 self-start rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] text-[var(--text-primary)] transition-all duration-300 hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] hover:border-[var(--text-primary)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-none"
           >
             View Full Profile

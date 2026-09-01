@@ -6,6 +6,7 @@ import { personalInfo } from '../personalData';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { trackContactSubmit, trackContactError, trackSocialClick } from '../utils/analytics';
 
 const isInternalLink = (url) => url && url.startsWith('/');
 
@@ -59,10 +60,12 @@ const Contact = () => {
 
       setStatus('idle');
       setFormData({ name: '', email: '', phone: '', message: '' });
+      trackContactSubmit();
       toast.success("Message sent successfully! I'll get back to you soon.");
     } catch (error) {
       console.error('Email error:', error);
       setStatus('idle');
+      trackContactError('emailjs_send_failure');
       toast.error('Something went wrong. Please try again later.');
     }
   };
@@ -91,10 +94,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Send email to Hemant Pandey' },
-    { icon: FaGithub, href: personalInfo.github, label: 'Hemant Pandey on GitHub' },
-    { icon: FaLinkedin, href: personalInfo.linkedin, label: 'Hemant Pandey on LinkedIn' },
-    { icon: FaInstagram, href: personalInfo.instagram, label: 'Hemant Pandey on Instagram' }
+    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Send email to Hemant Pandey', platform: 'email' },
+    { icon: FaGithub, href: personalInfo.github, label: 'Hemant Pandey on GitHub', platform: 'github' },
+    { icon: FaLinkedin, href: personalInfo.linkedin, label: 'Hemant Pandey on LinkedIn', platform: 'linkedin' },
+    { icon: FaInstagram, href: personalInfo.instagram, label: 'Hemant Pandey on Instagram', platform: 'instagram' }
   ];
 
   return (
@@ -143,7 +146,12 @@ const Contact = () => {
 
                     return isInternalLink(social.href) ? (
                       <Motion.div key={index} variants={item}>
-                        <Link to={social.href} className={baseClass} aria-label={social.label || 'Social link'}>
+                        <Link 
+                          to={social.href} 
+                          className={baseClass} 
+                          aria-label={social.label || 'Social link'}
+                          onClick={() => trackSocialClick(social.platform, 'contact')}
+                        >
                           <social.icon size={18} />
                         </Link>
                       </Motion.div>
@@ -156,6 +164,7 @@ const Contact = () => {
                         variants={item}
                         aria-label={social.label || 'Social link'}
                         className={baseClass}
+                        onClick={() => trackSocialClick(social.platform, 'contact')}
                       >
                         <social.icon size={18} />
                       </Motion.a>
@@ -177,7 +186,7 @@ const Contact = () => {
             {/* Top Linear Highlight wire */}
             <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent" />
 
-            <form className="space-y-7" onSubmit={handleSubmit}>
+            <form className="space-y-7" onSubmit={handleSubmit} data-clarity-mask="true">
               
               {/* FULL NAME INPUT CONTAINER */}
               <div className="space-y-2 group">
@@ -194,6 +203,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
                     required
+                    data-clarity-mask="true"
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
                     placeholder="Your name"
                   />
@@ -215,6 +225,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
                     required
+                    data-clarity-mask="true"
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
                     placeholder="hello@gmail.com"
                   />
@@ -235,6 +246,7 @@ const Contact = () => {
                     onChange={handleChange}
                     onFocus={() => setFocusedField('phone')}
                     onBlur={() => setFocusedField(null)}
+                    data-clarity-mask="true"
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
                     placeholder="+91 XXXXX XXXXX"
                   />
@@ -256,6 +268,7 @@ const Contact = () => {
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     required
+                    data-clarity-mask="true"
                     className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] resize-none leading-relaxed cursor-none"
                     placeholder="Tell me about your build vision..."
                   ></textarea>
