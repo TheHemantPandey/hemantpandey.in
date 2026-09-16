@@ -28,9 +28,8 @@
     <script>
       (function() {
         try {
-          const stored = localStorage.getItem('theme') || 'system';
-          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const resolved = stored === 'system' ? (systemDark ? 'dark' : 'light') : stored;
+          const stored = localStorage.getItem('theme');
+          const resolved = stored === 'light' ? 'light' : 'dark';
           document.documentElement.className = resolved;
           document.documentElement.style.colorScheme = resolved;
         } catch (_) {}

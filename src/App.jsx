@@ -112,7 +112,8 @@ function Home() {
                   },
                   "sameAs": [
                     "https://github.com/TheHemantPandey",
-                    "https://www.linkedin.com/in/hemant-pandey-ase/"
+                    "https://www.linkedin.com/in/hemant-pandey-ase/",
+                    "https://x.com/TheHemantPandey"
                   ]
                 }
               ]

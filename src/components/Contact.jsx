@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion as Motion } from 'framer-motion';
 import { Mail, Loader2, ArrowUpRight } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { personalInfo } from '../personalData';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
@@ -97,6 +98,7 @@ const Contact = () => {
     { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Send email to Hemant Pandey', platform: 'email' },
     { icon: FaGithub, href: personalInfo.github, label: 'Hemant Pandey on GitHub', platform: 'github' },
     { icon: FaLinkedin, href: personalInfo.linkedin, label: 'Hemant Pandey on LinkedIn', platform: 'linkedin' },
+    { icon: FaXTwitter, href: personalInfo.twitter, label: 'Hemant Pandey on X (Twitter)', platform: 'twitter' },
     { icon: FaInstagram, href: personalInfo.instagram, label: 'Hemant Pandey on Instagram', platform: 'instagram' }
   ];
 

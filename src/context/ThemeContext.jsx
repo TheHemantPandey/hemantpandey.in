@@ -6,32 +6,13 @@ export const ThemeContext = createContext(undefined);
 export const ThemeProvider = ({ children }) => {
   const [theme, setThemeState] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'system';
-    }
-    return 'system';
-  });
-
-  const [systemTheme, setSystemTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const stored = localStorage.getItem('theme');
+      return stored === 'light' ? 'light' : 'dark';
     }
     return 'dark';
   });
 
-  // Compute resolved theme on the fly
-  const resolvedTheme = theme === 'system' ? systemTheme : theme;
-
-  // Track system preference changes
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const listener = (e) => {
-      const systemMode = e.matches ? 'dark' : 'light';
-      setSystemTheme(systemMode);
-    };
-
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, []);
+  const resolvedTheme = theme;
 
   // Apply theme classes to document element and sync localStorage
   useEffect(() => {
@@ -39,21 +20,26 @@ export const ThemeProvider = ({ children }) => {
 
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
-    root.classList.add(resolvedTheme);
-    root.style.colorScheme = resolvedTheme;
+    root.classList.add(theme);
+    root.style.colorScheme = theme;
 
     localStorage.setItem('theme', theme);
-  }, [theme, resolvedTheme]);
+  }, [theme]);
 
   const changeTheme = (newTheme) => {
-    if (newTheme === 'light' || newTheme === 'dark' || newTheme === 'system') {
+    if (newTheme === 'light' || newTheme === 'dark') {
       setThemeState(newTheme);
     }
   };
 
+  const toggleTheme = () => {
+    setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, resolvedTheme, systemTheme, setTheme: changeTheme }}>
+    <ThemeContext.Provider value={{ theme, resolvedTheme, systemTheme: 'dark', setTheme: changeTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
+

@@ -165,7 +165,7 @@ export const trackResumeClick = (location = 'unknown') => {
 
 /**
  * Track Social & Direct Contact Links
- * @param {string} platform - 'linkedin' | 'github' | 'instagram' | 'email' | 'phone'
+ * @param {string} platform - 'linkedin' | 'github' | 'instagram' | 'twitter' | 'email' | 'phone'
  * @param {string} location - Placement (e.g. 'contact', 'footer', 'navbar', 'profile')
  */
 export const trackSocialClick = (platform, location = 'unknown') => {

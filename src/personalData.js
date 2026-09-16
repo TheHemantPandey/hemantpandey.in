@@ -1,7 +1,6 @@
 import { Mail, Phone } from "lucide-react";
-import { FaGithub } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa';
-import { FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 export const personalInfo = {
   name: "Hemant Pandey",
@@ -10,6 +9,8 @@ export const personalInfo = {
   phone: "+91-6397565128",
   linkedin: "https://www.linkedin.com/in/hemant-pandey-ase/",
   github: "https://github.com/TheHemantPandey",
+  twitter: "https://x.com/TheHemantPandey",
+  x: "https://x.com/TheHemantPandey",
   instagram: "https://www.instagram.com/hemantt_pandey",
   about: "I am a passionate Computer Science student with a strong foundation in web development and programming. I enjoy building scalable applications and solving complex problems. My expertise lies in the MERN stack and other Technologies, and I am always eager to learn new technologies.",
   socials: [
@@ -19,19 +20,24 @@ export const personalInfo = {
       icon: FaLinkedin,
     },
     {
+      name: "X (Twitter)",
+      url: "https://x.com/TheHemantPandey",
+      icon: FaXTwitter,
+    },
+    {
       name: "GitHub",
       url: "https://github.com/TheHemantPandey",
       icon: FaGithub,
     },
     {
-      name: "Email",
-      url: "mailto:hement.pandey2121@gmail.com",
-      icon: Mail,
-    },
-    {
       name: "Instagram",
       url: "https://www.instagram.com/hemantt_pandey",
       icon: FaInstagram,
+    },
+    {
+      name: "Email",
+      url: "mailto:hement.pandey2121@gmail.com",
+      icon: Mail,
     },
     {
       name: "Phone",

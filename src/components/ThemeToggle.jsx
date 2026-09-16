@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion as Motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Monitor } from 'lucide-react';
+import { motion as Motion } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import { trackThemeChange } from '../utils/analytics';
 
@@ -8,9 +8,8 @@ const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
 
   const options = [
-    { mode: 'light', icon: Sun, label: 'Light Theme' },
-    { mode: 'system', icon: Monitor, label: 'System Theme' },
-    { mode: 'dark', icon: Moon, label: 'Dark Theme' }
+    { mode: 'dark', icon: Moon, label: 'Dark Theme' },
+    { mode: 'light', icon: Sun, label: 'Light Theme' }
   ];
 
   const handleThemeSelect = (mode) => {
@@ -32,7 +31,6 @@ const ThemeToggle = () => {
 
     if (nextIndex !== currentIndex) {
       handleThemeSelect(options[nextIndex].mode);
-      // Wait for React update and focus the new button
       setTimeout(() => {
         const buttons = e.currentTarget.querySelectorAll('button');
         buttons[nextIndex]?.focus();
@@ -89,3 +87,4 @@ const ThemeToggle = () => {
 };
 
 export default ThemeToggle;
+

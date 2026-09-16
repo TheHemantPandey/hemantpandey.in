@@ -2,6 +2,7 @@ import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { personalInfo } from '../personalData';
 import { Link } from 'react-router-dom';
 import { trackSocialClick } from '../utils/analytics';
@@ -69,6 +70,8 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <span className="text-sm text-[var(--text-muted)] uppercase tracking-widest">Socials</span>
               <SocialLink href={personalInfo.linkedin} icon={FaLinkedin} platform="linkedin">LinkedIn</SocialLink>
+
+              <SocialLink href={personalInfo.twitter} icon={FaXTwitter} platform="twitter">X (Twitter)</SocialLink>
 
               <SocialLink href={personalInfo.github} icon={FaGithub} platform="github">GitHub</SocialLink>
 
