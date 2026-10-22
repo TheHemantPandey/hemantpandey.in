@@ -48,7 +48,7 @@ const CredentialsPreview = () => {
           <Link
             to="/profile"
             onClick={() => trackEvent('cta_click', { cta_name: 'view_full_profile', location: 'credentials_snapshot' })}
-            className="group inline-flex items-center gap-3 self-start rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-sky-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.25)] px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-95 cursor-none"
+            className="group inline-flex items-center gap-3 self-start rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-sky-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.25)] px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-95"
           >
             View Full Profile
             <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />

@@ -11,7 +11,7 @@ export const personalInfo = {
   github: "https://github.com/TheHemantPandey",
   twitter: "https://x.com/TheHemantPandey",
   x: "https://x.com/TheHemantPandey",
-  instagram: "https://www.instagram.com/hemantt_pandey",
+  instagram: "https://www.instagram.com/vishnupandey.021",
   about: "I am a passionate Computer Science student with a strong foundation in web development and programming. I enjoy building scalable applications and solving complex problems. My expertise lies in the MERN stack and other Technologies, and I am always eager to learn new technologies.",
   socials: [
     {
@@ -31,7 +31,7 @@ export const personalInfo = {
     },
     {
       name: "Instagram",
-      url: "https://www.instagram.com/hemantt_pandey",
+      url: "https://www.instagram.com/vishnupandey.021",
       icon: FaInstagram,
     },
     {

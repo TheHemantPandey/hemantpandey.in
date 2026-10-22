@@ -1,145 +1,183 @@
 import React from 'react';
-import { motion as Motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Layers, Palette, Code2, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 
-const steps = [
+/* ---------------- 4-STEP WORKFLOW PIPELINE ---------------- */
+const workflowSteps = [
   {
-    id: "01",
-    title: "Discovery",
-    description: "Deep diving into project goals, architecture scope, and target user requirements.",
-    color: "from-indigo-500 to-sky-400 text-sky-400 border-indigo-500/20 group-hover:border-sky-500/40 shadow-indigo-500/5",
+    step: "01",
+    tag: "PLANNING",
+    title: "Discovery & Architecture",
+    description: "System modeling, schema planning, and selecting the optimal tech stack.",
+    icon: Layers,
   },
   {
-    id: "02",
-    title: "Design",
-    description: "Crafting intuitive high-fidelity component screens, design systems, and visual flows.",
-    color: "from-indigo-400 to-sky-400 text-indigo-300 border-indigo-500/20 group-hover:border-indigo-400/40 shadow-indigo-500/5",
+    step: "02",
+    tag: "PROTOTYPING",
+    title: "UI/UX & Interactive Design",
+    description: "Responsive layouts, component hierarchies, and modern design tokens.",
+    icon: Palette,
   },
   {
-    id: "03",
-    title: "Build",
-    description: "Engineering robust, clean, and highly optimized code architectures using modern full-stack workflows.",
-    color: "from-sky-400 to-indigo-500 text-sky-300 border-sky-500/20 group-hover:border-indigo-500/40 shadow-sky-500/5",
+    step: "03",
+    tag: "DEVELOPMENT",
+    title: "Full-Stack Engineering",
+    description: "Clean TypeScript code, REST/WebSocket APIs, database indexing, and state management.",
+    icon: Code2,
   },
   {
-    id: "04",
-    title: "Launch",
-    description: "Executing complete speed audits, server edge indexing, and deploying globally.",
-    color: "from-indigo-500 to-sky-300 text-indigo-400 border-indigo-500/20 group-hover:border-sky-400/40 shadow-indigo-500/5",
-  }
+    step: "04",
+    tag: "DEPLOYMENT",
+    title: "Testing, Security & Cloud CI/CD",
+    description: "Automated testing, vulnerability checks, and containerized deployment to edge networks.",
+    icon: ShieldCheck,
+  },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
 const Process = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 35 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
   return (
     <section id="process" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
-      
-      {/* Structural Background Accents */}
-      <div className="absolute top-1/2 left-0 right-0 h-40 bg-gradient-to-r from-orange-500/5 via-purple-500/5 to-cyan-500/5 blur-[120px] pointer-events-none" />
+      {/* Ambient background glow orbs */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[300px] bg-indigo-500/5 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[300px] bg-sky-500/5 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION HEADER */}
-        <Motion.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-24 flex items-end justify-between border-b border-[var(--border)] pb-8"
+          className="mb-16 sm:mb-20 flex flex-col md:flex-row md:items-end justify-between border-b border-white/[0.08] pb-8 gap-6"
         >
           <div>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-primary)] mb-4 tracking-tight">
-              Process Of{" "}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-mono text-indigo-300 mb-4 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+              // 05_WORKFLOW_PIPELINE
+            </div>
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight">
+              Process of{" "}
               <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300 text-transparent bg-clip-text">
                 Development
               </span>
             </h2>
-            <p className="text-[var(--text-secondary)] text-lg font-light max-w-md">
-              The systematic workflow I use to reliably transform ambitious code ideas into production blueprints.
+            <p className="text-slate-400 text-base md:text-lg font-light max-w-xl mt-3 leading-relaxed">
+              The systematic, battle-tested engineering pipeline used to reliably transform ambitious concepts into production-grade systems.
             </p>
           </div>
-          <span className="text-[var(--text-muted)] font-mono text-sm hidden md:block">
-            // (05_WORKFLOW)
+          <span className="text-slate-500 font-mono text-xs hidden md:block">
+            [ CONTINUOUS_INTEGRATION_PIPELINE ]
           </span>
-        </Motion.div>
+        </motion.div>
 
-        {/* ROADMAP WRAPPER MATRIX */}
+        {/* WORKFLOW PIPELINE GRID */}
         <div className="relative">
-          
-          {/* Continuous Structural Vector Timeline Connector Link Line (Hidden on mobile) */}
-          <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-[1px] bg-gradient-to-r from-indigo-500/20 via-sky-500/20 to-indigo-500/20 z-0" />
+          {/* Subtle desktop connecting gradient line showing momentum */}
+          <div className="hidden lg:block absolute top-[52px] left-[6%] right-[6%] h-[1px] bg-gradient-to-r from-indigo-500/20 via-sky-500/40 to-indigo-500/20 pointer-events-none z-0" />
 
-          <Motion.div
-            variants={container}
+          <motion.div
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10"
           >
-            {steps.map((step, idx) => (
-              <Motion.div
-                key={step.id}
-                variants={item}
-                className="relative group flex flex-col"
-              >
-                {/* Horizontal / Vertical Connection Node Indicator Bullet */}
-                <div className="hidden lg:flex items-center justify-center absolute top-10 left-12 w-2 h-2 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] z-20 group-hover:scale-125 transition-transform duration-300">
-                  <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                </div>
+            {workflowSteps.map((step, idx) => {
+              const IconComponent = step.icon;
+              const isLast = idx === workflowSteps.length - 1;
 
-                {/* Main Step Container Panel */}
-                <div className={`mt-4 p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)] hover:border-[var(--border-hover)] ${step.color}`}>
-                  
-                  {/* Glowing Top Flare Wire */}
-                  <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              return (
+                <motion.div
+                  key={step.step}
+                  variants={itemVariants}
+                  className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white/[0.03] backdrop-blur-[12px] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_12px_36px_rgba(99,102,241,0.14)] transition-all duration-300"
+                >
+                  {/* Glowing Top Flare line on hover */}
+                  <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                  {/* Header Identifier Flag */}
-                  <div className="flex justify-between items-center mb-6">
-                    <span className={`text-4xl font-display font-black bg-gradient-to-br ${step.color} text-transparent bg-clip-text tracking-tight select-none`}>
-                      {step.id}
+                  <div>
+                    {/* Top row: Icon, Step Monospace Badge, and Transition Indicator */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-indigo-400 group-hover:scale-105 group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+                        <IconComponent size={20} strokeWidth={1.75} />
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-xs px-2.5 py-1 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-semibold group-hover:border-indigo-500/40 transition-colors">
+                          Step {step.step}
+                        </span>
+
+                        {!isLast ? (
+                          <ArrowRight
+                            size={14}
+                            className="text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all hidden lg:block"
+                          />
+                        ) : (
+                          <CheckCircle2
+                            size={14}
+                            className="text-emerald-400 hidden lg:block"
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Step Phase Tag */}
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block mb-2">
+                      PHASE // {step.tag}
                     </span>
-                    <span className="text-[var(--text-muted)] font-mono text-xs opacity-60">
-                      🚀 PHASE_0{idx + 1}
-                    </span>
+
+                    {/* Step Title */}
+                    <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-indigo-100 transition-colors">
+                      {step.title}
+                    </h3>
+
+                    {/* Step Description */}
+                    <p className="text-slate-400 text-xs sm:text-[13px] font-light leading-relaxed group-hover:text-slate-300 transition-colors">
+                      {step.description}
+                    </p>
                   </div>
 
-                  {/* Step Meta Contents */}
-                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3 tracking-tight group-hover:text-[var(--text-primary)] transition-colors">
-                    {step.title}
-                  </h3>
-                  
-                  <p className="text-[var(--text-secondary)] text-[0.92rem] leading-relaxed font-light group-hover:text-[var(--text-secondary)] transition-colors duration-300">
-                    {step.description}
-                  </p>
-                </div>
-                
-              </Motion.div>
-            ))}
-          </Motion.div>
+                  {/* Bottom pipeline indicator bullet */}
+                  <div className="pt-5 border-t border-white/[0.06] mt-6 flex items-center justify-between">
+                    <span className="text-[11px] font-mono text-slate-500">
+                      0{idx + 1} / 04
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400/60 group-hover:bg-indigo-400 group-hover:scale-125 transition-all" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
 
       </div>
+
+      {/* Subtle Bottom Section Separator */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-60 z-10 pointer-events-none" />
     </section>
   );
 };

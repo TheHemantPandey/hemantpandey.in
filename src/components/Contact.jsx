@@ -47,13 +47,13 @@ const Contact = () => {
           // so your HTML layout compiles successfully without throwing a 400 Bad Request.
           from_name: formData.name,
           name: formData.name,
-          
+
           reply_to: formData.email,
           email: formData.email,
-          
+
           phone: formData.phone || 'Not provided',
           time: new Date().toLocaleString(),
-          
+
           message: `Phone Number: ${formData.phone || 'Not provided'}\n\nMessage:\n${formData.message}`,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -104,14 +104,14 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
-      
+
       {/* Decorative Ambient Background Radial Glows */}
       <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-indigo-500/8 via-sky-500/5 to-transparent blur-[120px] pointer-events-none animate-glow" />
       <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/6 to-transparent blur-[100px] pointer-events-none animate-glow" style={{ animationDelay: '-10s' }} />
 
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
-          
+
           {/* LEFT CONTENT BLOCK */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <Motion.div
@@ -148,9 +148,9 @@ const Contact = () => {
 
                     return isInternalLink(social.href) ? (
                       <Motion.div key={index} variants={item}>
-                        <Link 
-                          to={social.href} 
-                          className={baseClass} 
+                        <Link
+                          to={social.href}
+                          className={baseClass}
                           aria-label={social.label || 'Social link'}
                           onClick={() => trackSocialClick(social.platform, 'contact')}
                         >
@@ -189,7 +189,7 @@ const Contact = () => {
             <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent" />
 
             <form className="space-y-7" onSubmit={handleSubmit} data-clarity-mask="true">
-              
+
               {/* FULL NAME INPUT CONTAINER */}
               <div className="space-y-2 group">
                 <label htmlFor="contact-name" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-sky-400' : 'text-[var(--text-secondary)]'}`}>

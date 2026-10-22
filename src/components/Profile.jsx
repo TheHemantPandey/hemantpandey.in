@@ -4,9 +4,32 @@ import { ArrowLeft, ArrowUpRight, Award, FolderGit2, GraduationCap, Mail, Sparkl
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from './Footer';
-import { certificates, education, highlights, personalInfo } from '../personalData';
+import { certificates, education, personalInfo } from '../personalData';
 import { projects } from '../projectsData';
 import { trackResumeClick, trackSocialClick, trackProjectClick } from '../utils/analytics';
+
+const proofMetrics = [
+  {
+    metric: "10+",
+    label: "Production Apps Delivered",
+    detail: "Full-stack web & cloud platforms deployed live across healthcare, fintech & SaaS.",
+  },
+  {
+    metric: "4+",
+    label: "Years Hands-on Engineering",
+    detail: "Specialized in modern React, Next.js, TypeScript, Node.js and scalable architectures.",
+  },
+  {
+    metric: "99%+",
+    label: "Performance & SEO Scores",
+    detail: "Obsession with Core Web Vitals, sub-second loads, accessibility & modern indexability.",
+  },
+  {
+    metric: "100%",
+    label: "Type-Safe & Clean Architecture",
+    detail: "Modular systems, strict Zod validation, robust schema design & end-to-end type safety.",
+  },
+];
 
 const pageTransition = {
   hidden: { opacity: 0, filter: 'blur(6px)' },
@@ -296,7 +319,7 @@ const Profile = () => {
         <div className="relative z-10 mx-auto max-w-[90rem]">
           <Link
             to="/"
-            className="group inline-flex items-center gap-3 text-sm uppercase tracking-[0.18em] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
+            className="group inline-flex items-center gap-3 text-sm uppercase tracking-[0.18em] text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
           >
             <ArrowLeft size={18} className="profile-accent-icon transition-transform duration-300 group-hover:-translate-x-1" />
             Back to Home
@@ -343,7 +366,7 @@ const Profile = () => {
                 <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">Building performant web experiences with a strong focus on usability, speed, and realtime interactions.</p>
                 <Link
                   to="/#projects"
-                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#00C2FF] hover:underline cursor-none"
+                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#00C2FF] hover:underline"
                 >
                   Explore Projects <ArrowUpRight size={14} className="profile-accent-icon" />
                 </Link>
@@ -357,7 +380,7 @@ const Profile = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackResumeClick('profile_quick_actions')}
-                    className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
+                    className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
                   >
                     Open Resume
                     <ArrowUpRight size={16} className="profile-accent-icon profile-button-arrow" />
@@ -365,7 +388,7 @@ const Profile = () => {
                   <a
                     href={`mailto:${personalInfo.email}`}
                     onClick={() => trackSocialClick('email', 'profile_quick_actions')}
-                    className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
+                    className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
                   >
                     Email Me
                     <Mail size={16} className="profile-accent-icon" />
@@ -459,7 +482,7 @@ const Profile = () => {
                       href={certificate.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] certificate-button-animated profile-button-enhanced cursor-none"
+                      className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] certificate-button-animated profile-button-enhanced"
                     >
                       View Certificate
                       <ArrowUpRight size={14} className="profile-accent-icon profile-button-arrow" />
@@ -469,13 +492,17 @@ const Profile = () => {
               </div>
             </Motion.section>
 
+            {/* HIGH-IMPACT PROOF METRICS STRIP */}
             <Motion.section
               variants={sectionVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col gap-10"
+              className="relative flex flex-col gap-10"
             >
+              {/* Ambient radial glow behind the section */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-indigo-500/10 blur-[140px] rounded-full pointer-events-none -z-10" />
+
               <Motion.div 
                 initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -484,36 +511,59 @@ const Profile = () => {
                 className="inline-flex flex-col gap-2 align-start w-fit"
               >
                 <div className="flex items-center gap-3 text-sm uppercase tracking-[0.22em] text-[var(--text-muted)]">
-                  <Sparkles size={18} className="profile-accent-icon" />
-                  Highlights
+                  <Sparkles size={18} className="profile-accent-icon text-indigo-400" />
+                  Proof Metrics & Snapshot
                 </div>
                 <Motion.div 
                   initial={{ width: 0 }}
                   whileInView={{ width: "100%" }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="h-[2px] bg-[#00C2FF]"
+                  className="h-[2px] bg-gradient-to-r from-indigo-500 to-sky-400"
                 />
               </Motion.div>
-              <div className="grid gap-6 md:grid-cols-3">
-                {highlights.map((highlight) => (
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {proofMetrics.map((item, index) => (
                   <Motion.div 
                     variants={cardVariants}
-                    key={highlight.title} 
-                    className="rounded-3xl p-8 profile-card-enhanced highlight-card-wrapper"
+                    key={index} 
+                    className="group relative flex flex-col justify-between p-7 rounded-2xl bg-white/[0.03] backdrop-blur-[12px] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_12px_36px_rgba(99,102,241,0.14)] transition-all duration-300"
                   >
-                    <div className="highlight-accent-line" />
-                    <Motion.p 
-                      initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-                      className="text-4xl font-display font-bold text-[var(--text-primary)]"
-                    >
-                      {highlight.metric}
-                    </Motion.p>
-                    <h2 className="mt-5 text-2xl font-display font-bold text-[var(--text-primary)]">{highlight.title}</h2>
-                    <p className="mt-4 text-base font-light leading-relaxed text-[var(--text-secondary)]">{highlight.description}</p>
+                    {/* Glowing top flare line on hover */}
+                    <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-mono text-xs px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-semibold">
+                          // 0{index + 1}
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-400/60 group-hover:bg-indigo-400 transition-colors" />
+                      </div>
+
+                      <Motion.p 
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="text-4xl lg:text-5xl font-display font-extrabold bg-gradient-to-r from-white via-slate-100 to-indigo-200 text-transparent bg-clip-text tracking-tight"
+                      >
+                        {item.metric}
+                      </Motion.p>
+
+                      <h3 className="mt-4 text-base lg:text-lg font-bold text-white tracking-tight group-hover:text-indigo-100 transition-colors">
+                        {item.label}
+                      </h3>
+
+                      <p className="mt-2 text-xs sm:text-[13px] font-light leading-relaxed text-slate-400 group-hover:text-slate-300 transition-colors">
+                        {item.detail}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/[0.06] mt-6 flex items-center justify-between text-[11px] font-mono text-slate-500">
+                      <span>VERIFIED METRIC</span>
+                      <span className="text-emerald-400 font-semibold">● LIVE</span>
+                    </div>
                   </Motion.div>
                 ))}
               </div>
@@ -549,7 +599,7 @@ const Profile = () => {
 
                 <Link
                   to="/#projects"
-                  className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-none"
+                  className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   View All 12 Projects
                   <ArrowUpRight size={14} className="profile-accent-icon transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -583,7 +633,7 @@ const Profile = () => {
                     <Link
                       to={`/project/${project.id}`}
                       onClick={() => trackProjectClick(project.id, project.title, project.category)}
-                      className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] profile-button-enhanced cursor-none"
+                      className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] profile-button-enhanced"
                     >
                       Case Study & Details
                       <ArrowUpRight size={14} className="profile-accent-icon profile-button-arrow" />

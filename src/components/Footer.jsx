@@ -14,11 +14,11 @@ const isInternalLink = (url) => url && url.startsWith('/');
 const SocialLink = ({ href, icon, platform, children }) => {
   const IconComponent = icon;
   const className = "text-[var(--text-primary)] hover:text-[var(--text-secondary)] transition-colors flex items-center gap-2 group cursor-none";
-  
+
   if (isInternalLink(href)) {
     return (
-      <Link 
-        to={href} 
+      <Link
+        to={href}
         className={className}
         onClick={() => platform && trackSocialClick(platform, 'footer')}
       >
@@ -26,12 +26,12 @@ const SocialLink = ({ href, icon, platform, children }) => {
       </Link>
     );
   }
-  
+
   return (
-    <a 
-      href={href} 
-      target="_blank" 
-      rel="noopener noreferrer" 
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className={className}
       onClick={() => platform && trackSocialClick(platform, 'footer')}
     >
