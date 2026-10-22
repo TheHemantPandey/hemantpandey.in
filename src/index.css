@@ -72,7 +72,6 @@ body, nav, main, footer, section, button, input, textarea, a, span, p, h1, h2, h
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none;
     scrollbar-width: thin;
     scrollbar-color: var(--color-bg) var(--color-bg);
   }
@@ -92,9 +91,17 @@ body, nav, main, footer, section, button, input, textarea, a, span, p, h1, h2, h
     letter-spacing: -0.025em;
   }
   
-  /* Hide default cursor on interactive elements too */
-  a, button, input, textarea, select {
-    cursor: none;
+  /* Restore default system mouse pointer across the entire site */
+  .cursor-none {
+    cursor: auto !important;
+  }
+
+  a, button, [role="button"], input[type="submit"], input[type="button"] {
+    cursor: pointer !important;
+  }
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea {
+    cursor: text !important;
   }
   
   ::selection {
