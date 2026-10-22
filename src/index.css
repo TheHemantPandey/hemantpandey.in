@@ -91,17 +91,33 @@ body, nav, main, footer, section, button, input, textarea, a, span, p, h1, h2, h
     letter-spacing: -0.025em;
   }
   
-  /* Restore default system mouse pointer across the entire site */
-  .cursor-none {
-    cursor: auto !important;
+  /* Global cursor suppression on desktop devices - prevents system cursor from showing on click / hover */
+  @media (pointer: fine) {
+    *,
+    *::before,
+    *::after,
+    html,
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    label,
+    svg,
+    iframe,
+    [role="button"] {
+      cursor: none !important;
+    }
   }
 
-  a, button, [role="button"], input[type="submit"], input[type="button"] {
-    cursor: pointer !important;
-  }
-
-  input[type="text"], input[type="email"], input[type="tel"], textarea {
-    cursor: text !important;
+  @media (pointer: coarse) {
+    a, button, [role="button"], input[type="submit"], input[type="button"] {
+      cursor: pointer;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      cursor: text;
+    }
   }
   
   ::selection {
