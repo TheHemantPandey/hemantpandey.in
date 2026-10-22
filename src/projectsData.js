@@ -1,4 +1,50 @@
 export const projects = [
+    
+{
+  id: "00",
+  title: "Slotly ⏰",
+  subtitle: "Full-Stack Appointment Booking SaaS",
+  period: "October 2026",
+  description:
+    "A full-stack appointment booking platform that enables service providers to manage services, availability, and customer appointments. Built with Next.js, TypeScript, PostgreSQL, Prisma, and Redis, with secure authentication, booking conflict prevention, API rate limiting, email notifications, and AI-assisted booking workflows.",
+  detailDescription:
+    "Slotly is a full-stack appointment booking platform designed to simplify appointment scheduling and service management. It includes appointment creation and cancellation workflows, availability management, role-based access controls, and server-side API validation. PostgreSQL and Prisma handle persistent data, while transaction-level advisory locking helps prevent overlapping bookings across services. Redis supports rate limiting with an in-memory fallback when Redis is unavailable. The platform also includes AI-assisted workflows, Gmail SMTP email delivery through Nodemailer, automated tests, and a Docker-based local deployment configuration.",
+  points: [
+    "Built a full-stack appointment booking platform using Next.js and TypeScript.",
+    "Designed database models and data access using PostgreSQL and Prisma.",
+    "Implemented transaction-level locking to prevent conflicting concurrent bookings across services.",
+    "Integrated Redis-based API rate limiting with an in-memory fallback.",
+    "Implemented authentication, role-based access controls, and server-side input validation.",
+    "Integrated AI-assisted workflows using Gemini.",
+    "Implemented transactional email functionality using Nodemailer and Gmail SMTP.",
+    "Added unit, API integration, security regression, and booking concurrency tests.",
+    "Configured Docker and Docker Compose for containerized local development.",
+    "Configured a production build for deployment on Vercel with Neon PostgreSQL."
+  ],
+  techStack: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "PostgreSQL",
+    "Prisma ORM",
+    "Redis",
+    "Node.js",
+    "REST APIs",
+    "Authentication & RBAC",
+    "Zod",
+    "Gemini AI",
+    "Nodemailer",
+    "Vitest",
+    "Supertest",
+    "Docker",
+    "Vercel",
+    "Neon"
+  ],
+  image: "/project/slotly.png",
+  category: "Full Stack SaaS",
+  liveUrl: "https://slotly.hemantpandey.in",
+},
   {
     id: "01",
     title: "Mission100 Hospital 🏥",
