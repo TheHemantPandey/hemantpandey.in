@@ -7,6 +7,7 @@ import Footer from './Footer';
 import { certificates, education, personalInfo } from '../personalData';
 import { projects } from '../projectsData';
 import { trackResumeClick, trackSocialClick, trackProjectClick } from '../utils/analytics';
+import toast from 'react-hot-toast';
 
 const proofMetrics = [
   {
@@ -72,6 +73,23 @@ const heroLines = [
 ];
 
 const Profile = () => {
+  const handleEmailClick = (e) => {
+    trackSocialClick('email', 'profile_quick_actions');
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(personalInfo.email).catch(() => {});
+    }
+    toast.success(`Email copied: ${personalInfo.email}`, { id: 'profile-email-toast' });
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isMobile) {
+      e.preventDefault();
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    }
+  };
+
   return (
     <Motion.div
       initial="hidden"
@@ -387,8 +405,10 @@ const Profile = () => {
                   </a>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    onClick={() => trackSocialClick('email', 'profile_quick_actions')}
-                    className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
+                    onClick={handleEmailClick}
+                    className="group inline-flex items-center justify-between rounded-full px-5 py-3 text-sm font-medium uppercase tracking-[0.16em] profile-button-enhanced focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-pointer pointer-events-auto relative z-20"
+                    aria-label="Send Email to Hemant Pandey"
+                    title="Compose email (copies address to clipboard)"
                   >
                     Email Me
                     <Mail size={16} className="profile-accent-icon" />

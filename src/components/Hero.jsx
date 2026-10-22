@@ -6,8 +6,25 @@ import { FaXTwitter } from 'react-icons/fa6';
 import profileImg from '../assets/dpp.png';
 import { personalInfo } from '../personalData';
 import { trackEvent, trackSocialClick } from '../utils/analytics';
+import toast from 'react-hot-toast';
 
 const Hero = () => {
+  const handleEmailClick = (e) => {
+    trackSocialClick('email', 'hero');
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(personalInfo.email).catch(() => {});
+    }
+    toast.success(`Email copied: ${personalInfo.email}`, { id: 'hero-email-toast' });
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isMobile) {
+      e.preventDefault();
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    }
+  };
   return (
     <section
       id="home"
@@ -165,9 +182,10 @@ const Hero = () => {
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              onClick={() => trackSocialClick('email', 'hero')}
-              className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-indigo-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] transition-all duration-200"
-              aria-label="Send Email"
+              onClick={handleEmailClick}
+              className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-indigo-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] transition-all duration-200 cursor-pointer pointer-events-auto relative z-20"
+              aria-label="Send Email to Hemant Pandey"
+              title="Compose email (copies address to clipboard)"
             >
               <Mail size={18} />
             </a>

@@ -17,6 +17,7 @@ import ScrollIndicator from './components/ScrollIndicator';
 import LoadingScreen from './components/LoadingScreen';
 
 import { initAnalytics, trackPageView } from './utils/analytics';
+import { Toaster } from 'react-hot-toast';
 
 // Lazy loaded components not needed for the initial above-the-fold render
 const ProjectDetails = lazy(() => import('./components/ProjectDetails'));
@@ -199,6 +200,35 @@ function App() {
               <BotWidget />
             </Suspense>
             <RouteAnalyticsTracker />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: 'rgba(15, 23, 42, 0.95)',
+                  color: '#ffffff',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '16px',
+                  padding: '12px 18px',
+                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)',
+                  backdropFilter: 'blur(16px)',
+                  fontSize: '13px',
+                  fontFamily: 'monospace',
+                },
+                success: {
+                  style: {
+                    borderLeft: '4px solid #4ade80',
+                  },
+                  iconTheme: { primary: '#4ade80', secondary: '#05140a' },
+                },
+                error: {
+                  style: {
+                    borderLeft: '4px solid #f87171',
+                  },
+                  iconTheme: { primary: '#f87171', secondary: '#140505' },
+                },
+              }}
+            />
             
             <Suspense fallback={<div className="min-h-screen bg-[var(--bg-primary)]" />}>
               <Routes>

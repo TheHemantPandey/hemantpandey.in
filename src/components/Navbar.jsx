@@ -176,10 +176,10 @@ const Navbar = () => {
 
             {/* Mobile Footer Socials */}
             <div className="flex justify-center gap-6 border-t border-white/10 pt-6">
-              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('github', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-none"><FaGithub size={20} /></a>
-              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('linkedin', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-none"><FaLinkedin size={20} /></a>
-              <a href={personalInfo.twitter} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('twitter', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-none"><FaXTwitter size={20} /></a>
-              <a href={`mailto:${personalInfo.email}`} onClick={() => trackSocialClick('email', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-none"><Mail size={20} /></a>
+              <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('github', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-pointer"><FaGithub size={20} /></a>
+              <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('linkedin', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-pointer"><FaLinkedin size={20} /></a>
+              <a href={personalInfo.twitter} target="_blank" rel="noopener noreferrer" onClick={() => trackSocialClick('twitter', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-pointer"><FaXTwitter size={20} /></a>
+              <a href={`mailto:${personalInfo.email}`} onClick={() => trackSocialClick('email', 'navbar_mobile')} className="text-slate-400 hover:text-white p-2 transition-colors cursor-pointer"><Mail size={20} /></a>
             </div>
           </Motion.div>
         )}

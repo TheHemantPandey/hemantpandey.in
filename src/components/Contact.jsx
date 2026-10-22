@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion as Motion } from 'framer-motion';
-import { Mail, Loader2, ArrowUpRight } from 'lucide-react';
+import { Mail, Loader2, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { personalInfo } from '../personalData';
 import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { trackContactSubmit, trackContactError, trackSocialClick } from '../utils/analytics';
 
@@ -18,14 +18,44 @@ const Contact = () => {
     phone: '',
     message: ''
   });
-  const [focusedField, setFocusedField] = useState(null);
   const [status, setStatus] = useState('idle');
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleChange = (e) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const handleEmailClick = (e) => {
+    trackSocialClick('email', 'contact');
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(personalInfo.email).catch(() => {});
+    }
+    toast.success('Email copied! Opening mail composer...', { id: 'contact-email-toast' });
+    
+    // Open Gmail web composer on desktop, allow native mailto on mobile
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isMobile) {
+      e.preventDefault();
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    }
+  };
+
+  const handleCopyEmail = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(personalInfo.email);
+    }
+    setCopiedEmail(true);
+    toast.success(`Copied: ${personalInfo.email}`, { id: 'contact-copy-toast' });
+    setTimeout(() => setCopiedEmail(false), 2500);
   };
 
   const handleSubmit = async (e) => {
@@ -35,25 +65,18 @@ const Contact = () => {
     setStatus('sending');
 
     try {
-      // 🚀 CRITICAL INITIALIZATION: Safely bind your public key onto the browser runtime thread
       emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          // 📦 REDUNDANT KEY MAPPING:
-          // Supplies BOTH custom keys and default EmailJS dashboard parameter targets 
-          // so your HTML layout compiles successfully without throwing a 400 Bad Request.
           from_name: formData.name,
           name: formData.name,
-
           reply_to: formData.email,
           email: formData.email,
-
           phone: formData.phone || 'Not provided',
           time: new Date().toLocaleString(),
-
           message: `Phone Number: ${formData.phone || 'Not provided'}\n\nMessage:\n${formData.message}`,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -95,7 +118,7 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Send email to Hemant Pandey', platform: 'email' },
+    { icon: Mail, href: `mailto:${personalInfo.email}`, label: 'Send email to Hemant Pandey', platform: 'email', isEmail: true },
     { icon: FaGithub, href: personalInfo.github, label: 'Hemant Pandey on GitHub', platform: 'github' },
     { icon: FaLinkedin, href: personalInfo.linkedin, label: 'Hemant Pandey on LinkedIn', platform: 'linkedin' },
     { icon: FaXTwitter, href: personalInfo.twitter, label: 'Hemant Pandey on X (Twitter)', platform: 'twitter' },
@@ -104,14 +127,14 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
-
+      
       {/* Decorative Ambient Background Radial Glows */}
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-indigo-500/8 via-sky-500/5 to-transparent blur-[120px] pointer-events-none animate-glow" />
-      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/6 to-transparent blur-[100px] pointer-events-none animate-glow" style={{ animationDelay: '-10s' }} />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-indigo-500/10 via-sky-500/5 to-transparent blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/8 to-transparent blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
-
+          
           {/* LEFT CONTENT BLOCK */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <Motion.div
@@ -120,37 +143,95 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-xs font-mono text-[var(--text-muted)] tracking-[0.2em] uppercase block mb-4">
+              <span className="text-xs font-mono text-slate-500 tracking-[0.2em] uppercase block mb-4">
                 // CONNECT_POINT
               </span>
-              <h2 className="text-5xl md:text-7xl font-display font-bold text-[var(--text-primary)] mb-8 tracking-tight leading-[1.05]">
+              <h2 className="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tight leading-[1.05]">
                 Let's work <br />
                 <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300 text-transparent bg-clip-text">
                   together.
                 </span>
               </h2>
-              <p className="text-lg text-[var(--text-secondary)] font-light max-w-sm mb-12 leading-relaxed">
+              <p className="text-lg text-slate-400 font-light max-w-sm mb-8 leading-relaxed">
                 Currently open for full-stack engineering roles, software developer opportunities, and high-impact web projects.
               </p>
 
+              {/* DIRECT EMAIL ACTION & ONE-CLICK COPY BAR */}
+              <div className="relative z-20 pointer-events-auto mb-8 p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-md flex items-center justify-between gap-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] max-w-md">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  onClick={handleEmailClick}
+                  className="flex items-center gap-3 min-w-0 group/mail cursor-pointer pointer-events-auto text-left"
+                  title="Click to compose email"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover/mail:bg-indigo-500/20 group-hover/mail:border-indigo-500/40 transition-colors shrink-0">
+                    <Mail size={18} />
+                  </div>
+                  <div className="truncate">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block">
+                      Direct Email
+                    </span>
+                    <span className="text-xs sm:text-sm font-medium text-white group-hover/mail:text-indigo-300 transition-colors truncate block">
+                      {personalInfo.email}
+                    </span>
+                  </div>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/[0.05] hover:bg-indigo-500/20 border border-white/[0.08] hover:border-indigo-500/40 text-xs font-mono text-slate-300 hover:text-white transition-all cursor-pointer pointer-events-auto shrink-0 active:scale-95"
+                  title="Copy email to clipboard"
+                  aria-label="Copy email address"
+                >
+                  {copiedEmail ? (
+                    <>
+                      <Check size={13} className="text-emerald-400" />
+                      <span className="text-emerald-300 font-medium">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={13} className="text-slate-400" />
+                      <span>Copy Email</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
               {/* SOCIAL BUTTON LINKS */}
-              <div className="flex flex-col gap-6">
-                <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-widest">// SOCIAL_INDEX</p>
+              <div className="flex flex-col gap-4">
+                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest">// SOCIAL_INDEX</p>
                 <Motion.div
                   variants={container}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="flex flex-wrap gap-4"
+                  className="flex flex-wrap gap-3"
                 >
                   {socialLinks.map((social, index) => {
-                    const baseClass = `w-12 h-12 rounded-2xl border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md flex items-center justify-center text-[var(--text-secondary)] transition-all duration-500 ease-out hover:-translate-y-1 hover:text-[var(--text-primary)] hover:bg-[var(--surface-hover)] hover:border-[var(--border-hover)] cursor-none`;
+                    const baseClass = "w-11 h-11 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-300 ease-out hover:-translate-y-1 cursor-pointer pointer-events-auto relative z-20";
+
+                    if (social.isEmail) {
+                      return (
+                        <Motion.a
+                          key={index}
+                          href={social.href}
+                          variants={item}
+                          onClick={handleEmailClick}
+                          aria-label={social.label}
+                          className={baseClass}
+                          title="Compose email to Hemant Pandey"
+                        >
+                          <social.icon size={18} />
+                        </Motion.a>
+                      );
+                    }
 
                     return isInternalLink(social.href) ? (
                       <Motion.div key={index} variants={item}>
-                        <Link
-                          to={social.href}
-                          className={baseClass}
+                        <Link 
+                          to={social.href} 
+                          className={baseClass} 
                           aria-label={social.label || 'Social link'}
                           onClick={() => trackSocialClick(social.platform, 'contact')}
                         >
@@ -183,162 +264,117 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="lg:col-span-7 p-8 md:p-10 rounded-[2.5rem] border border-[var(--border)] bg-gradient-to-b from-[var(--surface-hover)] to-transparent backdrop-blur-2xl relative"
+            className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-md relative shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_8px_32px_rgba(0,0,0,0.3)]"
           >
             {/* Top Linear Highlight wire */}
-            <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent" />
+            <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent pointer-events-none" />
 
-            <form className="space-y-7" onSubmit={handleSubmit} data-clarity-mask="true">
-
+            <form className="space-y-6" onSubmit={handleSubmit} data-clarity-mask="true">
+              
               {/* FULL NAME INPUT CONTAINER */}
-              <div className="space-y-2 group">
-                <label htmlFor="contact-name" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-sky-400' : 'text-[var(--text-secondary)]'}`}>
-                  Full Name <span className="text-sky-500/40">*</span>
+              <div className="space-y-2">
+                <label htmlFor="contact-name" className="text-xs font-mono uppercase tracking-widest text-slate-400 block">
+                  Full Name <span className="text-indigo-400/80">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'name' ? 'border-sky-500/40 bg-sky-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-sky-500/40 focus-within:border-transparent`}>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    onFocus={() => setFocusedField('name')}
-                    onBlur={() => setFocusedField(null)}
-                    required
-                    data-clarity-mask="true"
-                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
-                    placeholder="Your name"
-                  />
-                </div>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  data-clarity-mask="true"
+                  className="w-full bg-black/30 border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all font-light"
+                  placeholder="Your name"
+                />
               </div>
 
-              {/* EMAIL CONTAINER */}
-              <div className="space-y-2 group">
-                <label htmlFor="contact-email" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-indigo-400' : 'text-[var(--text-secondary)]'}`}>
-                  Email Address <span className="text-indigo-500/40">*</span>
-                </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'email' ? 'border-indigo-500/40 bg-indigo-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-indigo-500/40 focus-within:border-transparent`}>
+              {/* EMAIL & PHONE GRID */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label htmlFor="contact-email" className="text-xs font-mono uppercase tracking-widest text-slate-400 block">
+                    Email Address <span className="text-indigo-400/80">*</span>
+                  </label>
                   <input
                     id="contact-email"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    onFocus={() => setFocusedField('email')}
-                    onBlur={() => setFocusedField(null)}
                     required
                     data-clarity-mask="true"
-                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
+                    className="w-full bg-black/30 border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all font-light"
                     placeholder="hello@gmail.com"
                   />
                 </div>
-              </div>
 
-              {/* PHONE INPUT BOX */}
-              <div className="space-y-2 group">
-                <label htmlFor="contact-phone" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-sky-400' : 'text-[var(--text-secondary)]'}`}>
-                  Phone Number <span className="text-[var(--text-muted)] text-[10px] lowercase font-sans font-light">(optional)</span>
-                </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'phone' ? 'border-sky-500/40 bg-sky-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-sky-500/40 focus-within:border-transparent`}>
+                <div className="space-y-2">
+                  <label htmlFor="contact-phone" className="text-xs font-mono uppercase tracking-widest text-slate-400 block">
+                    Phone Number <span className="text-slate-500 text-[10px] lowercase font-sans font-light">(optional)</span>
+                  </label>
                   <input
                     id="contact-phone"
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    onFocus={() => setFocusedField('phone')}
-                    onBlur={() => setFocusedField(null)}
                     data-clarity-mask="true"
-                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] cursor-none"
+                    className="w-full bg-black/30 border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all font-light"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
               </div>
 
               {/* TEXTAREA CONTAINER */}
-              <div className="space-y-2 group">
-                <label htmlFor="contact-message" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-indigo-400' : 'text-[var(--text-secondary)]'}`}>
-                  Project Brief <span className="text-indigo-500/40">*</span>
+              <div className="space-y-2">
+                <label htmlFor="contact-message" className="text-xs font-mono uppercase tracking-widest text-slate-400 block">
+                  Project Brief <span className="text-indigo-400/80">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'message' ? 'border-indigo-500/40 bg-indigo-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-indigo-500/40 focus-within:border-transparent`}>
-                  <textarea
-                    id="contact-message"
-                    rows="4"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    onFocus={() => setFocusedField('message')}
-                    onBlur={() => setFocusedField(null)}
-                    required
-                    data-clarity-mask="true"
-                    className="w-full bg-transparent px-5 py-4 text-[var(--text-primary)] outline-none transition-colors text-base font-light placeholder-[var(--text-muted)] resize-none leading-relaxed cursor-none"
-                    placeholder="Tell me about your build vision..."
-                  ></textarea>
-                </div>
+                <textarea
+                  id="contact-message"
+                  rows="4"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  data-clarity-mask="true"
+                  className="w-full bg-black/30 border border-white/[0.08] focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/30 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all font-light resize-none leading-relaxed"
+                  placeholder="Tell me about your build vision..."
+                ></textarea>
               </div>
 
-              {/* HIGH-END INTERACTIVE SUBMIT BUTTON */}
+              {/* SLEEK GRADIENT PILL SUBMIT BUTTON */}
               <Motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
                 disabled={status === 'sending'}
-                className="w-full relative group/btn overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-sky-500 p-[1px] transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-none shadow-[0_0_25px_rgba(99,102,241,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
+                className="w-full relative group/btn overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-sky-500 py-3.5 px-6 font-medium text-white shadow-[0_0_25px_rgba(99,102,241,0.25)] hover:shadow-[0_0_35px_rgba(99,102,241,0.4)] hover:opacity-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-pointer flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400 focus-visible:outline-offset-2"
               >
-                <div className="w-full h-full bg-[var(--bg-primary)] rounded-[15px] px-6 py-4 transition-all duration-300 group-hover/btn:bg-gradient-to-r group-hover/btn:from-indigo-500 group-hover/btn:to-sky-500 flex items-center justify-center gap-2">
-                  {status === 'sending' ? (
-                    <>
-                      <Loader2 className="animate-spin text-[var(--text-primary)]" size={18} />
-                      <span className="text-[var(--text-primary)] text-sm tracking-wider uppercase font-mono text-xs">Transmitting Brief...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="text-[var(--text-primary)] group-hover/btn:text-white transition-colors text-xs font-mono tracking-widest uppercase">Dispatch Message</span>
-                      <ArrowUpRight className="text-[var(--text-secondary)] group-hover/btn:text-white group-hover/btn:rotate-45 transition-all duration-300" size={16} />
-                    </>
-                  )}
-                </div>
+                {status === 'sending' ? (
+                  <>
+                    <Loader2 className="animate-spin text-white" size={18} />
+                    <span className="text-white text-xs font-mono tracking-widest uppercase">
+                      Transmitting Brief...
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-white text-xs font-mono tracking-widest uppercase font-semibold">
+                      Dispatch Message
+                    </span>
+                    <ArrowUpRight className="text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" size={16} />
+                  </>
+                )}
               </Motion.button>
 
             </form>
           </Motion.div>
 
-          {/* NOTIFICATION FRAMEWORK CORES */}
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              duration: 5000,
-              style: {
-                background: 'var(--glass-bg)',
-                color: 'var(--text-primary)',
-                border: '1px solid var(--glass-border)',
-                borderRadius: '20px',
-                padding: '16px 24px',
-                boxShadow: '0 30px 60px var(--shadow)',
-                backdropFilter: 'blur(20px)',
-                fontSize: '14px',
-                fontFamily: 'monospace'
-              },
-              success: {
-                style: {
-                  background: 'linear-gradient(135deg, rgba(10, 35, 20, 0.95) 0%, rgba(5, 20, 10, 0.98) 100%)',
-                  borderLeft: '4px solid #4ade80',
-                },
-                iconTheme: { primary: '#4ade80', secondary: '#05140a' },
-              },
-              error: {
-                style: {
-                  background: 'linear-gradient(135deg, rgba(35, 10, 10, 0.95) 0%, rgba(20, 5, 5, 0.98) 100%)',
-                  borderLeft: '4px solid #f87171',
-                },
-                iconTheme: { primary: '#f87171', secondary: '#140505' },
-              },
-            }}
-          />
         </div>
       </div>
 
       {/* Subtle Bottom Section Separator */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-60 z-10 pointer-events-none" />
     </section>
   );
 };
