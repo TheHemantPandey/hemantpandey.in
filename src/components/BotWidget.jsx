@@ -160,15 +160,15 @@ const BotWidget = () => {
             data-clarity-mask="true"
             className="absolute bottom-[4.5rem] right-0 w-[21rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[0_10px_55px_var(--shadow)] backdrop-blur-xl"
           >
-            <div className="border-b border-[var(--glass-border)] bg-gradient-to-r from-cyan-300/10 via-transparent to-transparent px-4 py-3">
+            <div className="border-b border-[var(--glass-border)] bg-gradient-to-r from-indigo-500/15 via-sky-500/10 to-transparent px-4 py-3">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm font-semibold text-cyan-100">
+                <div className="flex items-center gap-2 text-sm font-semibold text-sky-100">
                   <Bot size={16} />
                   AI Agent
                 </div>
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
               </div>
-              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-cyan-100/55">
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-sky-100/60">
                 Context aware assistant
               </p>
             </div>
@@ -179,17 +179,17 @@ const BotWidget = () => {
                   key={message.id}
                   className={`max-w-[86%] rounded-xl border px-3 py-2 text-sm leading-relaxed ${
                     message.from === 'bot'
-                      ? 'border-cyan-200/15 bg-cyan-200/10 font-mono text-cyan-50/90'
-                      : 'ml-auto border-[var(--border)] bg-[var(--accent-bg)] text-[var(--accent-text)] cursor-none'
+                      ? 'border-indigo-500/20 bg-indigo-500/10 font-mono text-sky-50/95'
+                      : 'ml-auto border-indigo-500/30 bg-gradient-to-r from-indigo-500 to-sky-500 text-white cursor-none shadow-sm'
                   }`}
                 >
                   {message.from === 'bot' && (
-                    <span className="mb-1 block text-[10px] uppercase tracking-[0.14em] text-cyan-100/60">
+                    <span className="mb-1 block text-[10px] uppercase tracking-[0.14em] text-sky-200/70">
                       Agent
                     </span>
                   )}
                   {message.from === 'bot' ? (
-                    <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-p:my-2 prose-headings:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-1 prose-strong:text-cyan-50 prose-a:text-cyan-300 prose-table:my-2 prose-th:border prose-th:border-cyan-200/25 prose-th:px-2 prose-th:py-1 prose-td:border prose-td:border-cyan-200/20 prose-td:px-2 prose-td:py-1">
+                    <div className="prose prose-invert max-w-none text-sm leading-relaxed prose-p:my-2 prose-headings:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-1 prose-strong:text-sky-50 prose-a:text-sky-300 prose-table:my-2 prose-th:border prose-th:border-indigo-200/25 prose-th:px-2 prose-th:py-1 prose-td:border prose-td:border-indigo-200/20 prose-td:px-2 prose-td:py-1">
                       <ReactMarkdown
                         remarkPlugins={[remarkGfm, remarkBreaks]}
                         components={{
@@ -227,14 +227,14 @@ const BotWidget = () => {
               <div ref={endOfMessagesRef} />
             </div>
 
-            <div className="border-t border-cyan-200/15 px-3 py-3">
+            <div className="border-t border-indigo-500/20 px-3 py-3">
               <div className="mb-2 flex flex-wrap gap-2">
                 {quickHints.map((hint) => (
                   <button
                     key={hint}
                     type="button"
                     onClick={() => sendMessage(hint)}
-                    className="rounded-full border border-cyan-200/20 bg-cyan-100/5 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-cyan-100/75 transition hover:border-cyan-100/45 hover:text-cyan-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 focus-visible:outline-offset-1 cursor-none"
+                    className="rounded-full border border-indigo-400/20 bg-indigo-500/5 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-sky-100/75 transition hover:border-sky-400/40 hover:text-sky-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400 focus-visible:outline-offset-1 cursor-none"
                   >
                     {hint}
                   </button>
@@ -254,11 +254,11 @@ const BotWidget = () => {
                   onChange={(event) => setInput(event.target.value)}
                   placeholder="Type command or question..."
                   data-clarity-mask="true"
-                  className="w-full rounded-lg border border-cyan-200/20 bg-cyan-100/5 px-3 py-2 font-mono text-sm text-cyan-50 outline-none placeholder:text-cyan-100/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 cursor-none"
+                  className="w-full rounded-lg border border-indigo-400/20 bg-indigo-500/5 px-3 py-2 font-mono text-sm text-sky-50 outline-none placeholder:text-sky-100/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400 cursor-none"
                 />
                 <button
                   type="submit"
-                  className="rounded-lg border border-cyan-200/20 bg-cyan-100/10 p-2 text-cyan-50 transition hover:border-cyan-100/45 hover:bg-cyan-100/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 cursor-none"
+                  className="rounded-lg border border-indigo-400/20 bg-indigo-500/10 p-2 text-sky-50 transition hover:border-sky-400/45 hover:bg-indigo-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400 cursor-none"
                   aria-label="Send message"
                   disabled={isTyping}
                 >
@@ -273,10 +273,10 @@ const BotWidget = () => {
       <button
         type="button"
         onClick={handleToggle}
-        className="group absolute bottom-0 right-0 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/35 bg-cyan-100/10 text-cyan-50 shadow-[0_8px_30px_var(--shadow)] backdrop-blur-md transition hover:scale-105 hover:border-cyan-100/55 hover:bg-cyan-100/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400 cursor-none"
+        className="group absolute bottom-0 right-0 flex h-14 w-14 items-center justify-center rounded-full border border-indigo-400/35 bg-gradient-to-tr from-indigo-600/90 to-sky-500/90 text-white shadow-[0_8px_30px_rgba(99,102,241,0.35)] backdrop-blur-md transition hover:scale-105 hover:border-sky-300/60 hover:shadow-[0_8px_35px_rgba(99,102,241,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-400 cursor-none"
         aria-label={isOpen ? 'Close chatbot' : 'Open chatbot'}
       >
-        <span className="absolute inset-0 rounded-full border border-cyan-200/30 animate-ping" />
+        <span className="absolute inset-0 rounded-full border border-sky-400/40 animate-ping" />
         <Motion.div
           initial={false}
           animate={{ rotate: isOpen ? 180 : 0 }}

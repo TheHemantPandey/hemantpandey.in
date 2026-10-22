@@ -6,25 +6,25 @@ const steps = [
     id: "01",
     title: "Discovery",
     description: "Deep diving into project goals, architecture scope, and target user requirements.",
-    color: "from-cyan-500 to-blue-600 text-cyan-400 border-cyan-500/20 group-hover:border-cyan-500/40 shadow-cyan-500/5",
+    color: "from-indigo-500 to-sky-400 text-sky-400 border-indigo-500/20 group-hover:border-sky-500/40 shadow-indigo-500/5",
   },
   {
     id: "02",
     title: "Design",
     description: "Crafting intuitive high-fidelity component screens, design systems, and visual flows.",
-    color: "from-purple-500 to-pink-500 text-purple-400 border-purple-500/20 group-hover:border-purple-500/40 shadow-purple-500/5",
+    color: "from-indigo-400 to-sky-400 text-indigo-300 border-indigo-500/20 group-hover:border-indigo-400/40 shadow-indigo-500/5",
   },
   {
     id: "03",
     title: "Build",
     description: "Engineering robust, clean, and highly optimized code architectures using modern full-stack workflows.",
-    color: "from-orange-500 to-red-500 text-orange-400 border-orange-500/20 group-hover:border-orange-500/40 shadow-orange-500/5",
+    color: "from-sky-400 to-indigo-500 text-sky-300 border-sky-500/20 group-hover:border-indigo-500/40 shadow-sky-500/5",
   },
   {
     id: "04",
     title: "Launch",
     description: "Executing complete speed audits, server edge indexing, and deploying globally.",
-    color: "from-emerald-500 to-teal-500 text-emerald-400 border-emerald-500/20 group-hover:border-emerald-500/40 shadow-emerald-500/5",
+    color: "from-indigo-500 to-sky-300 text-indigo-400 border-indigo-500/20 group-hover:border-sky-400/40 shadow-indigo-500/5",
   }
 ];
 
@@ -71,7 +71,7 @@ const Process = () => {
           <div>
             <h2 className="text-4xl md:text-6xl font-display font-bold text-[var(--text-primary)] mb-4 tracking-tight">
               Process Of{" "}
-              <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300 text-transparent bg-clip-text">
                 Development
               </span>
             </h2>
@@ -88,7 +88,7 @@ const Process = () => {
         <div className="relative">
           
           {/* Continuous Structural Vector Timeline Connector Link Line (Hidden on mobile) */}
-          <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-[1px] bg-gradient-to-r from-cyan-500/20 via-orange-500/20 to-emerald-500/20 z-0" />
+          <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-[1px] bg-gradient-to-r from-indigo-500/20 via-sky-500/20 to-indigo-500/20 z-0" />
 
           <Motion.div
             variants={container}
@@ -109,7 +109,7 @@ const Process = () => {
                 </div>
 
                 {/* Main Step Container Panel */}
-                <div className={`mt-4 p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--border-hover)] ${step.color}`}>
+                <div className={`mt-4 p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] backdrop-blur-2xl flex-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)] hover:border-[var(--border-hover)] ${step.color}`}>
                   
                   {/* Glowing Top Flare Wire */}
                   <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

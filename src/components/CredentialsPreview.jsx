@@ -22,8 +22,8 @@ const CredentialsPreview = () => {
   return (
     <section id="credentials" className="pt-36 relative overflow-hidden">
       {/* Background Ambient Glow to match theme */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-indigo-500/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-sky-500/6 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-360 mx-auto px-6 sm:px-12 lg:px-16">
         {/* Header Block */}
@@ -34,7 +34,7 @@ const CredentialsPreview = () => {
           className="mb-12 flex flex-col gap-8 border-b border-[var(--border)] pb-8 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="max-w-2xl">
-            <span className="text-xs uppercase tracking-[0.24em] text-cyan-400 font-medium">
+            <span className="text-xs uppercase tracking-[0.24em] text-sky-400 font-medium">
               At A Glance
             </span>
             <h2 className="mt-2 text-4xl font-display font-bold text-[var(--text-primary)] md:text-6xl">
@@ -48,7 +48,7 @@ const CredentialsPreview = () => {
           <Link
             to="/profile"
             onClick={() => trackEvent('cta_click', { cta_name: 'view_full_profile', location: 'credentials_snapshot' })}
-            className="group inline-flex items-center gap-3 self-start rounded-full border border-[var(--border)] px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] text-[var(--text-primary)] transition-all duration-300 hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] hover:border-[var(--text-primary)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-none"
+            className="group inline-flex items-center gap-3 self-start rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-sky-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.25)] px-6 py-3 text-sm font-medium uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-95 cursor-none"
           >
             View Full Profile
             <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
@@ -65,16 +65,16 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(34, 211, 238, 0.4)' }}
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(99, 102, 241, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)]"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 transition-colors group-hover:bg-purple-500/20">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 transition-colors group-hover:bg-indigo-500/20">
                 <Briefcase size={20} />
               </div>
               <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Current Role</h3>
-              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-cyan-300 transition-colors">Full Stack Developer</p>
+              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-sky-300 transition-colors">Full Stack Developer</p>
               <p className="text-[var(--text-secondary)] text-sm mt-1">Young India Show Foundation</p>
             </div>
             <span className="text-xs text-[var(--text-muted)] mt-4 block">2026 — Present</span>
@@ -87,16 +87,16 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(168, 85, 247, 0.4)' }}
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(56, 189, 248, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)]"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 transition-colors group-hover:bg-purple-500/20">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-4 transition-colors group-hover:bg-sky-500/20">
                 <Code2 size={20} />
               </div>
               <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Core Architecture</h3>
-              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-purple-300 transition-colors">MERN & Next.js</p>
+              <p className="text-[var(--text-primary)] text-xl font-semibold mt-2 group-hover:text-indigo-300 transition-colors">MERN & Next.js</p>
               <p className="text-[var(--text-secondary)] text-sm mt-1">Full-Stack / Vibe Coding workflow</p>
             </div>
             <div className="flex gap-2 mt-4 flex-wrap">
@@ -113,16 +113,16 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(236, 72, 153, 0.4)' }}
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(99, 102, 241, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)]"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-4 transition-colors group-hover:bg-pink-500/20">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 transition-colors group-hover:bg-indigo-500/20">
                 <Terminal size={20} />
               </div>
               <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Production Builds</h3>
-              <p className="text-[var(--text-primary)] text-4xl font-extrabold mt-2 tracking-tight group-hover:text-pink-300 transition-colors">12+</p>
+              <p className="text-[var(--text-primary)] text-4xl font-extrabold mt-2 tracking-tight group-hover:text-sky-300 transition-colors">12+</p>
               <p className="text-[var(--text-secondary)] text-sm mt-1">Deployed live platforms & tools</p>
             </div>
             <div className="flex gap-2 mt-4 flex-wrap">
@@ -138,12 +138,12 @@ const CredentialsPreview = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(234, 179, 8, 0.4)' }}
+            whileHover={{ y: -6, scale: 1.01, borderColor: 'rgba(56, 189, 248, 0.4)' }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-xl"
+            className="group relative backdrop-blur-md bg-[var(--surface)] border border-[var(--border)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between min-h-[200px] hover:border-[var(--border-hover)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)]"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 mb-4 transition-colors group-hover:bg-yellow-500/20">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-4 transition-colors group-hover:bg-sky-500/20">
                 <Award size={20} />
               </div>
               <h3 className="text-[var(--text-secondary)] text-xs uppercase tracking-widest font-medium">Education Snapshot</h3>

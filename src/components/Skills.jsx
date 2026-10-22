@@ -83,12 +83,12 @@ const getSkillIcon = (skillName) => {
 
 /* ---------------- PREMIUM CARD IMPLEMENTATION ---------------- */
 const SkillCard = ({ cat, index }) => {
-  // Diversified dynamic hover accent rings for the 4 grid slots
+  // Refined Indigo & Sky Blue hover accents
   const hoverBorders = [
-    "hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)]",    // Frontend Card
-    "hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]", // Backend Card
-    "hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(168,85,247,0.1)]",  // Languages Card
-    "hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(251,191,36,0.1)]"     // Tools Card
+    "hover:border-indigo-500/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)]",
+    "hover:border-sky-500/40 hover:shadow-[0_0_30px_rgba(56,189,248,0.12)]",
+    "hover:border-indigo-400/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)]",
+    "hover:border-sky-400/40 hover:shadow-[0_0_30px_rgba(56,189,248,0.12)]"
   ];
 
   const cardHoverStyle = hoverBorders[index % hoverBorders.length];
@@ -99,7 +99,7 @@ const SkillCard = ({ cat, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.75, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--border-hover)] ${cardHoverStyle}`}
+      className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)] hover:border-[var(--border-hover)] ${cardHoverStyle}`}
     >
       
       {/* Decorative Top Flare Glow Effect */}
@@ -137,7 +137,7 @@ export default function Skills() {
   return (
     <section className="relative py-24 px-4 overflow-hidden bg-[var(--bg-primary)]">
       {/* Background Ambience */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 blur-[140px] rounded-full pointer-events-none animate-glow" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/6 blur-[140px] rounded-full pointer-events-none animate-glow" />
 
       <div className="max-w-6xl mx-auto relative z-10">
 
@@ -145,7 +145,7 @@ export default function Skills() {
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-[var(--text-primary)] tracking-tight">
             Technical{" "}
-            <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300 text-transparent bg-clip-text">
               Skills
             </span>
           </h2>

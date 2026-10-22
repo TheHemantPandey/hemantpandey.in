@@ -176,7 +176,7 @@ const ProjectDetails = () => {
                                     url={project.liveUrl} 
                                     data-cursor="LIVE"
                                     onClick={() => trackProjectLiveDemoClick(project.id, project.title)}
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full hover:opacity-90 transition-colors font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-sky-500 text-white rounded-full hover:opacity-90 transition-all font-medium shadow-[0_0_20px_rgba(99,102,241,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                                 >
                                     View Live <ExternalLink size={18} />
                                 </ProjectLink>

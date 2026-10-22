@@ -100,7 +100,7 @@ const Projects = () => {
           {/* Sticky Image Preview (Desktop) */}
           <div className="hidden lg:block w-1/2 relative">
             <div 
-              className="sticky top-32 w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-lg cursor-none flex flex-col"
+              className="sticky top-32 w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--surface)] backdrop-blur-xl shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] transition-all duration-300 hover:border-[var(--border-hover)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)] cursor-none flex flex-col"
               onClick={() => handleProjectClick(projects[hoveredIndex].id)}
             >
               {/* Flush Image Container (Fills top, left, right and rounded corners) */}
@@ -144,7 +144,7 @@ const Projects = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="w-full lg:w-1/2 flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
+            className="w-full lg:w-1/2 flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface)] backdrop-blur-xl p-6 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)]"
           >
             {projects.map((project, index) => (
               <motion.div
@@ -191,7 +191,7 @@ const Projects = () => {
               rel="noreferrer"
               variants={listItem}
               onClick={() => trackSocialClick('github', 'projects_section')}
-              className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 font-mono text-sm uppercase tracking-[0.08em] text-[var(--text-primary)] transition hover:border-[var(--border-hover)] hover:bg-[var(--surface-hover)] cursor-none"
+              className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border)] px-6 py-3 font-mono text-sm uppercase tracking-[0.08em] text-[var(--text-primary)] transition-all duration-300 hover:border-indigo-500/50 hover:bg-indigo-500/10 hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] cursor-none"
             >
               View All Projects On GitHub
               <ArrowUpRight size={16} />

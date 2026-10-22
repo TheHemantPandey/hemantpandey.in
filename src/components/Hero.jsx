@@ -1,138 +1,192 @@
-//seen
-
-
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
-import { ArrowDownRight, ArrowUpRight, Globe } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import profileImg from '../assets/dp.png';
-import { trackEvent } from '../utils/analytics';
+import { personalInfo } from '../personalData';
+import { trackEvent, trackSocialClick } from '../utils/analytics';
 
 const Hero = () => {
-
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-0 md:pt-20 bg-[var(--bg-primary)]">
-      {/* Drifting Ambient Background Glow Orbs */}
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 pb-16 lg:pt-36 lg:pb-24 bg-[var(--bg-primary)]"
+    >
+      {/* Ambient Radial Background Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[140px] animate-glow pointer-events-none" style={{ animationDuration: '40s' }} />
-        <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] animate-glow pointer-events-none" style={{ animationDuration: '30s', animationDelay: '-10s' }} />
-      </div>
-
-      {/* Profile Image Background Layer */}
-      <div className="absolute right-0 top-0 h-[65vh] md:h-full w-full md:w-1/2 z-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent z-10"></div>
-        <img
-          src={profileImg}
-          alt="Hemant Pandey — Full Stack Developer"
-          className="w-full h-full object-cover opacity-40 dark:opacity-60 transition-opacity duration-500"
+        <div
+          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-gradient-to-b from-indigo-500/10 via-sky-500/5 to-transparent rounded-full blur-[140px] pointer-events-none"
+        />
+        <div
+          className="absolute top-1/3 -left-32 w-[450px] h-[450px] bg-indigo-600/8 rounded-full blur-[130px] pointer-events-none"
+        />
+        <div
+          className="absolute bottom-10 right-0 w-[500px] h-[500px] bg-sky-500/8 rounded-full blur-[140px] pointer-events-none"
         />
       </div>
 
-      <div className={newFunction()}>
-
-        {/* Top Metadata */}
-        <Motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="order-2 md:order-none flex justify-between items-start mb-8 md:mb-24 w-full border-b border-[var(--border)] pb-4 pt-4 md:pt-2 z-15"
-        >
-          <div className="hidden md:flex items-center gap-4">
-            <div className="h-[1px] w-12 bg-[var(--border)]"></div>
-            <span className="text-sm font-medium text-[var(--text-secondary)] tracking-widest uppercase">Hemant Pandey</span>
-          </div>
-
-          <div className="flex mx-auto md:mx-0 flex-row gap-4 md:gap-12 text-sm font-medium text-[var(--text-secondary)] z-15">
-            <div className="flex items-center gap-2 ">
-              <Globe size={16} />
-              <span>Based in Delhi NCR / Faridabad, India</span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Copy & Value Proposition */}
+          <Motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col items-start text-left"
+          >
+            {/* 1. Top Pill Badge: Available Status */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-md mb-6 shadow-[0_0_20px_rgba(16,185,129,0.08)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs sm:text-sm font-medium text-emerald-300 tracking-wide">
+                Available for Full-Time Roles & Projects
+              </span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </div>
-              <span className="text-green-400">Available for work</span>
+
+            {/* Developer Tagline / Kicker */}
+            <p className="text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-indigo-400 mb-3">
+              Hemant Pandey — Full-Stack Developer
+            </p>
+
+            {/* Primary Headline with Tight Tracking & Gradient */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-400 leading-[1.08] mb-6">
+              Building Scalable Digital Products & Web Architectures.
+            </h1>
+
+            {/* Supporting Subtext */}
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl mb-8 font-normal">
+              Specializing in React, Next.js, Node.js, and modern cloud architectures. Transforming complex problems into high-performance, production-ready web applications.
+            </p>
+
+            {/* Action CTAs */}
+            <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
+              {/* Primary CTA */}
+              <a
+                href="#projects"
+                onClick={() => trackEvent('cta_click', { cta_name: 'view_featured_works', location: 'hero' })}
+                className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm sm:text-base text-white bg-gradient-to-r from-indigo-500 via-indigo-600 to-sky-500 hover:from-indigo-400 hover:to-sky-400 shadow-[0_0_24px_rgba(99,102,241,0.35)] hover:shadow-[0_0_32px_rgba(99,102,241,0.55)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
+              >
+                <span>View Featured Works</span>
+                <ArrowDownRight className="w-4 h-4 group-hover:rotate-45 transition-transform duration-300" />
+              </a>
+
+              {/* Secondary CTA */}
+              <a
+                href="#contact"
+                onClick={() => trackEvent('cta_click', { cta_name: 'get_in_touch', location: 'hero' })}
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-medium text-sm sm:text-base text-slate-200 bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white backdrop-blur-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
+              >
+                <span>Get in Touch</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
-          </div>
-        </Motion.div>
 
-        {/* Entire Heading Animated as One Premium Element */}
-        <Motion.div
-          initial={{ opacity: 0, y: 35, scale: 0.98, filter: 'blur(8px)' }}
-          animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="order-1 md:order-none mb-0 md:mb-12 mt-0 h-[65vh] md:h-auto flex flex-col justify-end md:justify-center pt-20 md:pt-0 z-15 p-6 md:p-10 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)]"
-        >
-          {/* Semantic H1 — visibly establishes brand identity */}
-          <h1 className="flex flex-col gap-1 mb-4 relative">
-            <span className="text-sm md:text-base font-medium text-[var(--text-secondary)] tracking-widest uppercase">
-              Hemant Pandey
-            </span>
-            <span className="text-base md:text-lg font-light text-[var(--text-muted)] tracking-wider">
-              Full Stack Developer
-            </span>
-          </h1>
-          {/* Visual tagline — styled to match original design */}
-          <p className="text-[13vw] md:text-[10vw] leading-[0.9] font-display font-bold tracking-tighter text-[var(--text-primary)] relative" aria-hidden="false">
-            <span className="block">
-              BUILDING
-            </span>
-            <span className="block text-[var(--text-secondary)]">
-              DIGITAL VALUE.
-            </span>
-          </p>
-        </Motion.div>
+            {/* Social Links Row */}
+            <div className="flex items-center gap-3 pt-6 border-t border-white/[0.06] w-full">
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-medium mr-2">
+                Connect:
+              </span>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackSocialClick('github', 'hero')}
+                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-indigo-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] transition-all duration-200"
+                aria-label="GitHub Profile"
+              >
+                <FaGithub size={18} />
+              </a>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackSocialClick('linkedin', 'hero')}
+                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-indigo-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] transition-all duration-200"
+                aria-label="LinkedIn Profile"
+              >
+                <FaLinkedin size={18} />
+              </a>
+              <a
+                href={personalInfo.x || personalInfo.twitter}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackSocialClick('twitter', 'hero')}
+                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-indigo-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] transition-all duration-200"
+                aria-label="X (Twitter) Profile"
+              >
+                <FaXTwitter size={18} />
+              </a>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                onClick={() => trackSocialClick('email', 'hero')}
+                className="p-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-indigo-500/40 hover:bg-white/[0.08] hover:shadow-[0_0_15px_rgba(99,102,241,0.2)] transition-all duration-200"
+                aria-label="Send Email"
+              >
+                <Mail size={18} />
+              </a>
+            </div>
+          </Motion.div>
 
-        <div className="order-3 md:order-none flex flex-col md:flex-row justify-between items-end gap-12 border-t-0 md:border-t border-[var(--border)] pt-4 md:pt-12 z-15">
-          <div className="flex flex-col gap-8">
-            <Motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-xl leading-relaxed font-light"
-            >
-              I am Hemant Pandey, a Full Stack Developer building modern web applications, scalable digital products, and production-ready architectures with React, Next.js, Node.js, and the MERN stack.
-            </Motion.p>
+          {/* Right Column: Modern Tech Bento Card */}
+          <Motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center items-center relative"
+          >
+            <div className="relative w-full max-w-sm sm:max-w-md group">
+              {/* Ambient Glow Behind Bento Card */}
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-indigo-500/25 via-sky-500/15 to-transparent blur-2xl -z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <Motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex flex-wrap items-center gap-4 mt-4">
-                <a
-                  href="#projects"
-                  onClick={() => trackEvent('cta_click', { cta_name: 'view_selected_work', location: 'hero' })}
-                  className="group flex items-center gap-4 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full font-medium text-lg hover:opacity-90 transition-all w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
-                >
-                  View Selected Work
-                  <ArrowDownRight className="group-hover:rotate-45 transition-transform duration-300" />
-                </a>
+              {/* Bento Card Surface */}
+              <div className="relative rounded-3xl border border-white/10 bg-[#0b0c12]/80 backdrop-blur-xl p-3 sm:p-4 shadow-[0_24px_50px_rgba(0,0,0,0.6),inset_0_1px_0_0_rgba(255,255,255,0.12)]">
+                {/* Photo Frame Container */}
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-b from-zinc-800/40 via-zinc-900/60 to-black/90">
+                  <img
+                    src={profileImg}
+                    alt="Hemant Pandey — Full Stack Developer"
+                    className="w-full h-full object-cover object-center filter contrast-[1.02] group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  {/* Subtle bottom shadow overlay to integrate image seamlessly */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090a0f] via-transparent to-transparent opacity-60 pointer-events-none" />
+                </div>
 
-                <Link
-                  to="/profile"
-                  onClick={() => trackEvent('cta_click', { cta_name: 'my_profile', location: 'hero' })}
-                  className="group flex items-center gap-3 px-6 py-3 border border-[var(--border)] text-[var(--text-primary)] rounded-full font-medium text-lg hover:bg-[var(--accent-bg)] hover:text-[var(--accent-text)] transition-all w-fit focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
-                >
-                  My Profile
-                  <ArrowUpRight className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
+                {/* Floating Mini-Card 1: Top Right */}
+                <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 px-3.5 py-2 rounded-2xl border border-white/10 bg-[#090a0f]/95 backdrop-blur-xl shadow-xl flex items-center gap-2.5 transition-transform duration-300 group-hover:-translate-y-1">
+                  <div className="w-8 h-8 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-base">
+                    🚀
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Shipped</p>
+                    <p className="text-xs font-semibold text-white">15+ Projects</p>
+                  </div>
+                </div>
+
+                {/* Floating Mini-Card 2: Bottom Left */}
+                <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 px-3.5 py-2 rounded-2xl border border-white/10 bg-[#090a0f]/95 backdrop-blur-xl shadow-xl flex items-center gap-2.5 transition-transform duration-300 group-hover:translate-y-1">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-base">
+                    ⚡
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Expertise</p>
+                    <p className="text-xs font-semibold text-white">React & Next.js</p>
+                  </div>
+                </div>
               </div>
-            </Motion.div>
-          </div>
+            </div>
+          </Motion.div>
+
         </div>
-
       </div>
-      
+
       {/* Subtle Bottom Section Separator */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-80 z-10" />
     </section>
   );
-
-  function newFunction() {
-    return "max-w-360 mx-auto px-6 sm:px-12 lg:px-16 relative w-full flex flex-col md:block";
-  }
 };
 
 export default Hero;

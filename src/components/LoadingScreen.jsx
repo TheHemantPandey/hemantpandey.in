@@ -65,13 +65,13 @@ const LoadingScreen = ({ progress }) => {
               <span>{safeProgress}%</span>
             </div>
 
-            <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--surface-hover)] sm:h-3">
-              <Motion.div
-                className="h-full rounded-full bg-[var(--text-primary)]"
-                animate={{ width: `${clampedProgress}%` }}
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              />
-            </div>
+              <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--surface-hover)] sm:h-3">
+                <Motion.div
+                  className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-sky-400 shadow-[0_0_12px_rgba(99,102,241,0.5)]"
+                  animate={{ width: `${clampedProgress}%` }}
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
           </div>
         </div>
 

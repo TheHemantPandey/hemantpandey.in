@@ -76,8 +76,8 @@ const Profile = () => {
           100% { transform: scale(1); opacity: 0; }
         }
         @keyframes border-glow-pulse-dance {
-          0%, 100% { border-color: rgba(0, 194, 255, 0.4); box-shadow: 0 0 4px rgba(0, 194, 255, 0.15); }
-          50% { border-color: rgba(79, 140, 255, 0.85); box-shadow: 0 0 10px rgba(79, 140, 255, 0.4); }
+          0%, 100% { border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 0 6px rgba(99, 102, 241, 0.2); }
+          50% { border-color: rgba(56, 189, 248, 0.7); box-shadow: 0 0 12px rgba(56, 189, 248, 0.35); }
         }
 
         .profile-grid-bg {
@@ -95,24 +95,24 @@ const Profile = () => {
         
         /* Premium Card styling */
         .profile-card-enhanced {
-          background: rgba(10, 10, 10, 0.7) !important;
+          background: rgba(255, 255, 255, 0.03) !important;
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
           border: 1px solid rgba(255, 255, 255, 0.08) !important;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+          box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3) !important;
           transition: border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
                       box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
                       transform 350ms cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .profile-card-enhanced:hover {
           transform: translateY(-6px) scale(1.015) !important;
-          border-color: rgba(0, 194, 255, 0.45) !important;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 194, 255, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+          border-color: rgba(99, 102, 241, 0.45) !important;
+          box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 8px 32px -4px rgba(0, 0, 0, 0.45), 0 0 25px rgba(99, 102, 241, 0.12) !important;
         }
         
         /* Icons styling */
         .profile-accent-icon {
-          color: #00C2FF !important;
+          color: #38bdf8 !important;
           transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .profile-card-enhanced:hover .profile-accent-icon,
@@ -132,8 +132,8 @@ const Profile = () => {
                       color 350ms cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .profile-button-enhanced:hover {
-          border-color: #00C2FF !important;
-          box-shadow: 0 0 12px rgba(0, 194, 255, 0.25) !important;
+          border-color: #6366f1 !important;
+          box-shadow: 0 0 16px rgba(99, 102, 241, 0.3) !important;
           background: rgba(255, 255, 255, 0.07) !important;
         }
         .profile-button-arrow {
@@ -145,19 +145,19 @@ const Profile = () => {
 
         /* Certificate card specific glow effects */
         .certificate-card-enhanced {
-          background: rgba(10, 10, 10, 0.7) !important;
+          background: rgba(255, 255, 255, 0.03) !important;
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
           border: 1px solid rgba(255, 255, 255, 0.08) !important;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+          box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3) !important;
           transition: border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
                       box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
                       transform 350ms cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .certificate-card-enhanced:hover {
           transform: translateY(-6px) scale(1.015) !important;
-          border-color: rgba(0, 194, 255, 0.45) !important;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 194, 255, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+          border-color: rgba(56, 189, 248, 0.45) !important;
+          box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 8px 32px -4px rgba(0, 0, 0, 0.45), 0 0 25px rgba(56, 189, 248, 0.12) !important;
         }
         .certificate-card-enhanced h2 {
           transition: color 350ms cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -181,7 +181,7 @@ const Profile = () => {
           transform: translateX(-50%);
           height: 2px;
           width: 0;
-          background-color: #00C2FF;
+          background: linear-gradient(90deg, #6366f1, #38bdf8);
           transition: width 350ms cubic-bezier(0.16, 1, 0.3, 1);
         }
         .highlight-card-wrapper:hover .highlight-accent-line {
@@ -279,8 +279,8 @@ const Profile = () => {
       </Helmet>
 
       {/* Floating background soft glow orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(0,194,255,0.04)_0%,_rgba(0,0,0,0)_70%)] blur-[120px] pointer-events-none z-0 profile-orb-left" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(79,140,255,0.04)_0%,_rgba(0,0,0,0)_70%)] blur-[120px] pointer-events-none z-0 profile-orb-right" />
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(99,102,241,0.06)_0%,_rgba(0,0,0,0)_70%)] blur-[120px] pointer-events-none z-0 profile-orb-left" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] max-w-[800px] max-h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.05)_0%,_rgba(0,0,0,0)_70%)] blur-[120px] pointer-events-none z-0 profile-orb-right" />
 
       <section className="relative overflow-hidden px-6 pb-24 pt-8 sm:px-12 lg:px-16 lg:pt-10">
         <div className="absolute inset-0 profile-grid-bg">

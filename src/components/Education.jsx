@@ -17,9 +17,9 @@ import { motion, useReducedMotion } from "framer-motion";
       period: "July 2026 - Present",
       grade: "Full time employment",
       icon: IconBrandReact,
-      glow: "from-cyan-500 to-blue-500",
-      hoverText: "group-hover:text-cyan-300",
-      dotColor: "bg-cyan-400",
+      glow: "from-indigo-500 to-sky-400",
+      hoverText: "group-hover:text-sky-300",
+      dotColor: "bg-sky-400",
       achievements: [
         "Focused on Full Stack Web Development",
         "Developed 10+ real world projects",
@@ -34,9 +34,9 @@ import { motion, useReducedMotion } from "framer-motion";
       period: "Jan 2026 - July 2026",
       grade: "Full Time Paid Internship",
       icon: IconBrandReact,
-      glow: "from-cyan-500 to-blue-500",
-      hoverText: "group-hover:text-cyan-300",
-      dotColor: "bg-cyan-400",
+      glow: "from-indigo-500 to-sky-400",
+      hoverText: "group-hover:text-sky-300",
+      dotColor: "bg-sky-400",
       achievements: [
         "Focused on Full Stack Web Development",
         "Build Hospital and Diagnosis Platform",
@@ -51,9 +51,9 @@ import { motion, useReducedMotion } from "framer-motion";
       period: "2023 - Present",
       grade: "CGPA: 8.1",
       icon: IconBrandReact,
-      glow: "from-cyan-500 to-blue-500",
-      hoverText: "group-hover:text-cyan-300",
-      dotColor: "bg-cyan-400",
+      glow: "from-indigo-500 to-sky-400",
+      hoverText: "group-hover:text-sky-300",
+      dotColor: "bg-sky-400",
       achievements: [
         "Focused on Full Stack Web Development",
         "Built Multiple Real-World Projects",
@@ -68,9 +68,9 @@ import { motion, useReducedMotion } from "framer-motion";
       period: "2021 - 2023",
       grade: "CGPA: 7.6",
       icon: IconBolt,
-      glow: "from-purple-500 to-pink-500",
-      hoverText: "group-hover:text-purple-300",
-      dotColor: "bg-purple-400",
+      glow: "from-indigo-500 to-sky-400",
+      hoverText: "group-hover:text-sky-300",
+      dotColor: "bg-sky-400",
       achievements: [
         "Built Strong Technical & Problem Solving Skills",
         "Worked on Practical Engineering Concepts",
@@ -85,9 +85,9 @@ import { motion, useReducedMotion } from "framer-motion";
       period: "2020 - 2021",
       grade: "84%",
       icon: IconBook,
-      glow: "from-blue-500 to-cyan-500",
-      hoverText: "group-hover:text-blue-300",
-      dotColor: "bg-blue-400",
+      glow: "from-indigo-500 to-sky-400",
+      hoverText: "group-hover:text-sky-300",
+      dotColor: "bg-sky-400",
       achievements: [
         "Completed Senior Secondary Education",
         "Developed Interest in Computers & Technology",
@@ -102,9 +102,9 @@ import { motion, useReducedMotion } from "framer-motion";
       period: "2019 - 2021",
       grade: "82%",
       icon: IconSchool,
-      glow: "from-cyan-500 to-indigo-500",
-      hoverText: "group-hover:text-indigo-300",
-      dotColor: "bg-indigo-400",
+      glow: "from-indigo-500 to-sky-400",
+      hoverText: "group-hover:text-sky-300",
+      dotColor: "bg-sky-400",
       achievements: [
         "Completed Secondary Education from UP Board",
         "Maintained Strong Academic Performance",
@@ -124,16 +124,16 @@ import { motion, useReducedMotion } from "framer-motion";
         scale: 1,
         backgroundColor: "var(--surface)",
         borderColor: "var(--border)",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
+        boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.3)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       },
       hover: {
         y: shouldReduceMotion ? 0 : -6,
         scale: shouldReduceMotion ? 1 : 1.01,
-        backgroundColor: "var(--surface)",
+        backgroundColor: "var(--surface-hover)",
         borderColor: "var(--border-hover)",
-        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.08)",
+        boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 8px 32px -4px rgba(0, 0, 0, 0.45)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       }
@@ -141,23 +141,23 @@ import { motion, useReducedMotion } from "framer-motion";
 
     const iconVariants = {
       initial: {
-        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+        boxShadow: "0 0 0px rgba(99, 102, 241, 0)",
         borderColor: "rgba(255, 255, 255, 0.08)",
       },
       hover: {
-        boxShadow: "0 0 15px rgba(59, 130, 246, 0.25)",
-        borderColor: "rgba(59, 130, 246, 0.4)",
+        boxShadow: "0 0 15px rgba(99, 102, 241, 0.25)",
+        borderColor: "rgba(99, 102, 241, 0.4)",
       }
     };
 
     const dotVariants = {
       initial: {
         borderColor: "rgba(255, 255, 255, 0.08)",
-        boxShadow: "0 0 0px rgba(59, 130, 246, 0)",
+        boxShadow: "0 0 0px rgba(56, 189, 248, 0)",
       },
       hover: {
-        borderColor: "rgba(59, 130, 246, 0.5)",
-        boxShadow: "0 0 12px rgba(59, 130, 246, 0.35)",
+        borderColor: "rgba(56, 189, 248, 0.5)",
+        boxShadow: "0 0 12px rgba(56, 189, 248, 0.35)",
       }
     };
 
@@ -172,8 +172,8 @@ import { motion, useReducedMotion } from "framer-motion";
         className="relative py-32 px-4 overflow-hidden bg-[var(--bg-primary)]"
       >
         {/* Background Ambience */}
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-500/5 blur-[150px] rounded-full pointer-events-none animate-glow" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-500/5 blur-[150px] rounded-full pointer-events-none animate-glow" style={{ animationDelay: '-15s' }} />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-500/6 blur-[150px] rounded-full pointer-events-none animate-glow" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-sky-500/5 blur-[150px] rounded-full pointer-events-none animate-glow" style={{ animationDelay: '-15s' }} />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.015),transparent_70%)] pointer-events-none" />
 
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -187,7 +187,7 @@ import { motion, useReducedMotion } from "framer-motion";
           >
             <h2 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-6 tracking-tight">
               My{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300">
                 Complete Journey
               </span>
             </h2>
@@ -196,7 +196,7 @@ import { motion, useReducedMotion } from "framer-motion";
               My academic journey from foundational school education to engineering disciplines to working professional and modern full-stack development.
             </p>
 
-            <div className="w-24 h-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mx-auto rounded-full mt-8 opacity-60" />
+            <div className="w-24 h-0.5 bg-gradient-to-r from-indigo-500 via-sky-400 to-indigo-500 mx-auto rounded-full mt-8 opacity-60" />
           </motion.div>
 
           {/* Timeline Pipeline */}
@@ -207,7 +207,7 @@ import { motion, useReducedMotion } from "framer-motion";
               whileInView={{ height: '100%' }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-px bg-slate-300 dark:bg-gradient-to-b dark:from-cyan-500/50 dark:via-blue-500/50 dark:to-purple-500/10 origin-top"
+              className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-px bg-slate-300 dark:bg-gradient-to-b dark:from-indigo-500/40 dark:via-sky-500/30 dark:to-transparent origin-top"
             />
 
             <div className="space-y-12 lg:space-y-20">

@@ -14,8 +14,8 @@ const NotFound = () => {
 
       {/* Background ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-500/8 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-sky-500/6 rounded-full blur-[120px]" />
       </div>
 
       <motion.div
@@ -25,7 +25,7 @@ const NotFound = () => {
         className="relative z-10 text-center max-w-2xl"
       >
         {/* 404 Label */}
-        <p className="text-xs font-mono uppercase tracking-[0.24em] text-[var(--text-muted)] mb-6">
+        <p className="text-xs font-mono uppercase tracking-[0.24em] text-sky-400 mb-6">
           404 — Page Not Found
         </p>
 
@@ -44,7 +44,7 @@ const NotFound = () => {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             to="/"
-            className="group inline-flex items-center gap-3 px-6 py-3 bg-[var(--accent-bg)] text-[var(--accent-text)] rounded-full font-medium hover:opacity-90 transition-all cursor-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-indigo-500 to-sky-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.25)] rounded-full font-medium hover:opacity-95 transition-all cursor-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Home

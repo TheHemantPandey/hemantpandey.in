@@ -106,8 +106,8 @@ const Contact = () => {
     <section id="contact" className="py-28 relative bg-[var(--bg-primary)] overflow-hidden">
       
       {/* Decorative Ambient Background Radial Glows */}
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-orange-500/5 via-pink-500/3 to-transparent blur-[120px] pointer-events-none animate-glow" />
-      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-purple-500/3 to-transparent blur-[100px] pointer-events-none animate-glow" style={{ animationDelay: '-10s' }} />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-indigo-500/8 via-sky-500/5 to-transparent blur-[120px] pointer-events-none animate-glow" />
+      <div className="absolute top-[10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/6 to-transparent blur-[100px] pointer-events-none animate-glow" style={{ animationDelay: '-10s' }} />
 
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
@@ -125,7 +125,7 @@ const Contact = () => {
               </span>
               <h2 className="text-5xl md:text-7xl font-display font-bold text-[var(--text-primary)] mb-8 tracking-tight leading-[1.05]">
                 Let's work <br />
-                <span className="bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300 text-transparent bg-clip-text">
                   together.
                 </span>
               </h2>
@@ -192,10 +192,10 @@ const Contact = () => {
               
               {/* FULL NAME INPUT CONTAINER */}
               <div className="space-y-2 group">
-                <label htmlFor="contact-name" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
-                  Full Name <span className="text-orange-500/40">*</span>
+                <label htmlFor="contact-name" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'name' ? 'text-sky-400' : 'text-[var(--text-secondary)]'}`}>
+                  Full Name <span className="text-sky-500/40">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'name' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-transparent`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'name' ? 'border-sky-500/40 bg-sky-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-sky-500/40 focus-within:border-transparent`}>
                   <input
                     id="contact-name"
                     type="text"
@@ -214,10 +214,10 @@ const Contact = () => {
 
               {/* EMAIL CONTAINER */}
               <div className="space-y-2 group">
-                <label htmlFor="contact-email" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-pink-400' : 'text-[var(--text-secondary)]'}`}>
-                  Email Address <span className="text-pink-500/40">*</span>
+                <label htmlFor="contact-email" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'email' ? 'text-indigo-400' : 'text-[var(--text-secondary)]'}`}>
+                  Email Address <span className="text-indigo-500/40">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'email' ? 'border-pink-500/40 bg-pink-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-transparent`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'email' ? 'border-indigo-500/40 bg-indigo-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-indigo-500/40 focus-within:border-transparent`}>
                   <input
                     id="contact-email"
                     type="email"
@@ -236,10 +236,10 @@ const Contact = () => {
 
               {/* PHONE INPUT BOX */}
               <div className="space-y-2 group">
-                <label htmlFor="contact-phone" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-purple-400' : 'text-[var(--text-secondary)]'}`}>
+                <label htmlFor="contact-phone" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'phone' ? 'text-sky-400' : 'text-[var(--text-secondary)]'}`}>
                   Phone Number <span className="text-[var(--text-muted)] text-[10px] lowercase font-sans font-light">(optional)</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'phone' ? 'border-purple-500/40 bg-purple-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-purple-500/50 focus-within:border-transparent`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'phone' ? 'border-sky-500/40 bg-sky-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-sky-500/40 focus-within:border-transparent`}>
                   <input
                     id="contact-phone"
                     type="tel"
@@ -257,10 +257,10 @@ const Contact = () => {
 
               {/* TEXTAREA CONTAINER */}
               <div className="space-y-2 group">
-                <label htmlFor="contact-message" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-orange-400' : 'text-[var(--text-secondary)]'}`}>
-                  Project Brief <span className="text-orange-500/40">*</span>
+                <label htmlFor="contact-message" className={`text-xs font-mono uppercase tracking-widest transition-colors duration-300 ${focusedField === 'message' ? 'text-indigo-400' : 'text-[var(--text-secondary)]'}`}>
+                  Project Brief <span className="text-indigo-500/40">*</span>
                 </label>
-                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'message' ? 'border-orange-500/40 bg-orange-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:border-transparent`}>
+                <div className={`relative rounded-2xl border transition-all duration-500 bg-[var(--surface)] ${focusedField === 'message' ? 'border-indigo-500/40 bg-indigo-500/[0.02]' : 'border-[var(--border)] group-hover:border-[var(--border-hover)]'} focus-within:ring-2 focus-within:ring-indigo-500/40 focus-within:border-transparent`}>
                   <textarea
                     id="contact-message"
                     rows="4"
@@ -282,9 +282,9 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={status === 'sending'}
-                className="w-full relative group/btn overflow-hidden rounded-2xl bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 p-[1px] transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
+                className="w-full relative group/btn overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-sky-500 p-[1px] transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed mt-4 cursor-none shadow-[0_0_25px_rgba(99,102,241,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2"
               >
-                <div className="w-full h-full bg-[var(--bg-primary)] rounded-[15px] px-6 py-4 transition-colors duration-300 group-hover/btn:bg-transparent flex items-center justify-center gap-2">
+                <div className="w-full h-full bg-[var(--bg-primary)] rounded-[15px] px-6 py-4 transition-all duration-300 group-hover/btn:bg-gradient-to-r group-hover/btn:from-indigo-500 group-hover/btn:to-sky-500 flex items-center justify-center gap-2">
                   {status === 'sending' ? (
                     <>
                       <Loader2 className="animate-spin text-[var(--text-primary)]" size={18} />

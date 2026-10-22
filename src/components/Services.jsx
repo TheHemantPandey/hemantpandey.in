@@ -8,29 +8,29 @@ const Services = () => {
       icon: Palette,
       title: "UI/UX Design",
       description: "Crafting modern, high-fidelity, and intuitive interfaces that delight users.",
-      style: "hover:border-purple-500/30 hover:shadow-[0_0_40px_rgba(168,85,247,0.08)]",
-      iconColor: "group-hover:text-purple-400 group-hover:bg-purple-500/10 group-hover:border-purple-500/30",
+      style: "hover:border-indigo-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(99,102,241,0.2)]",
+      iconColor: "group-hover:text-indigo-400 group-hover:bg-indigo-500/10 group-hover:border-indigo-500/30",
     },
     {
       icon: Code,
       title: "Web Development",
       description: "Building robust, production-ready full-stack architectures and pixel-perfect applications.",
-      style: "hover:border-cyan-500/30 hover:shadow-[0_0_40px_rgba(6,182,212,0.08)]",
-      iconColor: "group-hover:text-cyan-400 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/30",
+      style: "hover:border-sky-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(56,189,248,0.2)]",
+      iconColor: "group-hover:text-sky-400 group-hover:bg-sky-500/10 group-hover:border-sky-500/30",
     },
     {
       icon: Layout,
       title: "Product Strategy",
       description: "Planning application scopes and conversion frameworks for maximum digital impact.",
-      style: "hover:border-orange-500/30 hover:shadow-[0_0_40px_rgba(249,115,22,0.08)]",
-      iconColor: "group-hover:text-orange-400 group-hover:bg-orange-500/10 group-hover:border-orange-500/30",
+      style: "hover:border-indigo-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(99,102,241,0.2)]",
+      iconColor: "group-hover:text-indigo-400 group-hover:bg-indigo-500/10 group-hover:border-indigo-500/30",
     },
     {
       icon: Smartphone,
       title: "Mobile Optimization",
       description: "Engineering highly dynamic layout breakpoints to perfect mobile workflows.",
-      style: "hover:border-pink-500/30 hover:shadow-[0_0_40px_rgba(236,72,153,0.08)]",
-      iconColor: "group-hover:text-pink-400 group-hover:bg-pink-500/10 group-hover:border-pink-500/30",
+      style: "hover:border-sky-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(56,189,248,0.2)]",
+      iconColor: "group-hover:text-sky-400 group-hover:bg-sky-500/10 group-hover:border-sky-500/30",
     }
   ];
 
@@ -96,7 +96,7 @@ const Services = () => {
             <motion.div
               key={index}
               variants={item}
-              className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_2px_4px_rgba(0,0,0,0.05)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.08)] hover:border-[var(--border-hover)] ${service.style}`}
+              className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-[var(--border-hover)] ${service.style}`}
             >
 
               {/* Subtle Ambient Accent Top Flare line */}
