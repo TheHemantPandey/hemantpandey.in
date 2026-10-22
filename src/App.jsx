@@ -149,7 +149,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const LOADER_DURATION_MS = 2500;
+    const LOADER_DURATION_MS = 2000;
     let animationFrameId;
     let startTime;
 
