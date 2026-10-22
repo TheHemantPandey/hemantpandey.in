@@ -189,7 +189,7 @@ export const LogoLoop = memo(({
 
   const rootClasses = useMemo(() =>
     cx(
-      'relative overflow-x-hidden group py-6',
+      'relative overflow-x-hidden group py-8',
       '[--logoloop-gap:32px]',
       '[--logoloop-fadeColorAuto:var(--bg-primary)]',
       className
@@ -208,32 +208,33 @@ export const LogoLoop = memo(({
     const displayName = item.alt || item.title || "";
 
     const content = isNodeItem ? (
-      /* 🚀 ENHANCED PADDING AND INTERACTION STATES FOR LARGER CAPSULES */
       <div
         className={cx(
-          'inline-flex items-center gap-4 px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md shadow-lg transition-all duration-300',
-          'hover:border-orange-500/50 hover:bg-orange-500/[0.03] hover:shadow-[0_0_25px_rgba(239,68,68,0.15)]',
-          'motion-reduce:transition-none',
-          scaleOnHover && 'group-hover/item:-translate-y-1.5'
+          'group/capsule inline-flex items-center gap-3.5 px-6 py-3 rounded-full border border-white/[0.08] bg-white/[0.03] backdrop-blur-md shadow-lg transition-all duration-300 ease-out cursor-pointer',
+          scaleOnHover && 'hover:scale-110 hover:-translate-y-1.5',
+          'hover:border-indigo-400/80 hover:bg-white/[0.08] hover:shadow-[0_0_35px_rgba(99,102,241,0.35),0_0_15px_rgba(56,189,248,0.2),inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+          'motion-reduce:transition-none'
         )}
         aria-hidden={!!item.href && !item.ariaLabel}>
-        <div className="flex items-center justify-center min-w-[32px]">
+        <div className="flex items-center justify-center min-w-[28px] transition-transform duration-300 ease-out group-hover/capsule:scale-125 group-hover/capsule:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
           {item.node}
         </div>
-        {/* 🚀 HIGHER TEXT SIZE TO text-lg */}
-        {displayName && <span className="text-lg font-semibold tracking-wide text-[var(--text-primary)] select-none">{displayName}</span>}
+        {displayName && (
+          <span className="text-sm font-mono tracking-wide text-slate-200 group-hover/capsule:text-white group-hover/capsule:font-medium select-none transition-colors duration-300">
+            {displayName}
+          </span>
+        )}
       </div>
     ) : (
       <div
         className={cx(
-          'inline-flex items-center gap-4 px-8 py-4 rounded-full border border-[var(--border)] bg-[var(--surface)] backdrop-blur-md shadow-lg transition-all duration-300',
-          'hover:border-orange-500/50 hover:bg-orange-500/[0.03] hover:shadow-[0_0_25px_rgba(239,68,68,0.15)]',
-          'motion-reduce:transition-none',
-          scaleOnHover && 'group-hover/item:-translate-y-1.5'
+          'group/capsule inline-flex items-center gap-3.5 px-6 py-3 rounded-full border border-white/[0.08] bg-white/[0.03] backdrop-blur-md shadow-lg transition-all duration-300 ease-out cursor-pointer',
+          scaleOnHover && 'hover:scale-110 hover:-translate-y-1.5',
+          'hover:border-indigo-400/80 hover:bg-white/[0.08] hover:shadow-[0_0_35px_rgba(99,102,241,0.35),0_0_15px_rgba(56,189,248,0.2),inset_0_1px_0_0_rgba(255,255,255,0.3)]',
+          'motion-reduce:transition-none'
         )}>
-        {/* 🚀 FOR EXPANDED IMAGE FALLBACKS */}
         <img
-          className="h-8 w-auto block object-contain [-webkit-user-drag:none] pointer-events-none"
+          className="h-7 w-auto block object-contain [-webkit-user-drag:none] pointer-events-none transition-transform duration-300 ease-out group-hover/capsule:scale-125 group-hover/capsule:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
           src={item.src}
           srcSet={item.srcSet}
           sizes={item.sizes}
@@ -244,7 +245,11 @@ export const LogoLoop = memo(({
           loading="lazy"
           decoding="async"
           draggable={false} />
-          {displayName && <span className="text-lg font-semibold tracking-wide text-[var(--text-primary)] select-none">{displayName}</span>}
+        {displayName && (
+          <span className="text-sm font-mono tracking-wide text-slate-200 group-hover/capsule:text-white group-hover/capsule:font-medium select-none transition-colors duration-300">
+            {displayName}
+          </span>
+        )}
       </div>
     );
 
@@ -252,7 +257,7 @@ export const LogoLoop = memo(({
 
     const inner = item.href ? (
       <a
-        className="inline-flex items-center no-underline rounded-full focus-visible:outline focus-visible:outline-orange-500 focus-visible:outline-offset-2"
+        className="inline-flex items-center no-underline rounded-full focus-visible:outline focus-visible:outline-indigo-500 focus-visible:outline-offset-2"
         href={item.href}
         aria-label={itemAriaLabel || 'logo link'}
         target="_blank"
@@ -266,8 +271,8 @@ export const LogoLoop = memo(({
     return (
       <li
         className={cx(
-          'flex-none mr-[var(--logoloop-gap)] flex items-center py-2',
-          scaleOnHover && 'overflow-visible group/item'
+          'flex-none mr-[var(--logoloop-gap)] flex items-center py-3 relative',
+          'overflow-visible group/item z-10 hover:z-30 transition-all duration-300'
         )}
         key={key}
         role="listitem">

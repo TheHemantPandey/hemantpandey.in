@@ -1,197 +1,317 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { skillCategories } from "../personalData";
-import LogoLoop from "./LogoLoop"; 
+import LogoLoop from "./LogoLoop";
 
+// React Icons
 import {
-  FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaJs
+  FaReact,
+  FaNodeJs,
+  FaGitAlt,
+  FaGithub,
+  FaJs,
+  FaPython,
 } from "react-icons/fa";
 
 import {
-  SiMongodb, SiTailwindcss, SiTypescript, SiNextdotjs, SiExpress, SiFirebase, SiPostman
+  SiMongodb,
+  SiTailwindcss,
+  SiTypescript,
+  SiNextdotjs,
+  SiExpress,
+  SiPostman,
+  SiPostgresql,
+  SiRedis,
+  SiRedux,
+  SiFramer,
+  SiVercel,
+  SiGithubactions,
+  SiVite,
+  SiLinux,
 } from "react-icons/si";
 
-/* ---------------- ICON LOOP DATA ---------------- */
-const techLogos = [
-  { node: <FaReact className="text-cyan-400" size={32} />, alt: "React" },
-  { node: <FaJs className="text-yellow-400" size={32} />, alt: "JavaScript" },
-  { node: <FaNodeJs className="text-green-500" size={32} />, alt: "Node.js" },
-  { node: <SiExpress className="text-gray-300" size={32} />, alt: "Express.js" },
-  { node: <SiMongodb className="text-green-400" size={32} />, alt: "MongoDB" },
-  { node: <SiNextdotjs className="text-white" size={32} />, alt: "Next.js" },
-  { node: <SiTailwindcss className="text-cyan-300" size={32} />, alt: "Tailwind CSS" },
-  { node: <SiTypescript className="text-blue-500" size={32} />, alt: "TypeScript" },
-  { node: <FaPython className="text-blue-400" size={32} />, alt: "Python" },
-  { node: <SiFirebase className="text-amber-500" size={32} />, alt: "Firebase" },
-  { node: <SiPostman className="text-orange-500" size={32} />, alt: "Postman" },
-  { node: <FaGitAlt className="text-red-500" size={32} />, alt: "Git" },
-  { node: <FaGithub className="text-white" size={32} />, alt: "GitHub" },
+// Lucide Icons
+import {
+  AppWindow,
+  Terminal,
+  Database,
+  Cloud,
+  Code2,
+  Zap,
+  ShieldCheck,
+  Layers,
+  Cpu,
+  Globe,
+} from "lucide-react";
+
+/* ---------------- 4-CARD BENTO ARCHITECTURE ---------------- */
+const bentoSkills = [
+  {
+    id: "frontend",
+    step: "01",
+    tag: "CLIENT_TIER",
+    title: "Frontend Architecture",
+    icon: AppWindow,
+    value:
+      "Crafting performant, accessible, and responsive user interfaces with modular state architectures.",
+    stack: [
+      { name: "React.js", icon: <FaReact className="text-[#61DAFB]" size={12} /> },
+      { name: "Next.js", icon: <SiNextdotjs className="text-white" size={12} /> },
+      { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" size={12} /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38BDF8]" size={12} /> },
+      { name: "Redux Toolkit", icon: <SiRedux className="text-[#764ABC]" size={12} /> },
+      { name: "Framer Motion", icon: <SiFramer className="text-white" size={12} /> },
+    ],
+  },
+  {
+    id: "backend",
+    step: "02",
+    tag: "CORE_RUNTIME",
+    title: "Backend & System Design",
+    icon: Terminal,
+    value:
+      "Designing resilient backend services, business logic controllers, and secure API gateways.",
+    stack: [
+      { name: "Node.js", icon: <FaNodeJs className="text-[#5FA04E]" size={12} /> },
+      { name: "Express.js", icon: <SiExpress className="text-slate-300" size={12} /> },
+      { name: "RESTful APIs", icon: <Code2 className="text-indigo-400" size={12} /> },
+      { name: "WebSockets", icon: <Zap className="text-amber-400" size={12} /> },
+      { name: "JWT Authentication", icon: <ShieldCheck className="text-emerald-400" size={12} /> },
+      { name: "Microservices", icon: <Layers className="text-sky-400" size={12} /> },
+    ],
+  },
+  {
+    id: "databases",
+    step: "03",
+    tag: "DATA_LAYER",
+    title: "Databases & Data Modeling",
+    icon: Database,
+    value:
+      "Structuring high-throughput schemas, indexed queries, and reliable data persistence layers.",
+    stack: [
+      { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" size={12} /> },
+      { name: "Mongoose", icon: <Database className="text-rose-400" size={12} /> },
+      { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" size={12} /> },
+      { name: "Redis Caching", icon: <SiRedis className="text-[#DC382D]" size={12} /> },
+      { name: "Aggregation Pipelines", icon: <Cpu className="text-indigo-400" size={12} /> },
+    ],
+  },
+  {
+    id: "devops",
+    step: "04",
+    tag: "INFRA_OPS",
+    title: "DevOps, Cloud & Tooling",
+    icon: Cloud,
+    value:
+      "Configuring automated CI/CD deployments, DNS routing, and development workflows.",
+    stack: [
+      { name: "Git", icon: <FaGitAlt className="text-[#F05032]" size={12} /> },
+      { name: "GitHub Actions", icon: <SiGithubactions className="text-[#2088FF]" size={12} /> },
+      { name: "Vercel", icon: <SiVercel className="text-white" size={12} /> },
+      { name: "Hostinger", icon: <Globe className="text-violet-400" size={12} /> },
+      { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" size={12} /> },
+      { name: "Linux CLI", icon: <SiLinux className="text-amber-300" size={12} /> },
+      { name: "Vite", icon: <SiVite className="text-[#646CFF]" size={12} /> },
+    ],
+  },
 ];
 
-/* ---------------- TECH-SPECIFIC GLASS COLOR MAPPER ---------------- */
-const getSkillColor = (skillName) => {
-  const name = skillName.toLowerCase().trim();
+/* ---------------- MARQUEE TICKER LOGO DATA ---------------- */
+const techLogos = [
+  {
+    node: <FaReact className="text-[#61DAFB] transition-transform duration-300" size={24} />,
+    alt: "React.js",
+  },
+  {
+    node: <SiNextdotjs className="text-white transition-transform duration-300" size={24} />,
+    alt: "Next.js",
+  },
+  {
+    node: <SiTypescript className="text-[#3178C6] transition-transform duration-300" size={24} />,
+    alt: "TypeScript",
+  },
+  {
+    node: <FaJs className="text-[#F7DF1E] transition-transform duration-300" size={24} />,
+    alt: "JavaScript",
+  },
+  {
+    node: <FaNodeJs className="text-[#5FA04E] transition-transform duration-300" size={24} />,
+    alt: "Node.js",
+  },
+  {
+    node: <SiExpress className="text-slate-100 transition-transform duration-300" size={24} />,
+    alt: "Express.js",
+  },
+  {
+    node: <SiMongodb className="text-[#47A248] transition-transform duration-300" size={24} />,
+    alt: "MongoDB",
+  },
+  {
+    node: <SiPostgresql className="text-[#4169E1] transition-transform duration-300" size={24} />,
+    alt: "PostgreSQL",
+  },
+  {
+    node: <SiRedis className="text-[#DC382D] transition-transform duration-300" size={24} />,
+    alt: "Redis",
+  },
+  {
+    node: <SiTailwindcss className="text-[#38BDF8] transition-transform duration-300" size={24} />,
+    alt: "Tailwind CSS",
+  },
+  {
+    node: <SiRedux className="text-[#764ABC] transition-transform duration-300" size={24} />,
+    alt: "Redux",
+  },
+  {
+    node: <SiFramer className="text-pink-400 transition-transform duration-300" size={24} />,
+    alt: "Framer Motion",
+  },
+  {
+    node: <FaGitAlt className="text-[#F05032] transition-transform duration-300" size={24} />,
+    alt: "Git",
+  },
+  {
+    node: <FaGithub className="text-white transition-transform duration-300" size={24} />,
+    alt: "GitHub",
+  },
+  {
+    node: <SiVercel className="text-white transition-transform duration-300" size={24} />,
+    alt: "Vercel",
+  },
+  {
+    node: <SiPostman className="text-[#FF6C37] transition-transform duration-300" size={24} />,
+    alt: "Postman",
+  },
+  {
+    node: <SiVite className="text-[#646CFF] transition-transform duration-300" size={24} />,
+    alt: "Vite",
+  },
+  {
+    node: <FaPython className="text-[#3776AB] transition-transform duration-300" size={24} />,
+    alt: "Python",
+  },
+];
 
-  // MERN / Frontend Stacks
-  if (name.includes("react")) return "bg-slate-100 dark:bg-cyan-500/10 text-[#0F172A] dark:text-cyan-400 border-slate-200 dark:border-cyan-500/20";
-  if (name.includes("next")) return "bg-slate-100 dark:bg-zinc-100/10 text-[#0F172A] dark:text-zinc-100 border-slate-200 dark:border-zinc-100/20";
-  if (name.includes("js") || name.includes("javascript")) return "bg-amber-50 dark:bg-yellow-500/10 text-amber-900 dark:text-yellow-400 border-amber-200 dark:border-yellow-500/20";
-  if (name.includes("ts") || name.includes("typescript")) return "bg-blue-50 dark:bg-blue-500/10 text-blue-900 dark:text-blue-400 border-blue-200 dark:border-blue-500/20";
-  if (name.includes("tailwind")) return "bg-sky-50 dark:bg-sky-400/10 text-sky-900 dark:text-sky-300 border-sky-200 dark:border-sky-400/20";
-  if (name.includes("html")) return "bg-orange-50 dark:bg-orange-500/10 text-orange-900 dark:text-orange-400 border-orange-200 dark:border-orange-500/20";
-  if (name.includes("css")) return "bg-blue-50 dark:bg-blue-600/10 text-blue-900 dark:text-blue-400 border-blue-200 dark:border-blue-600/20";
-
-  // Backend / Database
-  if (name.includes("node")) return "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-900 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20";
-  if (name.includes("express")) return "bg-slate-100 dark:bg-neutral-400/10 text-slate-800 dark:text-neutral-300 border-slate-200 dark:border-neutral-400/20";
-  if (name.includes("mongo")) return "bg-green-50 dark:bg-green-500/10 text-green-900 dark:text-green-400 border-green-200 dark:border-green-500/20";
-  if (name.includes("firebase")) return "bg-amber-50 dark:bg-amber-500/10 text-amber-900 dark:text-amber-400 border-amber-200 dark:border-amber-500/20";
-  if (name.includes("python")) return "bg-sky-50 dark:bg-blue-400/10 text-sky-900 dark:text-sky-400 border-sky-200 dark:border-blue-400/20";
-  if (name.includes("sql") || name.includes("postgres")) return "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-900 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/20";
-
-  // Tools / DevOps
-  if (name.includes("git")) return "bg-red-50 dark:bg-red-500/10 text-red-900 dark:text-red-400 border-red-200 dark:border-red-500/20";
-  if (name.includes("github")) return "bg-slate-100 dark:bg-zinc-400/10 text-slate-900 dark:text-zinc-300 border-slate-200 dark:border-zinc-400/20";
-  if (name.includes("postman")) return "bg-orange-50 dark:bg-orange-500/10 text-orange-900 dark:text-orange-400 border-orange-200 dark:border-orange-500/20";
-  if (name.includes("vercel") || name.includes("hosting")) return "bg-slate-100 dark:bg-stone-100/10 text-slate-900 dark:text-stone-200 border-slate-200 dark:border-stone-100/20";
-
-  // Default Fallback Color
-  return "bg-slate-100 dark:bg-purple-500/10 text-[#0F172A] dark:text-purple-400 border-slate-200 dark:border-purple-500/20";
-};
-
-/* ---------------- RENDERS MINI LOGO GRAPHICS DYNAMICALLY ---------------- */
-const getSkillIcon = (skillName) => {
-  const name = skillName.toLowerCase().trim();
-  const iconSize = 13; // Balanced mini markup sizing
-
-  if (name.includes("react")) return <FaReact className="text-cyan-400" size={iconSize} />;
-  if (name.includes("next")) return <SiNextdotjs className="text-white" size={iconSize} />;
-  if (name.includes("node")) return <FaNodeJs className="text-green-500" size={iconSize} />;
-  if (name.includes("express")) return <SiExpress className="text-gray-300" size={iconSize} />;
-  if (name.includes("mongo")) return <SiMongodb className="text-green-400" size={iconSize} />;
-  if (name.includes("tailwind")) return <SiTailwindcss className="text-cyan-300" size={iconSize} />;
-  if (name.includes("js") || name.includes("javascript")) return <FaJs className="text-yellow-400" size={iconSize} />;
-  if (name.includes("ts") || name.includes("typescript")) return <SiTypescript className="text-blue-500" size={iconSize} />;
-  if (name.includes("python")) return <FaPython className="text-blue-400" size={iconSize} />;
-  if (name.includes("firebase")) return <SiFirebase className="text-amber-500" size={iconSize} />;
-  if (name.includes("postman")) return <SiPostman className="text-orange-500" size={iconSize} />;
-  if (name.includes("git")) return <FaGitAlt className="text-red-500" size={iconSize} />;
-  if (name.includes("github")) return <FaGithub className="text-white" size={iconSize} />;
-
-  return null;
-};
-
-/* ---------------- PREMIUM CARD IMPLEMENTATION ---------------- */
-const SkillCard = ({ cat, index }) => {
-  // Refined Indigo & Sky Blue hover accents
-  const hoverBorders = [
-    "hover:border-indigo-500/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)]",
-    "hover:border-sky-500/40 hover:shadow-[0_0_30px_rgba(56,189,248,0.12)]",
-    "hover:border-indigo-400/40 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)]",
-    "hover:border-sky-400/40 hover:shadow-[0_0_30px_rgba(56,189,248,0.12)]"
-  ];
-
-  const cardHoverStyle = hoverBorders[index % hoverBorders.length];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.75, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)] hover:border-[var(--border-hover)] ${cardHoverStyle}`}
-    >
-      
-      {/* Decorative Top Flare Glow Effect */}
-      <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-[var(--border-hover)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 tracking-tight flex items-center justify-between">
-        {cat.title}
-        <span className="text-[var(--text-muted)]/30 font-mono text-xs group-hover:text-[var(--text-muted)]/60 transition-colors duration-300">
-          // 0{index + 1}
-        </span>
-      </h3>
-
-      <div className="flex flex-wrap gap-2.5">
-        {cat.items.map((item, i) => {
-          const colorClass = getSkillColor(item);
-          const iconNode = getSkillIcon(item);
-
-          return (
-            <span
-              key={i}
-              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono border rounded-full backdrop-blur-md transition-all duration-300 hover:scale-105 ${colorClass}`}
-            >
-              {iconNode && <span className="flex-shrink-0 flex items-center">{iconNode}</span>}
-              {item}
-            </span>
-          );
-        })}
-      </div>
-    </motion.div>
-  );
-};
-
-/* ---------------- MAIN SKILLS COMPONENT ---------------- */
+/* ---------------- MAIN COMPONENT ---------------- */
 export default function Skills() {
   return (
-    <section className="relative py-24 px-4 overflow-hidden bg-[var(--bg-primary)]">
-      {/* Background Ambience */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/6 blur-[140px] rounded-full pointer-events-none animate-glow" />
+    <section id="skills" className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[var(--bg-primary)]">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-500/5 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-sky-500/5 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-
-        {/* TITLE */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-[var(--text-primary)] tracking-tight">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* SECTION HEADER */}
+        <div className="text-center mb-16 sm:mb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-mono text-indigo-300 mb-4 backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+            // 03_ENGINEERING_CORE
+          </div>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight">
             Technical{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300 text-transparent bg-clip-text">
-              Skills
+              Capabilities
             </span>
           </h2>
-          <p className="text-[var(--text-secondary)] mt-4 text-base font-light tracking-wide">
-            Technologies I use to bring ideas to life 🚀
+          <p className="text-slate-400 mt-4 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            Production-grade stacks, architectural patterns, and engineering workflows built for scale.
           </p>
         </div>
 
-        {/* CARDS GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-          {skillCategories.map((cat, i) => (
-            <SkillCard key={i} cat={cat} index={i} />
-          ))}
+        {/* 4-CARD BENTO GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+          {bentoSkills.map((card, index) => {
+            const IconComponent = card.icon;
+            return (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white/[0.03] backdrop-blur-[12px] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:border-indigo-500/40 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2),0_12px_36px_rgba(99,102,241,0.14)] transition-all duration-300"
+              >
+                {/* Top glowing flare on hover */}
+                <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Top Meta Row */}
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-indigo-400 group-hover:scale-105 group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10 group-hover:text-indigo-300 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+                      <IconComponent size={20} strokeWidth={1.75} />
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <span className="px-2 py-0.5 rounded font-mono text-[11px] font-semibold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 group-hover:border-indigo-500/40 transition-colors">
+                        // {card.step}
+                      </span>
+                      <span className="font-mono text-[10px] text-slate-500 tracking-wider mt-1 uppercase">
+                        {card.tag}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title & Value */}
+                  <h3 className="text-lg font-bold text-white tracking-tight mb-2.5">
+                    {card.title}
+                  </h3>
+                  <p className="text-slate-400 text-xs sm:text-[13px] font-light leading-relaxed mb-6 group-hover:text-slate-300 transition-colors">
+                    {card.value}
+                  </p>
+                </div>
+
+                {/* Stack Badges Section */}
+                <div className="pt-4 border-t border-white/[0.06] mt-auto">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-3">
+                    Core Stack
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {card.stack.map((item, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-200 px-2.5 py-1 rounded-md hover:border-indigo-500/40 hover:text-white hover:bg-white/[0.08] transition-all"
+                      >
+                        <span className="shrink-0">{item.icon}</span>
+                        <span>{item.name}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* MARQUEE MARKS */}
-        <p className="text-center text-[var(--text-muted)] tracking-[0.3em] mb-12 text-xs uppercase font-medium">
-          Technologies I Work With
-        </p>
+        {/* MARQUEE TICKER SECTION */}
+        <div className="relative pt-6">
+          <p className="text-center text-slate-500 font-mono tracking-[0.25em] mb-8 text-xs uppercase font-medium">
+            Active Stack & Tooling Ecosystem
+          </p>
 
-        <LogoLoop
-          logos={techLogos}
-          speed={100}
-          direction="left"
-          gap={32}
-          pauseOnHover={true}
-          fadeout={true}
-          scaleOnHover={true}   
-        />
-
-        <div className="mt-6 opacity-80">
           <LogoLoop
-            logos={[...techLogos].reverse()}
-            speed={80}
-            direction="right"
-            gap={32}
+            logos={techLogos}
+            speed={60}
+            direction="left"
+            gap={24}
             pauseOnHover={true}
-            fadeout={true}
+            fadeOut={true}
             scaleOnHover={true}
           />
-        </div>
 
+          <div className="mt-4 opacity-80">
+            <LogoLoop
+              logos={[...techLogos].reverse()}
+              speed={50}
+              direction="right"
+              gap={24}
+              pauseOnHover={true}
+              fadeOut={true}
+              scaleOnHover={true}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Subtle Bottom Section Separator */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-60 z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-60 z-10 pointer-events-none" />
     </section>
   );
 }
