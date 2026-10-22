@@ -216,7 +216,7 @@ export const LogoLoop = memo(({
           'motion-reduce:transition-none'
         )}
         aria-hidden={!!item.href && !item.ariaLabel}>
-        <div className="flex items-center justify-center min-w-[28px] transition-transform duration-300 ease-out group-hover/capsule:scale-125 group-hover/capsule:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
+        <div className="flex items-center justify-center min-w-[28px] transition-transform duration-300 ease-out group-hover/capsule:scale-125 group-hover/capsule:drop-shadow-[0_0_12px_currentColor]">
           {item.node}
         </div>
         {displayName && (
@@ -234,7 +234,7 @@ export const LogoLoop = memo(({
           'motion-reduce:transition-none'
         )}>
         <img
-          className="h-7 w-auto block object-contain [-webkit-user-drag:none] pointer-events-none transition-transform duration-300 ease-out group-hover/capsule:scale-125 group-hover/capsule:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+          className="h-7 w-auto block object-contain [-webkit-user-drag:none] pointer-events-none transition-transform duration-300 ease-out group-hover/capsule:scale-125 group-hover/capsule:drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]"
           src={item.src}
           srcSet={item.srcSet}
           sizes={item.sizes}

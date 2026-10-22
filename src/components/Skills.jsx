@@ -7,26 +7,29 @@ import {
   FaReact,
   FaNodeJs,
   FaGitAlt,
-  FaGithub,
-  FaJs,
-  FaPython,
 } from "react-icons/fa";
 
 import {
-  SiMongodb,
-  SiTailwindcss,
   SiTypescript,
   SiNextdotjs,
-  SiExpress,
-  SiPostman,
-  SiPostgresql,
-  SiRedis,
+  SiTailwindcss,
   SiRedux,
   SiFramer,
+  SiExpress,
+  SiSocketdotio,
+  SiZod,
+  SiPostgresql,
+  SiPrisma,
+  SiMongodb,
+  SiRedis,
   SiVercel,
-  SiGithubactions,
-  SiVite,
+  SiCloudflare,
+  SiPostman,
   SiLinux,
+  SiVitest,
+  SiDocker,
+  SiGooglegemini,
+  SiRazorpay,
 } from "react-icons/si";
 
 // Lucide Icons
@@ -36,11 +39,7 @@ import {
   Database,
   Cloud,
   Code2,
-  Zap,
   ShieldCheck,
-  Layers,
-  Cpu,
-  Globe,
 } from "lucide-react";
 
 /* ---------------- 4-CARD BENTO ARCHITECTURE ---------------- */
@@ -50,104 +49,95 @@ const bentoSkills = [
     step: "01",
     tag: "CLIENT_TIER",
     title: "Frontend Architecture",
+    subtitle: "Type-safe, component-driven user interfaces",
     icon: AppWindow,
-    value:
-      "Crafting performant, accessible, and responsive user interfaces with modular state architectures.",
     stack: [
-      { name: "React.js", icon: <FaReact className="text-[#61DAFB]" size={12} /> },
-      { name: "Next.js", icon: <SiNextdotjs className="text-white" size={12} /> },
       { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" size={12} /> },
+      { name: "React 19", icon: <FaReact className="text-[#61DAFB]" size={12} /> },
+      { name: "Next.js (App Router)", icon: <SiNextdotjs className="text-white" size={12} /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38BDF8]" size={12} /> },
       { name: "Redux Toolkit", icon: <SiRedux className="text-[#764ABC]" size={12} /> },
-      { name: "Framer Motion", icon: <SiFramer className="text-white" size={12} /> },
+      { name: "Framer Motion", icon: <SiFramer className="text-pink-400" size={12} /> },
     ],
   },
   {
     id: "backend",
     step: "02",
     tag: "CORE_RUNTIME",
-    title: "Backend & System Design",
+    title: "Backend & Systems",
+    subtitle: "Resilient APIs, auth pipelines & real-time protocols",
     icon: Terminal,
-    value:
-      "Designing resilient backend services, business logic controllers, and secure API gateways.",
     stack: [
       { name: "Node.js", icon: <FaNodeJs className="text-[#5FA04E]" size={12} /> },
-      { name: "Express.js", icon: <SiExpress className="text-slate-300" size={12} /> },
+      { name: "Express.js", icon: <SiExpress className="text-slate-200" size={12} /> },
       { name: "RESTful APIs", icon: <Code2 className="text-indigo-400" size={12} /> },
-      { name: "WebSockets", icon: <Zap className="text-amber-400" size={12} /> },
-      { name: "JWT Authentication", icon: <ShieldCheck className="text-emerald-400" size={12} /> },
-      { name: "Microservices", icon: <Layers className="text-sky-400" size={12} /> },
+      { name: "WebSockets (Socket.io)", icon: <SiSocketdotio className="text-slate-200" size={12} /> },
+      { name: "NextAuth.js & JWT", icon: <ShieldCheck className="text-emerald-400" size={12} /> },
+      { name: "Zod Validation", icon: <SiZod className="text-blue-400" size={12} /> },
     ],
   },
   {
     id: "databases",
     step: "03",
     tag: "DATA_LAYER",
-    title: "Databases & Data Modeling",
+    title: "Databases & Caching",
+    subtitle: "Relational modeling, document stores & high-speed cache",
     icon: Database,
-    value:
-      "Structuring high-throughput schemas, indexed queries, and reliable data persistence layers.",
     stack: [
+      { name: "PostgreSQL (Neon)", icon: <SiPostgresql className="text-[#4169E1]" size={12} /> },
+      { name: "Prisma ORM", icon: <SiPrisma className="text-teal-400" size={12} /> },
       { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" size={12} /> },
-      { name: "Mongoose", icon: <Database className="text-rose-400" size={12} /> },
-      { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" size={12} /> },
-      { name: "Redis Caching", icon: <SiRedis className="text-[#DC382D]" size={12} /> },
-      { name: "Aggregation Pipelines", icon: <Cpu className="text-indigo-400" size={12} /> },
+      { name: "Mongoose ODM", icon: <Database className="text-rose-400" size={12} /> },
+      { name: "Redis (Upstash)", icon: <SiRedis className="text-[#DC382D]" size={12} /> },
     ],
   },
   {
-    id: "devops",
+    id: "cloud-devops",
     step: "04",
     tag: "INFRA_OPS",
-    title: "DevOps, Cloud & Tooling",
+    title: "Cloud & Tooling",
+    subtitle: "Deployment workflows, CI/CD & API testing",
     icon: Cloud,
-    value:
-      "Configuring automated CI/CD deployments, DNS routing, and development workflows.",
     stack: [
-      { name: "Git", icon: <FaGitAlt className="text-[#F05032]" size={12} /> },
-      { name: "GitHub Actions", icon: <SiGithubactions className="text-[#2088FF]" size={12} /> },
+      { name: "Git & GitHub", icon: <FaGitAlt className="text-[#F05032]" size={12} /> },
       { name: "Vercel", icon: <SiVercel className="text-white" size={12} /> },
-      { name: "Hostinger", icon: <Globe className="text-violet-400" size={12} /> },
+      { name: "Cloudflare", icon: <SiCloudflare className="text-[#F38020]" size={12} /> },
       { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" size={12} /> },
       { name: "Linux CLI", icon: <SiLinux className="text-amber-300" size={12} /> },
-      { name: "Vite", icon: <SiVite className="text-[#646CFF]" size={12} /> },
+      { name: "Vitest & Supertest", icon: <SiVitest className="text-lime-400" size={12} /> },
     ],
   },
 ];
 
-/* ---------------- MARQUEE TICKER LOGO DATA ---------------- */
+/* ---------------- 16 CORE MARQUEE TOOLS ---------------- */
 const techLogos = [
   {
-    node: <FaReact className="text-[#61DAFB] transition-transform duration-300" size={24} />,
-    alt: "React.js",
+    node: <SiTypescript className="text-[#3178C6] transition-transform duration-300" size={24} />,
+    alt: "TypeScript",
   },
   {
     node: <SiNextdotjs className="text-white transition-transform duration-300" size={24} />,
     alt: "Next.js",
   },
   {
-    node: <SiTypescript className="text-[#3178C6] transition-transform duration-300" size={24} />,
-    alt: "TypeScript",
-  },
-  {
-    node: <FaJs className="text-[#F7DF1E] transition-transform duration-300" size={24} />,
-    alt: "JavaScript",
+    node: <FaReact className="text-[#61DAFB] transition-transform duration-300" size={24} />,
+    alt: "React",
   },
   {
     node: <FaNodeJs className="text-[#5FA04E] transition-transform duration-300" size={24} />,
     alt: "Node.js",
   },
   {
-    node: <SiExpress className="text-slate-100 transition-transform duration-300" size={24} />,
-    alt: "Express.js",
+    node: <SiPostgresql className="text-[#4169E1] transition-transform duration-300" size={24} />,
+    alt: "PostgreSQL",
+  },
+  {
+    node: <SiPrisma className="text-teal-300 transition-transform duration-300" size={24} />,
+    alt: "Prisma",
   },
   {
     node: <SiMongodb className="text-[#47A248] transition-transform duration-300" size={24} />,
     alt: "MongoDB",
-  },
-  {
-    node: <SiPostgresql className="text-[#4169E1] transition-transform duration-300" size={24} />,
-    alt: "PostgreSQL",
   },
   {
     node: <SiRedis className="text-[#DC382D] transition-transform duration-300" size={24} />,
@@ -158,36 +148,32 @@ const techLogos = [
     alt: "Tailwind CSS",
   },
   {
-    node: <SiRedux className="text-[#764ABC] transition-transform duration-300" size={24} />,
-    alt: "Redux",
-  },
-  {
-    node: <SiFramer className="text-pink-400 transition-transform duration-300" size={24} />,
-    alt: "Framer Motion",
+    node: <SiDocker className="text-[#2496ED] transition-transform duration-300" size={24} />,
+    alt: "Docker",
   },
   {
     node: <FaGitAlt className="text-[#F05032] transition-transform duration-300" size={24} />,
     alt: "Git",
   },
   {
-    node: <FaGithub className="text-white transition-transform duration-300" size={24} />,
-    alt: "GitHub",
-  },
-  {
     node: <SiVercel className="text-white transition-transform duration-300" size={24} />,
     alt: "Vercel",
+  },
+  {
+    node: <SiCloudflare className="text-[#F38020] transition-transform duration-300" size={24} />,
+    alt: "Cloudflare",
   },
   {
     node: <SiPostman className="text-[#FF6C37] transition-transform duration-300" size={24} />,
     alt: "Postman",
   },
   {
-    node: <SiVite className="text-[#646CFF] transition-transform duration-300" size={24} />,
-    alt: "Vite",
+    node: <SiGooglegemini className="text-[#8E75FF] transition-transform duration-300" size={24} />,
+    alt: "Gemini AI",
   },
   {
-    node: <FaPython className="text-[#3776AB] transition-transform duration-300" size={24} />,
-    alt: "Python",
+    node: <SiRazorpay className="text-sky-400 transition-transform duration-300" size={24} />,
+    alt: "Razorpay",
   },
 ];
 
@@ -249,12 +235,12 @@ export default function Skills() {
                     </div>
                   </div>
 
-                  {/* Title & Value */}
-                  <h3 className="text-lg font-bold text-white tracking-tight mb-2.5">
+                  {/* Title & Subtitle */}
+                  <h3 className="text-lg font-bold text-white tracking-tight mb-2">
                     {card.title}
                   </h3>
                   <p className="text-slate-400 text-xs sm:text-[13px] font-light leading-relaxed mb-6 group-hover:text-slate-300 transition-colors">
-                    {card.value}
+                    {card.subtitle}
                   </p>
                 </div>
 
@@ -267,7 +253,7 @@ export default function Skills() {
                     {card.stack.map((item, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-200 px-2.5 py-1 rounded-md hover:border-indigo-500/40 hover:text-white hover:bg-white/[0.08] transition-all"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-200 hover:border-indigo-500/30 hover:text-white transition-all"
                       >
                         <span className="shrink-0">{item.icon}</span>
                         <span>{item.name}</span>
@@ -288,7 +274,7 @@ export default function Skills() {
 
           <LogoLoop
             logos={techLogos}
-            speed={60}
+            speed={55}
             direction="left"
             gap={24}
             pauseOnHover={true}
@@ -299,7 +285,7 @@ export default function Skills() {
           <div className="mt-4 opacity-80">
             <LogoLoop
               logos={[...techLogos].reverse()}
-              speed={50}
+              speed={45}
               direction="right"
               gap={24}
               pauseOnHover={true}
