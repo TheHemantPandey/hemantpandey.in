@@ -3,7 +3,7 @@ import { motion as Motion } from 'framer-motion';
 import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import profileImg from '../assets/dp.png';
+import profileImg from '../assets/dpp.png';
 import { personalInfo } from '../personalData';
 import { trackEvent, trackSocialClick } from '../utils/analytics';
 
