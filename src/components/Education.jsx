@@ -23,6 +23,8 @@ const experiences = [
     period: 'July 2026 - Present',
     type: 'Full-Time Employment',
     isCurrent: true,
+    summarySnippet: 'Architecting scalable production web apps, leading team ops & mentoring engineers.',
+    miniStack: ['React', 'Next.js', 'Node.js', 'MongoDB'],
     fileBreadcrumb: 'experience / young-india-show / full-stack-lead.ts',
     url: 'https://youngindiashow.com',
     techStack: ['React', 'Next.js', 'Node.js', 'MongoDB', 'Tailwind CSS', 'REST APIs', 'Docker', 'Git'],
@@ -41,6 +43,8 @@ const experiences = [
     period: 'Jan 2026 - June 2026',
     type: 'Full-Time Paid Internship',
     isCurrent: false,
+    summarySnippet: 'Engineered responsive full-stack modules for healthcare booking and startup portals.',
+    miniStack: ['MERN', 'REST APIs', 'Vercel'],
     fileBreadcrumb: 'experience / young-india-show / full-stack-intern.ts',
     url: 'https://youngindiashow.com',
     techStack: ['MERN Stack', 'React', 'Next.js', 'Node.js', 'MongoDB', 'Express', 'REST APIs', 'CI/CD'],
@@ -59,6 +63,8 @@ const experiences = [
     period: 'Aug 2025 - Feb 2026',
     type: 'Part-Time / Contract',
     isCurrent: false,
+    summarySnippet: 'Delivered client dashboards, SEO-optimized business platforms & payment integrations.',
+    miniStack: ['React', 'Node.js', 'Razorpay'],
     fileBreadcrumb: 'experience / freelance / client-solutions.ts',
     techStack: ['Full-Stack Web', 'Next.js', 'React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Vercel'],
     domains: ['Client Delivery', 'Full-Stack SaaS', 'UI/UX Architecture', 'Cloud Deployments', 'SEO Optimization'],
@@ -79,6 +85,8 @@ const education = [
     period: '2023 - Present',
     grade: 'CGPA: 8.1',
     isCurrent: true,
+    summarySnippet: 'Specializing in Computer Science, full-stack systems, algorithms & cloud architectures.',
+    miniStack: ['Computer Science', 'Data Structures', 'Algorithms'],
     fileBreadcrumb: 'education / jc-bose-ust / b-tech-cse.ts',
     techStack: ['Computer Science', 'Data Structures', 'Algorithms', 'Web Technologies', 'Database Systems', 'Software Engineering'],
     domains: ['Full-Stack Systems', 'Object-Oriented Design', 'Computer Networks', 'Cloud & Systems Architecture'],
@@ -96,6 +104,8 @@ const education = [
     period: '2021 - 2023',
     grade: 'CGPA: 7.6',
     isCurrent: false,
+    summarySnippet: 'Mastered electrical systems, circuit analysis, analytical logic & transitioned to software.',
+    miniStack: ['Engineering Logic', 'Circuit Systems', 'Hardware'],
     fileBreadcrumb: 'education / polytechnic / electrical-eng.ts',
     techStack: ['Engineering Mathematics', 'Circuit Systems', 'Problem Solving', 'Hardware Logic', 'Systems Thinking'],
     domains: ['Hardware Systems', 'Analytical Logic', 'Technical Foundations', 'Transition to Software'],
@@ -112,6 +122,8 @@ const education = [
     period: '2020 - 2021',
     grade: 'Score: 84%',
     isCurrent: false,
+    summarySnippet: 'Completed senior secondary with distinction, excelling in Mathematics & Computer Science.',
+    miniStack: ['Mathematics', 'Physics', 'CS Fundamentals'],
     fileBreadcrumb: 'education / svmic / higher-secondary.ts',
     techStack: ['Mathematics', 'Physics', 'Computer Science', 'Logic & Fundamentals'],
     domains: ['STEM Foundations', 'Early Programming', 'Academic Distinction'],
@@ -232,11 +244,11 @@ export default function Education() {
         {/* Master Console Container */}
         <div className="max-w-6xl mx-auto">
           {viewMode === 'gui' ? (
-            /* GUI Master-Detail Console */
-            <div className="flex flex-col lg:flex-row gap-8 items-start">
+            /* GUI Master-Detail Console with Height Synchronization */
+            <div className="flex flex-col lg:flex-row gap-8 items-stretch">
               
-              {/* Left Column: Role / Milestone Selector (40% width) */}
-              <div className="w-full lg:w-5/12 flex flex-col space-y-3.5">
+              {/* Left Column: Enriched Role / Milestone Selector (40% width) */}
+              <div className="w-full lg:w-5/12 flex flex-col justify-between gap-4">
                 {currentList.map((item) => {
                   const isSelected = item.id === selectedItem.id;
 
@@ -245,49 +257,75 @@ export default function Education() {
                       key={item.id}
                       type="button"
                       onClick={() => setSelectedId(item.id)}
-                      className={`group relative text-left w-full p-4 sm:p-5 rounded-2xl border transition-all duration-300 backdrop-blur-xl cursor-pointer ${
+                      className={`group relative text-left w-full p-5 sm:p-5.5 rounded-2xl border transition-all duration-300 backdrop-blur-xl cursor-pointer flex flex-col justify-between ${
                         isSelected
                           ? 'bg-white/[0.06] border-indigo-500/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_0_24px_rgba(99,102,241,0.15)] -translate-y-0.5'
                           : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/15'
                       }`}
                     >
-                      <div className="flex items-center justify-between gap-3 mb-2">
-                        <span className="text-xs font-mono text-indigo-400 font-medium">
-                          {item.organization || item.institution}
-                        </span>
-
-                        <div className="flex items-center gap-2">
-                          {item.isCurrent && (
-                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[10px] font-medium text-emerald-300">
-                              <span className="relative flex h-1.5 w-1.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                              </span>
-                              Current
-                            </span>
-                          )}
-                          <span className="text-[11px] font-mono text-slate-400">
-                            {item.period}
+                      <div>
+                        {/* Header: Organization & Period/Current Tag */}
+                        <div className="flex items-center justify-between gap-3 mb-1.5">
+                          <span className="text-xs font-mono text-indigo-400 font-medium">
+                            {item.organization || item.institution}
                           </span>
+
+                          <div className="flex items-center gap-2">
+                            {item.isCurrent && (
+                              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-[10px] font-medium text-emerald-300">
+                                <span className="relative flex h-1.5 w-1.5">
+                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                                </span>
+                                Current
+                              </span>
+                            )}
+                            <span className="text-[11px] font-mono text-slate-400">
+                              {item.period}
+                            </span>
+                          </div>
                         </div>
+
+                        {/* Title and Chevron */}
+                        <div className="flex items-center justify-between gap-4">
+                          <h4 className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${
+                            isSelected ? 'text-white' : 'text-slate-200 group-hover:text-white'
+                          }`}>
+                            {item.role || item.degree}
+                          </h4>
+                          <div className={`p-1.5 rounded-lg border transition-all shrink-0 ${
+                            isSelected
+                              ? 'bg-indigo-500/20 border-indigo-500/40 text-indigo-300'
+                              : 'bg-white/[0.02] border-white/5 text-slate-500 group-hover:text-slate-300'
+                          }`}>
+                            <ChevronRight size={16} />
+                          </div>
+                        </div>
+
+                        {/* 1-Line Impact Snippet */}
+                        {item.summarySnippet && (
+                          <p className="text-xs text-slate-400 font-light line-clamp-1 my-2 leading-relaxed">
+                            {item.summarySnippet}
+                          </p>
+                        )}
+
+                        {/* Compact Mini Tech-Stack Row */}
+                        {item.miniStack && (
+                          <div className="flex flex-wrap gap-1.5 mt-2.5">
+                            {item.miniStack.map((tech, idx) => (
+                              <span
+                                key={idx}
+                                className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
-                      <div className="flex items-center justify-between gap-4">
-                        <h4 className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${
-                          isSelected ? 'text-white' : 'text-slate-200 group-hover:text-white'
-                        }`}>
-                          {item.role || item.degree}
-                        </h4>
-                        <div className={`p-1.5 rounded-lg border transition-all ${
-                          isSelected
-                            ? 'bg-indigo-500/20 border-indigo-500/40 text-indigo-300'
-                            : 'bg-white/[0.02] border-white/5 text-slate-500 group-hover:text-slate-300'
-                        }`}>
-                          <ChevronRight size={16} />
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/[0.04] text-xs">
+                      {/* Bottom Metadata: Type/Grade & Location */}
+                      <div className="flex items-center gap-2 mt-3.5 pt-3 border-t border-white/[0.04] text-xs">
                         <span className={`px-2 py-0.5 rounded-full font-medium ${
                           item.type
                             ? 'bg-indigo-500/10 border border-indigo-500/20 text-indigo-300'
@@ -305,134 +343,136 @@ export default function Education() {
               </div>
 
               {/* Right Column: Deep-Dive Inspector Pane (60% width) */}
-              <div className="w-full lg:w-7/12">
-                <div className="relative rounded-2xl border border-white/10 bg-[#0b0c12]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.1)] overflow-hidden">
-                  {/* Terminal / IDE Inspection Header */}
-                  <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/[0.08] bg-white/[0.02]">
-                    {/* Window Controls */}
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+              <div className="w-full lg:w-7/12 flex flex-col">
+                <div className="relative rounded-2xl border border-white/10 bg-[#0b0c12]/90 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.1)] overflow-hidden h-full flex flex-col justify-between">
+                  <div>
+                    {/* Terminal / IDE Inspection Header */}
+                    <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/[0.08] bg-white/[0.02]">
+                      {/* Window Controls */}
+                      <div className="flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                        <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                        <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+                      </div>
+
+                      {/* Breadcrumb Path */}
+                      <span className="text-xs font-mono text-slate-400 truncate max-w-[200px] sm:max-w-none">
+                        {selectedItem.fileBreadcrumb}
+                      </span>
+
+                      {/* Badge */}
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">
+                        TypeScript
+                      </span>
                     </div>
 
-                    {/* Breadcrumb Path */}
-                    <span className="text-xs font-mono text-slate-400 truncate max-w-[200px] sm:max-w-none">
-                      {selectedItem.fileBreadcrumb}
-                    </span>
-
-                    {/* Badge */}
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">
-                      TypeScript
-                    </span>
-                  </div>
-
-                  {/* Inspector Body Animated with AnimatePresence */}
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedItem.id}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -12 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                      className="p-6 sm:p-8 space-y-6"
-                    >
-                      {/* Role & Organization Title */}
-                      <div>
-                        <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
-                          <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">
-                            {selectedItem.role || selectedItem.degree}
-                          </h3>
-                          <span className="font-mono text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
-                            {selectedItem.period}
-                          </span>
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-                          <span className="text-indigo-400 font-semibold">
-                            {selectedItem.organization || selectedItem.institution}
-                          </span>
-                          <span className="text-slate-600">•</span>
-                          <span className="text-slate-400 text-xs flex items-center gap-1">
-                            <MapPin size={12} /> {selectedItem.location}
-                          </span>
-                          {selectedItem.url && (
-                            <>
-                              <span className="text-slate-600">•</span>
-                              <a
-                                href={selectedItem.url}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-xs text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 transition-colors"
-                              >
-                                <span>Company Portal</span>
-                                <ExternalLink size={11} />
-                              </a>
-                            </>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* High-Impact Accomplishments Box */}
-                      <div className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-5 space-y-3">
-                        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 font-medium">
-                          <Code2 size={14} className="text-indigo-400" />
-                          <span>Key Accomplishments & Impact</span>
-                        </div>
-                        <ul className="space-y-2.5 pt-1">
-                          {selectedItem.achievements.map((item, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed [&>strong]:text-white [&>strong]:font-semibold"
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 shrink-0 shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Tech Stack Grid */}
-                      <div>
-                        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 font-medium mb-3">
-                          <Cpu size={14} className="text-sky-400" />
-                          <span>Technologies & Ecosystem</span>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedItem.techStack.map((tech, idx) => (
-                            <span
-                              key={idx}
-                              className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-colors"
-                            >
-                              <span className="w-1 h-1 rounded-full bg-sky-400" />
-                              {tech}
+                    {/* Inspector Body Animated with AnimatePresence */}
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={selectedItem.id}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
+                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                        className="p-6 sm:p-8 space-y-6"
+                      >
+                        {/* Role & Organization Title */}
+                        <div>
+                          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+                            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight">
+                              {selectedItem.role || selectedItem.degree}
+                            </h3>
+                            <span className="font-mono text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                              {selectedItem.period}
                             </span>
-                          ))}
-                        </div>
-                      </div>
+                          </div>
 
-                      {/* Engineering Highlights / Core Domains */}
-                      {selectedItem.domains && (
-                        <div className="pt-2">
+                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                            <span className="text-indigo-400 font-semibold">
+                              {selectedItem.organization || selectedItem.institution}
+                            </span>
+                            <span className="text-slate-600">•</span>
+                            <span className="text-slate-400 text-xs flex items-center gap-1">
+                              <MapPin size={12} /> {selectedItem.location}
+                            </span>
+                            {selectedItem.url && (
+                              <>
+                                <span className="text-slate-600">•</span>
+                                <a
+                                  href={selectedItem.url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-xs text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 transition-colors"
+                                >
+                                  <span>Company Portal</span>
+                                  <ExternalLink size={11} />
+                                </a>
+                              </>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* High-Impact Accomplishments Box */}
+                        <div className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-5 space-y-3">
+                          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 font-medium">
+                            <Code2 size={14} className="text-indigo-400" />
+                            <span>Key Accomplishments & Impact</span>
+                          </div>
+                          <ul className="space-y-2.5 pt-1">
+                            {selectedItem.achievements.map((item, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed [&>strong]:text-white [&>strong]:font-semibold"
+                              >
+                                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 shrink-0 shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Tech Stack Grid */}
+                        <div>
                           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 font-medium mb-3">
-                            <Layers size={14} className="text-emerald-400" />
-                            <span>Core Engineering Domains</span>
+                            <Cpu size={14} className="text-sky-400" />
+                            <span>Technologies & Ecosystem</span>
                           </div>
                           <div className="flex flex-wrap gap-2">
-                            {selectedItem.domains.map((domain, idx) => (
+                            {selectedItem.techStack.map((tech, idx) => (
                               <span
                                 key={idx}
-                                className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/20 text-emerald-300"
+                                className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-200 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-colors"
                               >
-                                <CheckCircle2 size={12} />
-                                {domain}
+                                <span className="w-1 h-1 rounded-full bg-sky-400" />
+                                {tech}
                               </span>
                             ))}
                           </div>
                         </div>
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
+
+                        {/* Engineering Highlights / Core Domains */}
+                        {selectedItem.domains && (
+                          <div className="pt-2">
+                            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 font-medium mb-3">
+                              <Layers size={14} className="text-emerald-400" />
+                              <span>Core Engineering Domains</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {selectedItem.domains.map((domain, idx) => (
+                                <span
+                                  key={idx}
+                                  className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/20 text-emerald-300"
+                                >
+                                  <CheckCircle2 size={12} />
+                                  {domain}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
 
