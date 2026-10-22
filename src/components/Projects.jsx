@@ -1,10 +1,46 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import {
+  ArrowUpRight,
+  CalendarCheck,
+  Activity,
+  Network,
+  Globe,
+  Users,
+  TrendingUp,
+  Smartphone,
+  Coffee,
+  Code2,
+  Mail,
+  ShieldCheck,
+  Music,
+  CheckCircle2,
+  Layers,
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { projects } from '../projectsData';
 import { personalInfo } from '../personalData';
 import { trackProjectClick, trackSocialClick } from '../utils/analytics';
+
+const PROJECT_ICONS = {
+  '00': { icon: CalendarCheck, color: 'text-sky-400' },
+  '01': { icon: Activity, color: 'text-emerald-400' },
+  '02': { icon: Network, color: 'text-indigo-400' },
+  '03': { icon: Globe, color: 'text-cyan-400' },
+  '04': { icon: Users, color: 'text-amber-400' },
+  '05': { icon: TrendingUp, color: 'text-rose-400' },
+  '06': { icon: Smartphone, color: 'text-emerald-400' },
+  '07': { icon: Coffee, color: 'text-amber-400' },
+  '08': { icon: Code2, color: 'text-violet-400' },
+  '09': { icon: Mail, color: 'text-sky-400' },
+  '10': { icon: ShieldCheck, color: 'text-emerald-400' },
+  '11': { icon: Music, color: 'text-fuchsia-400' },
+  '12': { icon: CheckCircle2, color: 'text-teal-400' },
+};
+
+const getProjectMeta = (id) => {
+  return PROJECT_ICONS[id] || { icon: Layers, color: 'text-indigo-300' };
+};
 
 const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(0);
@@ -127,9 +163,20 @@ const Projects = () => {
                 <div className="w-full p-6 bg-white/[0.02]">
                   <div className="flex items-end gap-6">
                     <div className="w-1/2">
-                      <p className="text-xs text-indigo-400 font-mono uppercase tracking-wider mb-1.5">
-                        {projects[hoveredIndex].category}
-                      </p>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        {(() => {
+                          const meta = getProjectMeta(projects[hoveredIndex].id);
+                          const IconComp = meta.icon;
+                          return (
+                            <div className="inline-flex items-center justify-center p-1 rounded-md bg-white/[0.05] border border-white/[0.1] shrink-0">
+                              <IconComp className={`w-3.5 h-3.5 ${meta.color}`} />
+                            </div>
+                          );
+                        })()}
+                        <p className="text-xs text-indigo-400 font-mono uppercase tracking-wider truncate">
+                          {projects[hoveredIndex].category}
+                        </p>
+                      </div>
                       <p className="text-slate-300 text-sm font-normal line-clamp-2 leading-relaxed">
                         {projects[hoveredIndex].description}
                       </p>
@@ -160,6 +207,8 @@ const Projects = () => {
           >
             {projects.map((project, index) => {
               const isActive = hoveredIndex === index;
+              const meta = getProjectMeta(project.id);
+              const ProjectIcon = meta.icon;
 
               return (
                 <motion.div
@@ -180,9 +229,20 @@ const Projects = () => {
                     </span>
 
                     <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
-                        {project.title}
-                      </h3>
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <div
+                          className={`inline-flex items-center justify-center p-1.5 rounded-lg border transition-all duration-200 shrink-0 ${
+                            isActive
+                              ? 'border-indigo-400/50 bg-indigo-500/20 shadow-[0_0_12px_rgba(99,102,241,0.3)]'
+                              : 'bg-white/[0.04] border-white/[0.08] group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10'
+                          }`}
+                        >
+                          <ProjectIcon className={`w-4 h-4 ${meta.color}`} />
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-display font-semibold text-slate-100 group-hover:text-white transition-colors tracking-tight">
+                          {project.title}
+                        </h3>
+                      </div>
                       <p className="text-slate-400 text-sm md:text-base font-light mb-4 leading-relaxed">
                         {project.subtitle}
                       </p>

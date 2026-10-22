@@ -2,7 +2,7 @@ export const projects = [
     
 {
   id: "00",
-  title: "Slotly ⏰",
+  title: "Slotly",
   subtitle: "Full-Stack Appointment Booking SaaS",
   period: "October 2026",
   description:
@@ -47,7 +47,7 @@ export const projects = [
 },
   {
     id: "01",
-    title: "Mission100 Hospital 🏥",
+    title: "Mission100 Hospital",
     subtitle: "Production Healthcare & Preventive Health Platform",
     period: "April 2026 – Present",
     description:
@@ -82,7 +82,7 @@ export const projects = [
 
   {
     id: "02",
-    title: "Delhi Angel Network 💼",
+    title: "Delhi Angel Network",
     subtitle: "Angel Investment, Startup & Mentorship Platform",
     period: "2026 – Present",
     description:
@@ -116,7 +116,7 @@ export const projects = [
 
   {
     id: "03",
-    title: "Vayu Galaxy 🚀",
+    title: "Vayu Galaxy",
     subtitle: "Futuristic Aerial Township & Innovation Platform",
     period: "2026 – Present",
     description:
@@ -150,7 +150,7 @@ export const projects = [
 
   {
     id: "04",
-    title: "Young India Show 🇮🇳",
+    title: "Young India Foundation",
     subtitle: "NGO & Social Impact Platform",
     period: "April 2026 – Present",
     description:
@@ -181,7 +181,7 @@ export const projects = [
 
   {
     id: "05",
-    title: "Punpun 📈",
+    title: "Punpun",
     subtitle: "Full-Service Digital Marketing & Business Growth Platform",
     period: "2026 – Present",
     description:
@@ -216,7 +216,7 @@ export const projects = [
 
   {
     id: "06",
-    title: "Mission100 Hospital App 📱",
+    title: "Mission100 Hospital App",
     subtitle: "Healthcare Mobile Application",
     period: "2026 – Present",
     description:
@@ -245,7 +245,7 @@ export const projects = [
 
   {
     id: "07",
-    title: "Get Me A Chai ☕",
+    title: "Get Me A Chai",
     subtitle: "Crowdfunding & Creator Support Platform",
     period: "December 2025 – January 2026",
     description:
@@ -277,7 +277,7 @@ export const projects = [
 
   {
     id: "08",
-    title: "Hemant Pandey Portfolio 💻",
+    title: "Hemant Pandey Portfolio",
     subtitle: "Personal Developer Portfolio",
     period: "2026 – Present",
     description:
@@ -312,7 +312,7 @@ export const projects = [
 
   {
     id: "09",
-    title: "Mail.HemantPandey.in ✉️",
+    title: "Mail.HemantPandey.in",
     subtitle: "Free Custom-Domain Email Platform",
     period: "2026 – Present",
     description:
@@ -347,7 +347,7 @@ export const projects = [
 
   {
     id: "10",
-    title: "PassOP 🔐",
+    title: "PassOP",
     subtitle: "Secure Password Manager",
     period: "November 2025 – December 2025",
     description:
@@ -377,7 +377,7 @@ export const projects = [
 
   {
     id: "11",
-    title: "MusicPlayNest 🎵",
+    title: "MusicPlayNest",
     subtitle: "Music Streaming & Audio Platform",
     period: "November 2025 – January 2026",
     description:
@@ -406,7 +406,7 @@ export const projects = [
 
   {
     id: "12",
-    title: "Todo By Hemant ✅",
+    title: "Todo By Hemant",
     subtitle: "Task & Productivity Management App",
     period: "January 2026",
     description:
