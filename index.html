@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,10 +28,9 @@
     <script>
       (function() {
         try {
-          const stored = localStorage.getItem('theme');
-          const resolved = stored === 'light' ? 'light' : 'dark';
-          document.documentElement.className = resolved;
-          document.documentElement.style.colorScheme = resolved;
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.className = 'dark';
+          document.documentElement.style.colorScheme = 'dark';
         } catch (_) {}
       })();
     </script>

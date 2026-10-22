@@ -1,43 +1,40 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect } from 'react';
 
-export const ThemeContext = createContext(undefined);
+export const ThemeContext = createContext({
+  theme: 'dark',
+  resolvedTheme: 'dark',
+  systemTheme: 'dark',
+  setTheme: () => {},
+  toggleTheme: () => {},
+});
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setThemeState] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('theme');
-      return stored === 'light' ? 'light' : 'dark';
-    }
-    return 'dark';
-  });
-
-  const resolvedTheme = theme;
-
-  // Apply theme classes to document element and sync localStorage
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    root.style.colorScheme = theme;
+    root.classList.remove('light');
+    root.classList.add('dark');
+    root.style.colorScheme = 'dark';
 
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const changeTheme = (newTheme) => {
-    if (newTheme === 'light' || newTheme === 'dark') {
-      setThemeState(newTheme);
+    try {
+      localStorage.setItem('theme', 'dark');
+    } catch {
+      // Ignore localStorage access restrictions
     }
-  };
-
-  const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, resolvedTheme, systemTheme: 'dark', setTheme: changeTheme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        theme: 'dark',
+        resolvedTheme: 'dark',
+        systemTheme: 'dark',
+        setTheme: () => {},
+        toggleTheme: () => {},
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

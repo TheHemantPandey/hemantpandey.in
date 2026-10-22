@@ -4,7 +4,6 @@ import { Menu, X, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { personalInfo } from '../personalData';
-import ThemeToggle from './ThemeToggle';
 import { trackResumeClick, trackSocialClick } from '../utils/analytics';
 
 const Navbar = () => {
@@ -99,14 +98,11 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Controls */}
-            <div className="flex items-center gap-4">
-              <ThemeToggle />
-              
-              {/* Mobile Menu Button */}
+            {/* Mobile Menu Button */}
+            <div className="flex items-center md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-[var(--text-primary)] p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
+                className="text-[var(--text-primary)] p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)] focus-visible:outline-offset-2 cursor-none"
                 aria-label="Toggle navigation menu"
               >
                 {isOpen ? <X size={20} /> : <Menu size={20} />}

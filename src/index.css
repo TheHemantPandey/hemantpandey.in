@@ -31,25 +31,8 @@
   color-scheme: dark;
 }
 
-.light {
-  --bg-primary: #F8FAFC;
-  --bg-secondary: #F1F5F9;
-  --text-primary: #2C2C2C;
-  --text-secondary: #4A5568;
-  --text-muted: #718096;
-  --accent-bg: #2C2C2C;
-  --accent-text: #ffffff;
-  --surface: #ffffff;
-  --surface-hover: #F8FAFC;
-  --border: #DCDCDC;
-  --border-hover: #CBD5E1;
-  --glass-bg: rgba(255, 255, 255, 0.95);
-  --glass-border: #DCDCDC;
-  --shadow: rgba(0, 0, 0, 0.05);
-  color-scheme: light;
-}
-
-.dark {
+.dark,
+:root {
   --bg-primary: #030303;
   --bg-secondary: #0b0b0c;
   --text-primary: #F9FAFB;
@@ -160,23 +143,8 @@ body, nav, main, footer, section, button, input, textarea, a, span, p, h1, h2, h
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .light .glass-card {
-    background: #ffffff;
-    backdrop-filter: blur(10px);
-    border: 1px solid #DCDCDC;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-
   .text-gradient {
     background: linear-gradient(to bottom right, #ffffff 30%, #9ca3af 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .light .text-gradient {
-    background: linear-gradient(to bottom right, #2C2C2C 30%, #4A5568 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
