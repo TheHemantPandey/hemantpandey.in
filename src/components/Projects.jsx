@@ -14,7 +14,7 @@ const Projects = () => {
   // Intersection Observer for scroll-based image change
   useEffect(() => {
     const observers = [];
-    
+
     projectRefs.current.forEach((ref, index) => {
       if (ref) {
         const observer = new IntersectionObserver(
@@ -99,7 +99,7 @@ const Projects = () => {
 
           {/* Sticky Image Preview (Desktop) */}
           <div className="hidden lg:block w-1/2 relative">
-            <div 
+            <div
               className="sticky top-32 w-full rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--surface)] backdrop-blur-xl shadow-[0_4px_24px_-1px_rgba(0,0,0,0.3)] transition-all duration-300 hover:border-[var(--border-hover)] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_8px_32px_-4px_rgba(0,0,0,0.45)] cursor-none flex flex-col"
               onClick={() => handleProjectClick(projects[hoveredIndex].id)}
             >
@@ -153,11 +153,10 @@ const Projects = () => {
                 variants={listItem}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onClick={() => handleProjectClick(project.id)}
-                className={`group py-8 px-4 rounded-2xl border-b border-[var(--border)] cursor-none transition-all duration-300 ${
-                  hoveredIndex === index
+                className={`group py-8 px-4 rounded-2xl border-b border-[var(--border)] cursor-none transition-all duration-300 ${hoveredIndex === index
                     ? 'opacity-100 bg-[var(--surface-hover)]'
                     : 'opacity-50 hover:opacity-100 hover:bg-[var(--surface-hover)]'
-                }`}
+                  }`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <span className="text-sm font-mono text-[var(--text-muted)] pt-2">
